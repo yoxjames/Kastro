@@ -1,0 +1,169 @@
+/*
+ * Copyright (C) 2023 James Yox
+ *   http://www.jamesyox.dev
+ * Copyright (C) 2017 Richard "Shred" Körber
+ *    http://commons.shredzone.org
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ */
+
+import io.gitlab.arturbosch.detekt.Detekt
+import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
+import kotlin.time.Duration.Companion.seconds
+
+plugins {
+    alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.detekt)
+    alias(libs.plugins.dokka)
+    alias(libs.plugins.benmanes.versions)
+    alias(libs.plugins.kover)
+    alias(libs.plugins.binarycompatibility)
+    alias(libs.plugins.nexus)
+    `maven-publish`
+    signing
+}
+
+group = "dev.jamesyox"
+version = libs.versions.current.get()
+
+detekt {
+    buildUponDefaultConfig = true // preconfigure defaults
+    autoCorrect = true
+    config.from(files("$projectDir/detekt/config.yml"))
+
+    dependencies {
+        detektPlugins(libs.detekt.formatting)
+        detektPlugins(libs.detekt.library)
+    }
+}
+
+tasks.withType<Detekt> {
+    jvmTarget = libs.versions.jvm.get()
+}
+tasks.withType<DetektCreateBaselineTask> {
+    jvmTarget = libs.versions.jvm.get()
+}
+
+kotlin {
+    explicitApi()
+    jvm {
+        jvmToolchain(libs.versions.jvm.get().toInt())
+    }
+    js(IR) {
+        browser {
+            testTask {
+                useKarma {
+                    useChromium()
+                    useFirefox()
+                }
+            }
+        }
+        nodejs {
+            testTask {
+                useMocha {
+                    timeout = 30.seconds.inWholeMilliseconds.toString()
+                }
+            }
+        }
+    }
+
+    // TODO: I dont own any Apple products so I cannot build Apple artifacts. However it will probably work....
+    // Native: https://kotlinlang.org/docs/native-target-support.html
+    // Tier 1
+    linuxX64()
+    //macosX64()
+    //macosArm64()
+    //iosSimulatorArm64()
+    //iosX64()
+    // Tier 2
+    linuxArm64()
+    //watchosSimulatorArm64()
+    //watchosX64()
+    //watchosArm32()
+    //watchosArm64()
+    //tvosSimulatorArm64()
+    //tvosX64()
+    //tvosArm64()
+    //iosArm64()
+    // Tier 3
+    mingwX64()
+
+    sourceSets {
+        val commonMain by getting {
+            dependencies {
+                implementation(libs.kotlinx.datetime)
+            }
+        }
+        val commonTest by getting {
+            dependencies {
+                implementation(kotlin("test"))
+            }
+        }
+        val jsMain by getting {
+            val jsMain by getting {
+                dependencies {
+                    implementation(npm("@js-joda/timezone", libs.versions.npm.joda.time.get()))
+                }
+            }
+        }
+    }
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}
+
+tasks.register("detektAll") {
+    allprojects {
+        this@register.dependsOn(tasks.withType<Detekt>())
+    }
+}
+
+nexusPublishing {
+    repositories {
+        sonatype {  //only for users registered in Sonatype after 24 Feb 2021
+            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+        }
+    }
+}
+
+signing {
+    sign(publishing.publications)
+}
+
+publishing {
+    publications.withType<MavenPublication> {
+        groupId = project.group.toString()
+        artifactId = base.archivesName.get()
+        version = libs.versions.current.get()
+
+        pom {
+            name = project.name
+            description = "TODO"
+            url = "http://www.jamesyox.dev/kastro"
+
+            licenses {
+                license {
+                    name = "Apache License, Version 2.0"
+                    url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
+                }
+            }
+
+            developers {
+                developer {
+                    name = "James Yox"
+                    id = "yoxjames"
+                    url = "http://www.jamesyox.dev"
+                }
+            }
+        }
+    }
+}

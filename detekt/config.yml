@@ -1,0 +1,28 @@
+libraries:
+  # This rule is pointless if you use explicit API mode as far as I can tell....
+  LibraryEntitiesShouldNotBePublic:
+    active: false
+style:
+  # This rule simply drives me mad.
+  MagicNumber:
+    active: false
+  ForbiddenComment:
+    allowedPatterns: "[ALPHA]"
+naming:
+  # Never liked this rule. I do what I want!
+  TopLevelPropertyNaming:
+    active: false
+complexity:
+  CyclomaticComplexMethod:
+    ignoreSingleWhenExpression: true
+comments:
+  KDocReferencesNonPublicProperty:
+    active: true
+  OutdatedDocumentation:
+    active: true
+  UndocumentedPublicClass:
+    active: true
+  UndocumentedPublicFunction:
+    active: true
+  UndocumentedPublicProperty:
+    active: true
