@@ -19,7 +19,7 @@ import dev.jamesyox.kastro.common.HorizonState
 import dev.jamesyox.kastro.common.fromAzimuth
 
 /**
- * Single class containing all the information kAstro can calculate about Luna for a given instant of time. Contains
+ * Single class containing all the information Kastro can calculate about Luna for a given instant of time. Contains
  * the result of multiple calculations.
  */
 public class LunarState internal constructor(

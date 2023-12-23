@@ -29,7 +29,7 @@ import kotlin.time.Duration.Companion.days
 import kotlin.time.Duration.Companion.seconds
 
 /**
- * [Sequence] representing all [LunarEvent.PhaseEvent]s supported by kAstro. The sequence will be ordered by
+ * [Sequence] representing all [LunarEvent.PhaseEvent]s supported by Kastro. The sequence will be ordered by
  * [LunarEvent.time] with times farthest in the future being later in the [Sequence]. As implied by being a [Sequence]
  * values will be lazily calculated so setting a large or even infinite limit is fine.
  *

@@ -122,7 +122,7 @@ public sealed interface LunarEvent : Comparable<LunarEvent> {
      * at a specific instant in time. Waxing phases are where the moon is becoming more illuminated (trending towards
      * a Full Moon, whereas Waning phases are where the moon is becoming less illuminated.
      *
-     * Note: Due to the simplified formulas used in kAstro, the returned time can have an
+     * Note: Due to the simplified formulas used in Kastro, the returned time can have an
      * error of several minutes.
      */
     public sealed interface PhaseEvent : LunarEvent {

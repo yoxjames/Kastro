@@ -21,9 +21,11 @@ artifactId: `kastro`
 
 version: `0.1.0`
 
+This project depends on kotlinx-datetime. So you will need to add that as a dependency to use Kastro.
 
 If you use Gradle you should be able to simply add:
 ```kotlin
+implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.5.0")
 implementation("dev.jamesyox:kastro:0.1.0")
 ```
 to your dependencies and be able to use the library.
@@ -193,9 +195,17 @@ Pull requests are welcome. Feel free to fork and open a PR. Prior to opening you
 static analysis also passes
 
 ```bash
-./gradlew test detektAll
+./gradlew allTest detektAll
 ```
 Should return successfully
+
+You may run into issues depending on your host os. At the very least ensure that
+
+```bash
+./gradlew jvmTest detektAll
+```
+
+returns successfully.
 
 This project is still alpha so API changes are possible. However, if they can be avoided then we should strive for that. 
 Run `./gradlew apiCheck` to see if your changes maintain binary compatibility! Enhancements to the overall shape of the

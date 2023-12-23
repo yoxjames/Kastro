@@ -26,7 +26,7 @@ import dev.jamesyox.kastro.util.Moon.angularRadius
 import dev.jamesyox.kastro.util.degrees
 
 /**
- * Single class containing all the information kAstro can calculate about Sol for a given instant of time. Contains
+ * Single class containing all the information Kastro can calculate about Sol for a given instant of time. Contains
  * the result of multiple calculations.
  */
 public class SolarState internal constructor(

@@ -128,9 +128,17 @@ tasks.register("detektAll") {
 
 nexusPublishing {
     repositories {
-        sonatype {  //only for users registered in Sonatype after 24 Feb 2021
+        sonatype {
+            val ossrhUsername: String by project
+            val ossrhPassword: String by project
+            val ossrhStagingProfileId: String by project
+
             nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
             snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+
+            username = ossrhUsername
+            password = ossrhPassword
+            stagingProfileId = ossrhStagingProfileId
         }
     }
 }
@@ -142,8 +150,20 @@ signing {
 publishing {
     publications.withType<MavenPublication> {
         groupId = project.group.toString()
-        artifactId = base.archivesName.get()
         version = libs.versions.current.get()
+        val publication = this
+        val dokkaJar = tasks.register<Jar>("${publication.name}DokkaJar") {
+            group = JavaBasePlugin.DOCUMENTATION_GROUP
+            description = "Assembles Kotlin docs with Dokka into a Javadoc jar"
+            archiveClassifier.set("javadoc")
+            from(tasks.named("dokkaHtml"))
+            // Each archive name should be distinct, to avoid implicit dependency issues.
+            // We use the same format as the sources Jar tasks.
+            // https://youtrack.jetbrains.com/issue/KT-46466
+            archiveBaseName.set("${archiveBaseName.get()}-${publication.name}")
+        }
+
+        artifact(dokkaJar)
 
         pom {
             name = project.name
@@ -163,6 +183,12 @@ publishing {
                     id = "yoxjames"
                     url = "http://www.jamesyox.dev"
                 }
+            }
+
+            scm {
+                connection = "scm:git:github.com/yoxjames/Kastro.git"
+                developerConnection = "scm:git:ssh://github.com/yoxjames/Kastro.git"
+                url = "https://github.com/yoxjames/Kastro"
             }
         }
     }

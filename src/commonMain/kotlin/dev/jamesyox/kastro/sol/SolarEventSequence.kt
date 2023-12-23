@@ -21,7 +21,7 @@ import kotlin.time.Duration
 import kotlin.time.Duration.Companion.days
 
 /**
- * [Sequence] representing all [SolarEvent]s supported by kAstro. The sequence will be ordered by [SolarEvent.time]
+ * [Sequence] representing all [SolarEvent]s supported by Kastro. The sequence will be ordered by [SolarEvent.time]
  * with times farthest in the future being later in the [Sequence]. As implied by being a [Sequence] values will be
  * lazily calculated so setting a large or even infinite limit is fine.
  *
