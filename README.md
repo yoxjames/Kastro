@@ -11,9 +11,7 @@ Most calculations should be accurate to within a minute. Moon phase events (Full
 much as five minutes.
 
 ## Getting Started
-**I have a ticket open to request a group and artifact for this project. It is not yet listed on any repos.**
-
-They should be:
+This project is deployed on Maven Central. Coordinates are as follows:
 
 groupId: `dev.jamesyox`
 
