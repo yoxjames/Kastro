@@ -96,7 +96,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(libs.kotlinx.datetime)
+                api(libs.kotlinx.datetime)
             }
         }
         val commonTest by getting {

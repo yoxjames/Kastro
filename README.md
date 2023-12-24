@@ -19,7 +19,7 @@ artifactId: `kastro`
 
 version: `0.1.0`
 
-This project depends on kotlinx-datetime. So you will need to add that as a dependency to use Kastro.
+This project depends on kotlinx-datetime. So you will need to add that as a dependency to use Kastro. This will be corrected in the next release of Kastro where kotlinx-datetime will be made an api dependency.
 
 If you use Gradle you should be able to simply add:
 ```kotlin
@@ -216,6 +216,8 @@ eventually resolve that but didn't think it should block an alpha release. Somet
 I would also like to add additional KMP targets. I don't own any Apple products, so I cannot build any Apple targets. 
 I hope to eventually have a solution to that if there is demand. I am also curious to look into WASM and any other KMP
 targets added in the future.
+
+I am also curious to potentially make the library usable for other languages like Javascript. This library is a Kotlin Multiplatform project, but it would be cool to also have it be on npm for use in Javascript/Typescript projects or even be a Swift package (SPM) for use on iOS/Apple targets. There are some challenges to doing that (such as how the exposed API could be adapted to better fit those languages) but I plan to actively look into this as it's something I am generally curious about.
 
 ## References
 * commons-suncalc (2023), Richard Körber, https://github.com/shred/commons-suncalc
