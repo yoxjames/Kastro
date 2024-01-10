@@ -108,11 +108,6 @@ class LunarEventsSequenceTest {
 
     @Test
     fun testSubsetOfEvents() {
-        val requestedEvents = listOf(
-            LunarEvent.HorizonEvent.Moonrise,
-            LunarEvent.PhaseEvent.FullMoon
-        )
-
         val iter = LunarEventSequence(
             start = LocalDate(2023, 10, 26).atStartOfDayIn(DENVER_TZ),
             location = DENVER,

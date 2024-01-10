@@ -44,11 +44,12 @@ public class LunarPosition internal constructor(
 
     private val parallacticAngleRad: Double,
 
+) {
     /**
      * Parallactic angle of the moon, in degrees.
      */
     public val parallacticAngle: Double = parallacticAngleRad.degrees
-) {
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other == null || this::class != other::class) return false

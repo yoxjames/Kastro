@@ -37,12 +37,12 @@ public class LunarIllumination(
      * angle is negative, and waning if positive.
      *
      *
-     * By subtracting [LunarPosition.parallacticAngle] from [angle],
+     * By subtracting [LunarPosition.parallacticAngle] from [illuminationAngle],
      * one can get the zenith angle of the moons bright limb (anticlockwise). The zenith
      * angle can be used do draw the moon shape from the observer's perspective (e.g. the
      * moon lying on its back).
      */
-    public val angle: Double
+    public val illuminationAngle: Double
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -52,7 +52,7 @@ public class LunarIllumination(
 
         if (fraction != other.fraction) return false
         if (phase != other.phase) return false
-        if (angle != other.angle) return false
+        if (illuminationAngle != other.illuminationAngle) return false
 
         return true
     }
@@ -60,12 +60,12 @@ public class LunarIllumination(
     override fun hashCode(): Int {
         var result = fraction.hashCode()
         result = 31 * result + phase.hashCode()
-        result = 31 * result + angle.hashCode()
+        result = 31 * result + illuminationAngle.hashCode()
         return result
     }
 
     override fun toString(): String {
-        return "LunarIllumination(fraction=$fraction, phase=$phase, angle=$angle)"
+        return "LunarIllumination(fraction=$fraction, phase=$phase, angle=$illuminationAngle)"
     }
 }
 

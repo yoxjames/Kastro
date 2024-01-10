@@ -32,7 +32,7 @@ class LunarIlluminationTest {
             .calculateLunarIllumination()
         assertSimilar(actual = mi.fraction, expected = 0.0)
         assertSimilar(actual = mi.phase, expected = 176.0)
-        assertSimilar(actual = mi.angle, expected = 2.0)
+        assertSimilar(actual = mi.illuminationAngle, expected = 2.0)
         assertEquals(actual = mi.closestPhase, expected = NewMoon)
     }
 
@@ -43,7 +43,7 @@ class LunarIlluminationTest {
             .calculateLunarIllumination()
         assertSimilar(actual = mi.fraction, expected = 0.5)
         assertSimilar(actual = mi.phase, expected = -90.0)
-        assertSimilar(actual = mi.angle, expected = -66.9)
+        assertSimilar(actual = mi.illuminationAngle, expected = -66.9)
         assertEquals(actual = mi.closestPhase, expected = FirstQuarter)
     }
 
@@ -54,7 +54,7 @@ class LunarIlluminationTest {
             .calculateLunarIllumination()
         assertSimilar(actual = mi.fraction, expected =  1.0)
         assertSimilar(actual = mi.phase, expected = -3.2) // 0.0
-        assertSimilar(actual = mi.angle, expected = -7.4)
+        assertSimilar(actual = mi.illuminationAngle, expected = -7.4)
         assertEquals(actual = mi.closestPhase, expected = FullMoon)
     }
 
@@ -65,7 +65,7 @@ class LunarIlluminationTest {
             .calculateLunarIllumination()
         assertSimilar(actual = mi.fraction, expected = 0.5)
         assertSimilar(actual = mi.phase, expected = 90.0)
-        assertSimilar(actual = mi.angle, expected = 68.7)
+        assertSimilar(actual = mi.illuminationAngle, expected = 68.7)
         assertEquals(actual = mi.closestPhase, expected = LastQuarter)
     }
 }

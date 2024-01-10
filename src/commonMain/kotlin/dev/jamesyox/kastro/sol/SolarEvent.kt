@@ -591,7 +591,7 @@ public sealed interface SolarEvent : Comparable<SolarEvent> {
     }
 
     /**
-     * The end of [LightState.BlueHour] during dawn. Happens when the run rises past -4.0 degrees.
+     * The end of [LightState.BlueHour] during dawn. Happens when the sun rises past -4.0 degrees.
      */
     public class BlueHourDawnEnd(
         override val time: Instant
@@ -615,6 +615,62 @@ public sealed interface SolarEvent : Comparable<SolarEvent> {
 
         override fun toString(): String {
             return "BlueHourDawnEnd(time=$time)"
+        }
+    }
+
+    /**
+     * The end of [LightState.GoldenHour] during dusk. Happens when the sun sets past - 6.0 degrees.
+     */
+    public class GoldenHourDuskEnd(
+        override val time: Instant
+    ) : LightEvent {
+        public companion object : SolarEventType.Angle.Dusk {
+            override val angle: Double = LightState.GoldenHour.dawnAngle
+        }
+
+        override fun equals(other: Any?): Boolean {
+            if (this === other) return true
+            if (other == null || this::class != other::class) return false
+
+            other as GoldenHourDuskEnd
+
+            return time == other.time
+        }
+
+        override fun hashCode(): Int {
+            return time.hashCode()
+        }
+
+        override fun toString(): String {
+            return "GoldenHourDuskEnd(time=$time)"
+        }
+    }
+
+    /**
+     * The end of [LightState.GoldenHour] during dawn. Happens when the sun rises past 6.0 degrees.
+     */
+    public class GoldenHourDawnEnd(
+        override val time: Instant
+    ) : LightEvent {
+        public companion object : SolarEventType.Angle.Dawn {
+            override val angle: Double = LightState.GoldenHour.duskAngle
+        }
+
+        override fun equals(other: Any?): Boolean {
+            if (this === other) return true
+            if (other == null || this::class != other::class) return false
+
+            other as GoldenHourDawnEnd
+
+            return time == other.time
+        }
+
+        override fun hashCode(): Int {
+            return time.hashCode()
+        }
+
+        override fun toString(): String {
+            return "GoldenHourDawnEnd(time=$time)"
         }
     }
 }

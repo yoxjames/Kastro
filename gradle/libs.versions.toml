@@ -1,7 +1,7 @@
 [versions]
-current = "0.1.0"
+current = "0.2.0"
 benmanes-versions = "0.50.0"
-kotlin = "1.9.21"
+kotlin = "1.9.22"
 jvm = "17"
 detekt = "1.23.4"
 dokka = "1.9.10"

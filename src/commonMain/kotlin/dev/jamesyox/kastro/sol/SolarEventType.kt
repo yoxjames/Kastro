@@ -44,7 +44,9 @@ public sealed interface SolarEventType {
             SolarEvent.SunsetBegin,
             SolarEvent.SunriseEnd,
             SolarEvent.BlueHourDawnEnd,
-            SolarEvent.BlueHourDuskEnd
+            SolarEvent.BlueHourDuskEnd,
+            SolarEvent.GoldenHourDawnEnd,
+            SolarEvent.GoldenHourDuskEnd
         )
 
         /**
@@ -117,4 +119,6 @@ internal fun SolarEventType.Angle.eventAt(time: Instant): SolarEvent = when (thi
     SolarEvent.SunriseEnd -> SolarEvent.SunriseEnd(time)
     SolarEvent.BlueHourDawnEnd -> SolarEvent.BlueHourDawnEnd(time)
     SolarEvent.BlueHourDuskEnd -> SolarEvent.BlueHourDuskEnd(time)
+    SolarEvent.GoldenHourDawnEnd -> SolarEvent.GoldenHourDawnEnd(time)
+    SolarEvent.GoldenHourDuskEnd -> SolarEvent.GoldenHourDuskEnd(time)
 }

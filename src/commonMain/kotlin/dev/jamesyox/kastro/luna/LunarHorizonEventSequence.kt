@@ -18,7 +18,7 @@ import dev.jamesyox.kastro.util.ExtendedMath.parallax
 import dev.jamesyox.kastro.util.JulianDate
 import dev.jamesyox.kastro.util.Moon.angularRadius
 import dev.jamesyox.kastro.util.Moon.positionHorizontal
-import dev.jamesyox.kastro.util.QuadraticInterpolation.Companion.of
+import dev.jamesyox.kastro.util.QuadraticInterpolation
 import dev.jamesyox.kastro.util.instant
 import dev.jamesyox.kastro.util.julianDate
 import dev.jamesyox.kastro.util.latitude
@@ -134,7 +134,7 @@ public class LunarHorizonEventSequence(
         var y0 = correctedLunarHeight(julianDate.atHour(hour.toDouble()))
         var yPlus = correctedLunarHeight(julianDate.atHour(hour + 1.0))
         while (hour <= maxHours) {
-            val qi = of(yMinus, y0, yPlus)
+            val qi = QuadraticInterpolation.of(yMinus, y0, yPlus)
             ye = qi.ye
             if (qi.numberOfRoots == 1) {
                 val rt = qi.root1 + hour
