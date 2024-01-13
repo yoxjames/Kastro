@@ -143,4 +143,26 @@ class LunarPhaseSequenceTest {
         assertFalse(iter.hasNext())
     }
 
+    @Test
+    fun testLimit() {
+        val iter = LunarPhaseSequence(
+            start = LocalDate(2024, month = Month.JANUARY, dayOfMonth = 11).atStartOfDayIn(DENVER_TZ),
+            limit = 7.days
+        ).iterator()
+
+        iter.assertSimilar<NewMoon>(
+            expected = LocalDateTime(2024, month = Month.JANUARY, dayOfMonth = 11, hour = 4, minute = 57),
+            timeZone = DENVER_TZ,
+            tolerance = 5.minutes
+        )
+
+        iter.assertSimilar<FirstQuarter>(
+            expected = LocalDateTime(2024, month = Month.JANUARY, dayOfMonth = 17, hour = 20, 52),
+            timeZone = DENVER_TZ,
+            tolerance = 5.minutes
+        )
+
+        assertFalse(iter.hasNext())
+    }
+
 }

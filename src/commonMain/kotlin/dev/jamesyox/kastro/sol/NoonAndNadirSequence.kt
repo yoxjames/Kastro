@@ -35,13 +35,15 @@ internal class NoonAndNadirSequence(
     private val limit: Duration,
     private val requestedCulminationEvents: List<SolarEventType.Culmination>
 ) : Sequence<SolarEvent> {
+    private val limitTime = start + limit
+
     override fun iterator(): Iterator<SolarEvent> {
         // Skip everything if we requested no culmination events
         if (requestedCulminationEvents.isEmpty()) return emptySequence<SolarEvent>().iterator()
 
-        return generateSequence(calculateNextNoonAndNadir(start.julianDate)) {
+        return generateSequence(calculateNextNoonAndNadir(start)) {
             it.lastOrNull()?.time?.let { lastTime ->
-                if (lastTime <= start + limit) calculateNextNoonAndNadir((lastTime + 1.seconds).julianDate) else null
+                if (lastTime <= start + limit) calculateNextNoonAndNadir((lastTime + 1.seconds)) else null
             }
         }.flatten().iterator()
     }
@@ -60,15 +62,17 @@ internal class NoonAndNadirSequence(
     // This function is quite complex. There's potentially ways to simplify these algorithms or break them
     // up.
     @Suppress("ComplexCondition", "NestedBlockDepth", "CyclomaticComplexMethod")
-    private fun calculateNextNoonAndNadir(jd: JulianDate): Sequence<SolarEvent> {
+    private fun calculateNextNoonAndNadir(localStart: Instant): Sequence<SolarEvent> {
+        val julianDate = localStart.julianDate
         var hour = 0
         var noon: Double? = null
         var nadir: Double? = null
-        val limitHours = limit.inWholeMilliseconds.toDouble() / 1.hours.inWholeMilliseconds
+        val limitHours = (limitTime - localStart).inWholeMilliseconds.toDouble() /
+            1.hours.inWholeMilliseconds.toDouble()
         val maxHours = ceil(limitHours).toInt()
-        var yMinus = calculateSolHeightRad(jd.atHour(hour - 1.0))
-        var y0 = calculateSolHeightRad(jd.atHour(hour.toDouble()))
-        var yPlus = calculateSolHeightRad(jd.atHour(hour + 1.0))
+        var yMinus = calculateSolHeightRad(julianDate.atHour(hour - 1.0))
+        var y0 = calculateSolHeightRad(julianDate.atHour(hour.toDouble()))
+        var yPlus = calculateSolHeightRad(julianDate.atHour(hour + 1.0))
         while (hour <= maxHours) {
             val qi = QuadraticInterpolation.of(yMinus, y0, yPlus)
             val xeAbs = abs(qi.xe)
@@ -90,11 +94,11 @@ internal class NoonAndNadirSequence(
             hour++
             yMinus = y0
             y0 = yPlus
-            yPlus = calculateSolHeightRad(jd.atHour(hour + 1.0))
+            yPlus = calculateSolHeightRad(julianDate.atHour(hour + 1.0))
         }
         if (noon != null && isNoonRequested) {
             noon = ExtendedMath.readjustMax(time = noon, frame = 2.0, depth = 14) {
-                calculateSolHeightRad(jd.atHour(it))
+                calculateSolHeightRad(julianDate.atHour(it))
             }
             if (noon < 0.0 || noon >= limitHours) {
                 noon = null
@@ -102,15 +106,15 @@ internal class NoonAndNadirSequence(
         }
         if (nadir != null && isNadirRequested) {
             nadir = ExtendedMath.readjustMin(time = nadir, frame = 2.0, depth = 14) {
-                calculateSolHeightRad(jd.atHour(it))
+                calculateSolHeightRad(julianDate.atHour(it))
             }
             if (nadir < 0.0 || nadir >= limitHours) {
                 nadir = null
             }
         }
         return sequence {
-            noon?.also { yield(SolarEvent.Noon(jd.atHour(it).instant)) }
-            nadir?.also { yield(SolarEvent.Nadir(jd.atHour(it).instant)) }
+            noon?.also { yield(SolarEvent.Noon(julianDate.atHour(it).instant)) }
+            nadir?.also { yield(SolarEvent.Nadir(julianDate.atHour(it).instant)) }
         }.sortedBy { it.time }
     }
 }

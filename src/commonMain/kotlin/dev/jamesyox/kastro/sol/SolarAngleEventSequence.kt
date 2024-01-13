@@ -37,20 +37,22 @@ internal class SolarAngleEventSequence(
     private val requestedAngleEvents: List<SolarEventType.Angle>,
     // private val height: Double = 0.0 // TODO [Alpha]: See comment below
 ) : Sequence<SolarEvent> {
+    private val limitTime = start + limit
+
     override fun iterator(): Iterator<SolarEvent> {
-        return generateSequence(calculateNextSolarEvents(start.julianDate)) {
+        return generateSequence(calculateNextSolarEvents(start)) {
             it.lastOrNull()?.time?.let { lastTime ->
-                if (lastTime <= start + limit) calculateNextSolarEvents((lastTime + 1.seconds).julianDate) else null
+                if (lastTime <= start + limit) calculateNextSolarEvents((lastTime + 1.seconds)) else null
             }
         }.flatten().iterator()
     }
 
-    private fun calculateNextSolarEvents(jd: JulianDate): Sequence<SolarEvent> {
+    private fun calculateNextSolarEvents(localStart: Instant): Sequence<SolarEvent> {
         return requestedAngleEvents
             .asSequence()
             .mapNotNull { angle ->
                 calculateNextSolarAngleEvent(
-                    julianDate = jd,
+                    localStart = localStart,
                     // TODO [Alpha]: Height offset calculation is incorrect. This is safe for now but eventually want to
                     //      add height back to public API.
                     height = 0.0,
@@ -63,10 +65,12 @@ internal class SolarAngleEventSequence(
     // up.
     @Suppress("ComplexCondition", "NestedBlockDepth", "CyclomaticComplexMethod", "ReturnCount")
     private fun calculateNextSolarAngleEvent(
-        julianDate: JulianDate,
+        localStart: Instant,
         angle: SolarEventType.Angle,
         height: Double
     ): SolarEvent? {
+        val julianDate = localStart.julianDate
+
         /**
          * Computes the sun height at the given date and position.
          *
@@ -93,7 +97,8 @@ internal class SolarAngleEventSequence(
             return sunPos.trueAltitudeRad - (angleRad + angleModifier)
         }
         var hour = 0
-        val limitHours = limit.inWholeMilliseconds.toDouble() / 1.hours.inWholeMilliseconds
+        val limitHours = (limitTime - localStart).inWholeMilliseconds.toDouble() /
+            1.hours.inWholeMilliseconds.toDouble()
         val maxHours = ceil(limitHours).toInt()
         var yMinus = correctedSunHeight(julianDate.atHour(hour - 1.0))
         var y0 = correctedSunHeight(julianDate.atHour(hour.toDouble()))

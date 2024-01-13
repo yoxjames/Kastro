@@ -77,6 +77,9 @@ class SolarEventSequenceTest {
             SolarEvent.SunriseEnd(
                 LocalDateTime(2017, 8, 10, 4, 15, 33).toInstant(UTC)
             ),
+            SolarEvent.GoldenHourDawnEnd(
+                LocalDateTime(2017, 8, 10, 4, 58, 33).toInstant(UTC)
+            ),
             SolarEvent.Day(
                 LocalDateTime(2017, 8, 10, 4, 17, 44).toInstant(UTC)
             ),
@@ -96,6 +99,9 @@ class SolarEventSequenceTest {
                 LocalDateTime(2017, 8, 10, 19, 25, 16).toInstant(UTC)
             ),
             SolarEvent.NauticalDusk(
+                LocalDateTime(2017, 8, 10, 19, 40, 13).toInstant(UTC)
+            ),
+            SolarEvent.GoldenHourDuskEnd(
                 LocalDateTime(2017, 8, 10, 19, 40, 13).toInstant(UTC)
             ),
             SolarEvent.BlueHourDuskEnd(
@@ -630,18 +636,34 @@ class SolarEventSequenceTest {
             expected = LocalDateTime(2023, 12, 3, 16, 35),
             timeZone = DENVER_TZ
         )
+
+        assertFalse(iter.hasNext())
+    }
+
+    @Test
+    fun testThatWeDoNotGoBeyondOneDayWithLimitSet() {
+        val iter = SolarEventSequence(
+            start = LocalDate(2024, 1, 11).atStartOfDayIn(DENVER_TZ),
+            location = DENVER,
+            limit = 1.days,
+            requestedSolarEvents = SolarEventType.simple - SolarEvent.Nadir
+        ).iterator()
+
         iter.assertSimilar<SolarEvent.Sunrise>(
-            expected = LocalDateTime(2023, 12, 4, 7, 5),
+            expected = LocalDateTime(2024, 1, 11, 7, 20),
             timeZone = DENVER_TZ
         )
+
         iter.assertSimilar<SolarEvent.Noon>(
-            expected = LocalDateTime(2023, 12, 4, 11, 50),
+            expected = LocalDateTime(2024, 1, 11, 12, 7, 57),
             timeZone = DENVER_TZ
         )
+
         iter.assertSimilar<SolarEvent.Sunset>(
-            expected = LocalDateTime(2023, 12, 4, 16, 35),
+            expected = LocalDateTime(2024, 1, 11, 16, 55, 25),
             timeZone = DENVER_TZ
         )
+
         assertFalse(iter.hasNext())
     }
 

@@ -29,6 +29,7 @@ import kotlinx.datetime.Month
 import kotlinx.datetime.TimeZone.Companion.UTC
 import kotlinx.datetime.toInstant
 import kotlin.test.Test
+import kotlin.test.assertFalse
 import kotlin.test.assertIs
 import kotlin.time.Duration.Companion.days
 import kotlin.time.Duration.Companion.minutes
@@ -77,6 +78,7 @@ class LunarHorizonEventSequenceTest {
         ).assertEvents {
             assertEvent<Moonrise>(LocalDateTime(2017, 7, 14, 5, 45, 5))
             assertEvent<Moonset>(LocalDateTime(2017, 7, 14, 11, 26, 43))
+            assertFalse(hasNext())
         }
 
         LunarHorizonEventSequence(
