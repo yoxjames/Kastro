@@ -182,7 +182,8 @@ SolarEventSequence(
     start = clock.now(),
     latitude = latitude,
     longitude = longitude,
-    requestedSolarEvents = listOf(SolarEvent.Sunset)
+    requestedSolarEvents = listOf(SolarEvent.Sunset),
+    limit = Duration.INFINITE
 ).asFlow()
     .onEach { delay(it.time) - clock.now() }
     .collect { doSomething() } // Whatever you dream up!
