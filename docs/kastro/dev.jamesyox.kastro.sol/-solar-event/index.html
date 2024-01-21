@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>SolarEvent</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+                    <a class="library-name--link" href="../../../index.html">
+                            kastro
+                    </a>
+            </div>
+            <div class="library-version">
+0.2.0            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":dokkaHtml/commonMain">common</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="kastro::dev.jamesyox.kastro.sol/SolarEvent///PointingToDeclaration//788909594">
+  <div class="breadcrumbs"><a href="../../../index.html">kastro</a><span class="delimiter">/</span><a href="../index.html">dev.jamesyox.kastro.sol</a><span class="delimiter">/</span><span class="current">SolarEvent</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Solar</span><wbr></wbr><span><span>Event</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">SolarEvent</a> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-comparable/index.html">Comparable</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">SolarEvent</a><span class="token operator">&gt; </span></div><p class="paragraph">Times when particular solar events of interest happen. Examples would be things like Sunrise, sunset, solar noon, start of civil dawn, etc.</p><h4 class="">Inheritors</h4><div class="table"><div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-twilight-event/index.html">TwilightEvent</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-horizon-event/index.html">HorizonEvent</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-light-event/index.html">LightEvent</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-noon/index.html">Noon</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-nadir/index.html">Nadir</a></div></span></div><div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="-1770266056%2FClasslikes%2F788909594" anchor-label="AstronomicalDawn" id="-1770266056%2FClasslikes%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-astronomical-dawn/index.html"><span>Astronomical</span><wbr></wbr><span><span>Dawn</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1770266056%2FClasslikes%2F788909594"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-astronomical-dawn/index.html">AstronomicalDawn</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="-twilight-event/index.html">SolarEvent.TwilightEvent</a></div><div class="brief "><p class="paragraph">Begins when the sun rises to -18.0 degrees. Ends when the sun rises to -12.0 degrees.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2080389443%2FClasslikes%2F788909594" anchor-label="AstronomicalDusk" id="2080389443%2FClasslikes%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-astronomical-dusk/index.html"><span>Astronomical</span><wbr></wbr><span><span>Dusk</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2080389443%2FClasslikes%2F788909594"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-astronomical-dusk/index.html">AstronomicalDusk</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="-twilight-event/index.html">SolarEvent.TwilightEvent</a></div><div class="brief "><p class="paragraph">Begins when the sun sets to -12.0 degrees and ends when the sun sets to -18.0 degrees. See <a href="../-solar-phase/-astronomical-twilight/index.html">SolarPhase.AstronomicalTwilight</a></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1231768244%2FClasslikes%2F788909594" anchor-label="BlueHourDawn" id="-1231768244%2FClasslikes%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-blue-hour-dawn/index.html"><span>Blue</span><wbr></wbr><span>Hour</span><wbr></wbr><span><span>Dawn</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1231768244%2FClasslikes%2F788909594"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-blue-hour-dawn/index.html">BlueHourDawn</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="-light-event/index.html">SolarEvent.LightEvent</a></div><div class="brief "><p class="paragraph">When the solar angle rises to -8.0. Marks the start of <a href="../-light-state/-blue-hour/index.html">LightState.BlueHour</a> during dawn.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-498301733%2FClasslikes%2F788909594" anchor-label="BlueHourDawnEnd" id="-498301733%2FClasslikes%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-blue-hour-dawn-end/index.html"><span>Blue</span><wbr></wbr><span>Hour</span><wbr></wbr><span>Dawn</span><wbr></wbr><span><span>End</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-498301733%2FClasslikes%2F788909594"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-blue-hour-dawn-end/index.html">BlueHourDawnEnd</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="-light-event/index.html">SolarEvent.LightEvent</a></div><div class="brief "><p class="paragraph">The end of <a href="../-light-state/-blue-hour/index.html">LightState.BlueHour</a> during dawn. Happens when the sun rises past -4.0 degrees.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1676080041%2FClasslikes%2F788909594" anchor-label="BlueHourDusk" id="-1676080041%2FClasslikes%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-blue-hour-dusk/index.html"><span>Blue</span><wbr></wbr><span>Hour</span><wbr></wbr><span><span>Dusk</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1676080041%2FClasslikes%2F788909594"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-blue-hour-dusk/index.html">BlueHourDusk</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="-light-event/index.html">SolarEvent.LightEvent</a></div><div class="brief "><p class="paragraph">When the solar angle sets to -4.0. Marks the start of <a href="../-light-state/-blue-hour/index.html">LightState.BlueHour</a> during dusk.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="98160112%2FClasslikes%2F788909594" anchor-label="BlueHourDuskEnd" id="98160112%2FClasslikes%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-blue-hour-dusk-end/index.html"><span>Blue</span><wbr></wbr><span>Hour</span><wbr></wbr><span>Dusk</span><wbr></wbr><span><span>End</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="98160112%2FClasslikes%2F788909594"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-blue-hour-dusk-end/index.html">BlueHourDuskEnd</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="-light-event/index.html">SolarEvent.LightEvent</a></div><div class="brief "><p class="paragraph">The end of <a href="../-light-state/-blue-hour/index.html">LightState.BlueHour</a> during dusk. Happens when the sun sets past -8.0 degrees.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-931829475%2FClasslikes%2F788909594" anchor-label="CivilDawn" id="-931829475%2FClasslikes%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-civil-dawn/index.html"><span>Civil</span><wbr></wbr><span><span>Dawn</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-931829475%2FClasslikes%2F788909594"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-civil-dawn/index.html">CivilDawn</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="-twilight-event/index.html">SolarEvent.TwilightEvent</a></div><div class="brief "><p class="paragraph">Begins when the sun rises to -6.0 degrees. Ends when the sun rises to 0.0 degrees.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1376141272%2FClasslikes%2F788909594" anchor-label="CivilDusk" id="-1376141272%2FClasslikes%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-civil-dusk/index.html"><span>Civil</span><wbr></wbr><span><span>Dusk</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1376141272%2FClasslikes%2F788909594"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-civil-dusk/index.html">CivilDusk</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="-twilight-event/index.html">SolarEvent.TwilightEvent</a></div><div class="brief "><p class="paragraph">Begins when the sun sets to 0.0 degrees and ends when the sun sets to -6.0 degrees.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1708588536%2FClasslikes%2F788909594" anchor-label="Day" id="-1708588536%2FClasslikes%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-day/index.html"><span><span>Day</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1708588536%2FClasslikes%2F788909594"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-day/index.html">Day</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="-twilight-event/index.html">SolarEvent.TwilightEvent</a></div><div class="brief "><p class="paragraph">When the solar angle rises to 0.0. This event marks the end of <a href="-civil-dawn/index.html">CivilDawn</a></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-640689347%2FClasslikes%2F788909594" anchor-label="GoldenHourDawn" id="-640689347%2FClasslikes%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-golden-hour-dawn/index.html"><span>Golden</span><wbr></wbr><span>Hour</span><wbr></wbr><span><span>Dawn</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-640689347%2FClasslikes%2F788909594"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-golden-hour-dawn/index.html">GoldenHourDawn</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="-light-event/index.html">SolarEvent.LightEvent</a></div><div class="brief "><p class="paragraph">When the solar angle rises to -6.0. Marks the start of <a href="../-light-state/-golden-hour/index.html">LightState.GoldenHour</a> during dawn.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1032794806%2FClasslikes%2F788909594" anchor-label="GoldenHourDawnEnd" id="-1032794806%2FClasslikes%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-golden-hour-dawn-end/index.html"><span>Golden</span><wbr></wbr><span>Hour</span><wbr></wbr><span>Dawn</span><wbr></wbr><span><span>End</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1032794806%2FClasslikes%2F788909594"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-golden-hour-dawn-end/index.html">GoldenHourDawnEnd</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="-light-event/index.html">SolarEvent.LightEvent</a></div><div class="brief "><p class="paragraph">The end of <a href="../-light-state/-golden-hour/index.html">LightState.GoldenHour</a> during dawn. Happens when the sun rises past 6.0 degrees.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1085001144%2FClasslikes%2F788909594" anchor-label="GoldenHourDusk" id="-1085001144%2FClasslikes%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-golden-hour-dusk/index.html"><span>Golden</span><wbr></wbr><span>Hour</span><wbr></wbr><span><span>Dusk</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1085001144%2FClasslikes%2F788909594"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-golden-hour-dusk/index.html">GoldenHourDusk</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="-light-event/index.html">SolarEvent.LightEvent</a></div><div class="brief "><p class="paragraph">When the solar angle sets to 0.0. Marks the start of <a href="../-light-state/-golden-hour/index.html">LightState.GoldenHour</a> during dusk</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-436332961%2FClasslikes%2F788909594" anchor-label="GoldenHourDuskEnd" id="-436332961%2FClasslikes%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-golden-hour-dusk-end/index.html"><span>Golden</span><wbr></wbr><span>Hour</span><wbr></wbr><span>Dusk</span><wbr></wbr><span><span>End</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-436332961%2FClasslikes%2F788909594"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-golden-hour-dusk-end/index.html">GoldenHourDuskEnd</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="-light-event/index.html">SolarEvent.LightEvent</a></div><div class="brief "><p class="paragraph">The end of <a href="../-light-state/-golden-hour/index.html">LightState.GoldenHour</a> during dusk. Happens when the sun sets past - 6.0 degrees.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="146690751%2FClasslikes%2F788909594" anchor-label="HorizonEvent" id="146690751%2FClasslikes%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-horizon-event/index.html"><span>Horizon</span><wbr></wbr><span><span>Event</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="146690751%2FClasslikes%2F788909594"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-horizon-event/index.html">HorizonEvent</a> : <a href="index.html">SolarEvent</a></div><div class="brief "><p class="paragraph">Horizon Events are solar events that involve the sun transiting the horizon. For instance <a href="-sunrise/index.html">Sunrise</a> and <a href="-sunset/index.html">Sunset</a>. Also includes events like <a href="-sunset-begin/index.html">SunsetBegin</a> and <a href="-sunrise-end/index.html">SunriseEnd</a></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="366210106%2FClasslikes%2F788909594" anchor-label="LightEvent" id="366210106%2FClasslikes%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-light-event/index.html"><span>Light</span><wbr></wbr><span><span>Event</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="366210106%2FClasslikes%2F788909594"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-light-event/index.html">LightEvent</a> : <a href="index.html">SolarEvent</a></div><div class="brief "><p class="paragraph">Light events are solar events pertaining to interesting light effects created by the position of the sun. Examples are things like the start of Golden Hour or Blue Hour. These event types are of particular interest to photographers.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="533554346%2FClasslikes%2F788909594" anchor-label="Nadir" id="533554346%2FClasslikes%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-nadir/index.html"><span><span>Nadir</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="533554346%2FClasslikes%2F788909594"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-nadir/index.html">Nadir</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">SolarEvent</a></div><div class="brief "><p class="paragraph">The opposite of solar noon. When the sun is at its lowest position in the sky for a given cycle.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1760052211%2FClasslikes%2F788909594" anchor-label="NauticalDawn" id="1760052211%2FClasslikes%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-nautical-dawn/index.html"><span>Nautical</span><wbr></wbr><span><span>Dawn</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1760052211%2FClasslikes%2F788909594"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-nautical-dawn/index.html">NauticalDawn</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="-twilight-event/index.html">SolarEvent.TwilightEvent</a></div><div class="brief "><p class="paragraph">Begins when the sun rises to -12.0 degrees. Ends when the sun rises to -6.0 degrees.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1315740414%2FClasslikes%2F788909594" anchor-label="NauticalDusk" id="1315740414%2FClasslikes%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-nautical-dusk/index.html"><span>Nautical</span><wbr></wbr><span><span>Dusk</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1315740414%2FClasslikes%2F788909594"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-nautical-dusk/index.html">NauticalDusk</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="-twilight-event/index.html">SolarEvent.TwilightEvent</a></div><div class="brief "><p class="paragraph">Begins when the sun sets to -6.0 degrees and ends when the sun sets to -12.0 degrees.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="119616588%2FClasslikes%2F788909594" anchor-label="Night" id="119616588%2FClasslikes%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-night/index.html"><span><span>Night</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="119616588%2FClasslikes%2F788909594"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-night/index.html">Night</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="-twilight-event/index.html">SolarEvent.TwilightEvent</a></div><div class="brief "><p class="paragraph">Begins when AstronomicalDawn ends when the sun sets to -18.0 degrees. Continues until the start of <a href="-astronomical-dawn/index.html">AstronomicalDawn</a> when the sun rises to -18.0 degrees.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="675645758%2FClasslikes%2F788909594" anchor-label="Noon" id="675645758%2FClasslikes%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-noon/index.html"><span><span>Noon</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="675645758%2FClasslikes%2F788909594"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-noon/index.html">Noon</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">SolarEvent</a></div><div class="brief "><p class="paragraph">Solar noon. When the sun is at its highest position in the sky for a given cycle.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-71214289%2FClasslikes%2F788909594" anchor-label="Sunrise" id="-71214289%2FClasslikes%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-sunrise/index.html"><span><span>Sunrise</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-71214289%2FClasslikes%2F788909594"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-sunrise/index.html">Sunrise</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="-horizon-event/-simple/index.html">SolarEvent.HorizonEvent.Simple</a></div><div class="brief "><p class="paragraph">Sunrise is defined as when the top edge of the sun first rises from the horizon.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-922161128%2FClasslikes%2F788909594" anchor-label="SunriseEnd" id="-922161128%2FClasslikes%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-sunrise-end/index.html"><span>Sunrise</span><wbr></wbr><span><span>End</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-922161128%2FClasslikes%2F788909594"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-sunrise-end/index.html">SunriseEnd</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="-horizon-event/index.html">SolarEvent.HorizonEvent</a></div><div class="brief "><p class="paragraph">When the bottom edge of the sun rises above the horizon.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1763143560%2FClasslikes%2F788909594" anchor-label="Sunset" id="1763143560%2FClasslikes%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-sunset/index.html"><span><span>Sunset</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1763143560%2FClasslikes%2F788909594"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-sunset/index.html">Sunset</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="-horizon-event/-simple/index.html">SolarEvent.HorizonEvent.Simple</a></div><div class="brief "><p class="paragraph">Sunset is defined as when the top edge of the sun completely disappears behind the horizon</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1463774929%2FClasslikes%2F788909594" anchor-label="SunsetBegin" id="1463774929%2FClasslikes%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-sunset-begin/index.html"><span>Sunset</span><wbr></wbr><span><span>Begin</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1463774929%2FClasslikes%2F788909594"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-sunset-begin/index.html">SunsetBegin</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="-horizon-event/index.html">SolarEvent.HorizonEvent</a></div><div class="brief "><p class="paragraph">When the bottom edge of the sun touches the horizon when the sun is setting.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-851322950%2FClasslikes%2F788909594" anchor-label="TwilightEvent" id="-851322950%2FClasslikes%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-twilight-event/index.html"><span>Twilight</span><wbr></wbr><span><span>Event</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-851322950%2FClasslikes%2F788909594"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-twilight-event/index.html">TwilightEvent</a> : <a href="index.html">SolarEvent</a></div><div class="brief "><p class="paragraph">A type of Solar Event that includes the beginning of various <a href="../-solar-phase/index.html">SolarPhase</a>s</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="1385116604%2FProperties%2F788909594" anchor-label="time" id="1385116604%2FProperties%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="time.html"><span><span>time</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1385116604%2FProperties%2F788909594"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="time.html">time</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></div><div class="brief "><p class="paragraph">Time of the event</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-509959401%2FFunctions%2F788909594" anchor-label="compareTo" id="-509959401%2FFunctions%2F788909594" data-filterable-set=":dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/commonMain" data-filterable-set=":dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="compare-to.html"><span>compare</span><wbr></wbr><span><span>To</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-509959401%2FFunctions%2F788909594"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="compare-to.html"><span class="token function">compareTo</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="index.html">SolarEvent</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2024 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

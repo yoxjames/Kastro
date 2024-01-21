@@ -7,6 +7,7 @@
 * Spelling and grammar corrections in API docs.
 * Fixed bug where `SolarEventSequence.limit` was not respected in certain situations and the resulting sequence could contain values beyond the specified limit.
 * Adjust coroutine readme example to use `Duration.INFINITE` as the intended functionality is to run "forever" when technically the limit defaults to `365.days`
+* Renamed `TwilightPhase` to `SolarPhase` and made it so `TwilightPhases` represent _actual_ twilight phases rather than things like `SolarPhase.Day` or `SolarPhase.Night`. This was misleading.
 
 ## Version: 0.1.0
 Initial Release

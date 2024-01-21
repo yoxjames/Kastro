@@ -17,11 +17,11 @@ package dev.jamesyox.kastro.sol
 import dev.jamesyox.kastro.common.HorizonMovementState
 import dev.jamesyox.kastro.common.HorizonState
 import dev.jamesyox.kastro.common.fromAzimuth
-import dev.jamesyox.kastro.sol.TwilightPhase.AstronomicalTwilight
-import dev.jamesyox.kastro.sol.TwilightPhase.CivilTwilight
-import dev.jamesyox.kastro.sol.TwilightPhase.Day
-import dev.jamesyox.kastro.sol.TwilightPhase.NauticalTwilight
-import dev.jamesyox.kastro.sol.TwilightPhase.Night
+import dev.jamesyox.kastro.sol.SolarPhase.AstronomicalTwilight
+import dev.jamesyox.kastro.sol.SolarPhase.CivilTwilight
+import dev.jamesyox.kastro.sol.SolarPhase.Day
+import dev.jamesyox.kastro.sol.SolarPhase.NauticalTwilight
+import dev.jamesyox.kastro.sol.SolarPhase.Night
 import dev.jamesyox.kastro.util.Moon.angularRadius
 import dev.jamesyox.kastro.util.degrees
 
@@ -106,9 +106,9 @@ public class SolarState internal constructor(
         }
 
     /**
-     * The current [TwilightPhase]. There can be only one active [TwilightPhase] at a given time
+     * The current [SolarPhase]. There can be only one active [SolarPhase] at a given time
      */
-    public val twilightState: TwilightPhase = when {
+    public val twilightState: SolarPhase = when {
         trueAltitude in (CivilTwilight.dawnAngle..CivilTwilight.duskAngle) -> CivilTwilight
         trueAltitude in (NauticalTwilight.dawnAngle..NauticalTwilight.duskAngle) -> NauticalTwilight
         trueAltitude in (AstronomicalTwilight.dawnAngle..AstronomicalTwilight.duskAngle) -> AstronomicalTwilight

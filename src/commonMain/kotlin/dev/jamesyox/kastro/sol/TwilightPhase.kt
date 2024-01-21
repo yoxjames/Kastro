@@ -17,11 +17,11 @@ package dev.jamesyox.kastro.sol
 /**
  * Represents the various Twilight phases the sun can have.
  */
-public sealed interface TwilightPhase {
+public sealed interface SolarPhase {
     /**
      * No twilight phase observed. Sun is up.
      */
-    public data object Day : DawnPhase, TwilightPhase {
+    public data object Day : DawnPhase, SolarPhase {
         override val dawnAngle: Double = 0.0
     }
 
@@ -52,7 +52,35 @@ public sealed interface TwilightPhase {
     /**
      * No twilight phase observed. Sun is down.
      */
-    public data object Night : DuskPhase, TwilightPhase {
+    public data object Night : DuskPhase, SolarPhase {
         override val duskAngle: Double = -18.0
     }
+}
+
+/**
+ * A Twilight Phase is a type of [SolarPhase] that includes only twilight phases. Phases like
+ * [CivilTwilight][SolarPhase.CivilTwilight], [NauticalTwilight][SolarPhase.NauticalTwilight],
+ * [AstronomicalTwilight][SolarPhase.AstronomicalTwilight] would be [TwilightPhases][TwilightPhase] but
+ * [SolarPhase.Day] and [SolarPhase.Night] are **not** considered [TwilightPhases][TwilightPhase].
+ */
+public sealed interface TwilightPhase : SolarPhase
+
+/**
+ * A phase the sun can enter during dusk
+ */
+public interface DuskPhase {
+    /**
+     * The angle at which this phase begins
+     */
+    public val duskAngle: Double
+}
+
+/**
+ * A phase the sun can enter during dawn.
+ */
+public interface DawnPhase {
+    /**
+     * The angle at which this phase begins
+     */
+    public val dawnAngle: Double
 }
