@@ -224,7 +224,7 @@ Run `./gradlew apiCheck` to see if your changes maintain binary compatibility!
 Enhancements to the overall shape of the API are welcome though as this has not yet reached the `1.0` milestone.
 
 ## Future Work
-I ran into some difficulties getting the height offset calculation to work correctly for `SolarEventSequence`. I hope to eventually resolve that but didn't think it should block an alpha release. It's something something I  want for the future `1.0` release.
+I ran into some difficulties getting the height offset calculation to work correctly for `SolarEventSequence`. I hope to eventually resolve that but didn't think it should block an alpha release. It's something something I want for the future `1.0` release.
 
 I would also like to add additional KMP targets. I don't own any Apple products, so I cannot build any Apple targets. I hope to eventually have a solution to that if there is demand. I am also curious to look into WASM and any other KMP targets added in the future.
 
