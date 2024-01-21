@@ -51,18 +51,17 @@ You can calculate the following solar events:
 |     `Sunset`| Sun's top edge completely disappears below the horizon|
 
 
-## Lunar Phases
+## Lunar Events
 
-| Name | Description |
+| Event | Description |
 |-----:|---------------|
-|     First Quarter | Moon is increasing in brightness and is transitioning toward `FullMoon`|
-|     Full Moon | Moon is fully illuminated|
-|     Last Quarter | Moon is decreasing in brightness and is transitioning toward `NewMoon`|
-|     New Moon | Moon is not illuminated|
-|     Waning Crescent | Moon is decreasing in brightness and is transitioning between `LastQuarter` and `NewMoon`|
-|     Waning Gibbous | Moon is decreasing in brightness and and is transitioning between `FullMoon` and `LastQuarter`|
-|     Waxing Crescent | Moon is increasing in brightness and is transitioning between `NewMoon` and `FirstQuarter`|
-|     Waxing Gibbous | Moon is increasing in brightness and is transitioning between `FirstQuarter` and `FullMoon`|
+|     `FirstQuarter` | Moon is increasing in brightness and is transitioning toward `FullMoon`|
+|     `FullMoon` | Moon is fully illuminated|
+|     `LastQuarter` | Moon is decreasing in brightness and is transitioning toward `NewMoon`|
+|     `NewMoon` | Moon is not illuminated|
+
+>[!NOTE]
+>Waning crescent, waning gibbous, waxing crescent, and waxing gibbous are phases, and can be defined in-between the events above. For example, waning crescent is when the moon is decreasing in brightness and is transitioning between `LastQuarter` and `NewMoon`. For more information on lunar phases, see the NASA article, "Moon Phases | Phases, Eclipses & Supermoons," [referenced below](https://github.com/yoxjames/Kastro?tab=readme-ov-file#references).
 
 ## Examples
 
