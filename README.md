@@ -31,31 +31,37 @@ implementation("dev.jamesyox:kastro:0.1.0")
 
 You can calculate the following solar events:
 
-| Event Name | Phase | Description |
-|-----:|---------------|-----------|
-|     Astronomical Twilight| Dawn, Dusk | For `AstronomicalDawn`, sun is increasing in brightness and is transitioning from `Night` toward `NauticalDawn`. For `AstronimcalDusk`, Sun is decreasing in brightness and is transitioning from `NauticalDusk` toward `Night`|
-|     Blue Hour| Dawn, Dusk | For `BlueHourDawn`, Sun is increasing in brightness and is transitioning between `NauticalDawn` toward `CivilDawn`. For `BlueHourDusk`, Sun is decreasing in brightness and is transitioning between `CivilDusk` toward `NauticalDusk`|
-|     Civil Twilight| Dawn, Dusk| For `CivilDawn`, sun is increasing in brightness and is transitioning from `NauticalDawn` toward `Day`. For `CivilDusk`, Sun is decreasing in brightness and transitioning from `Day` toward `NauticalDusk`|
-|     Day| Dawn| Sun is above the horizon|
-|     Golden Hour| Dawn, Dusk| For `GoldenHourDawn`, Sun is increasing in brightness and is transitioning between `CivilDawn` toward `Day`. For `GoldeHourDusk`, Sun is decreasing in brightness and is transitioning between `Day` toward `CivilDusk`|
-|     Nadir| Dusk| Opposite of Noon. Sun is at its lowest point below the horizon|
-|     Nautical Twilight| Dawn, Dusk| For `NauticalDawn`, sun is increasing in brightness and is transitioning from `Night` toward `CivilDawn`. For `NauticalDusk`, Sun is decreasing in brightness and is transitioning from `CivilDusk` toward `Astronomical`|
-|     Night | Dusk | Sun is below the horizon|
-|     Noon| Dawn| Opposite of Nadir. Sun is at its highest point above the horizon|
-|     Sunrise| Dawn| Sun's top edge first rises above the horizon|
-|     Sunset| Dusk| Sun's top edge completely disappears below the horizon|
+| Event | Description |
+|-----:|-----------|
+|     `AstronomicalDawn`| Sun is increaing in brightness and transitioning from `Night` toward `NauticalDawn`|
+|     `AstronimcalDusk`| Sun is decreasing in brightness and is transitioning from `NauticalDusk` toward `Night`|
+|     `BlueHourDawn`| Sun is increasing in brightness and is transitioning between `NauticalDawn` toward `CivilDawn`. 
+|     `BlueHourDusk`| Sun is decreasing in brightness and is transitioning between `CivilDusk` toward `NauticalDusk`|
+|     `CivilDawn`| Sun is increasing in brightness and is transitioning from `NauticalDawn` toward `Day`
+|     `CivilDusk`| Sun is decreasing in brightness and transitioning from `Day` toward `NauticalDusk`|
+|     `Day`| Sun is above the horizon|
+|     `GoldenHourDawn`| Sun is increasing in brightness and is transitioning between `CivilDawn` toward `Day`|
+|     `GoldenHourDusk`| Sun is decreasing in brightness and is transitioning between `Day` toward `CivilDusk`|
+|     `Nadir`| Opposite of Noon. Sun is at its lowest point below the horizon|
+|     `NauticalDawn`| Sun is increasing in brightness and is transitioning from `Night` toward `CivilDawn`|
+|     `NauticalDawn`| Sun is decreasing in brightness and is transitioning from `CivilDusk` toward `Astronomical`|
+|     `Night`| Sun is below the horizon|
+|     `Noon`| Opposite of Nadir. Sun is at its highest point above the horizon|
+|     `Sunrise`| Sun's top edge first rises above the horizon|
+|     `Sunset`| Sun's top edge completely disappears below the horizon|
 
-## Lunar Events
 
-| Event Name | Description |
+## Lunar Phases
+
+| Name | Description |
 |-----:|---------------|
 |     First Quarter | Moon is increasing in brightness and is transitioning toward `FullMoon`|
 |     Full Moon | Moon is fully illuminated|
 |     Last Quarter | Moon is decreasing in brightness and is transitioning toward `NewMoon`|
 |     New Moon | Moon is not illuminated|
-|     Waning Crescent | Moon is decreasing in brightness and and is transitioning between `FullMoon` and `LastQuarter` |
-|     Waning Gibbous | Moon is decreasing in brightness and is transitioning between `LastQuarter` and `NewMoon`|
-|     Waxing Crescent | Moon is incrasing in brightness and is transitioning between `NewMoon` and `FirstQuarter`|
+|     Waning Crescent | Moon is decreasing in brightness and is transitioning between `LastQuarter` and `NewMoon`|
+|     Waning Gibbous | Moon is decreasing in brightness and and is transitioning between `FullMoon` and `LastQuarter`|
+|     Waxing Crescent | Moon is increasing in brightness and is transitioning between `NewMoon` and `FirstQuarter`|
 |     Waxing Gibbous | Moon is increasing in brightness and is transitioning between `FirstQuarter` and `FullMoon`|
 
 ## Examples
