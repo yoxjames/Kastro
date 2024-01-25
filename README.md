@@ -27,41 +27,38 @@ implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.5.0")
 implementation("dev.jamesyox:kastro:0.1.0")
 ```
 
-## Solar Events
+## Solar Phases
 
-You can calculate the following solar events:
+You can calculate the following solar phases:
 
 | Event | Description |
 |-----:|-----------|
-|     `AstronomicalDawn`| Sun is increaing in brightness and transitioning from `Night` toward `NauticalDawn`|
-|     `AstronimcalDusk`| Sun is decreasing in brightness and is transitioning from `NauticalDusk` toward `Night`|
-|     `BlueHourDawn`| Sun is increasing in brightness and is transitioning between `NauticalDawn` toward `CivilDawn`. 
-|     `BlueHourDusk`| Sun is decreasing in brightness and is transitioning between `CivilDusk` toward `NauticalDusk`|
-|     `CivilDawn`| Sun is increasing in brightness and is transitioning from `NauticalDawn` toward `Day`
-|     `CivilDusk`| Sun is decreasing in brightness and transitioning from `Day` toward `NauticalDusk`|
-|     `Day`| Sun is above the horizon|
-|     `GoldenHourDawn`| Sun is increasing in brightness and is transitioning between `CivilDawn` toward `Day`|
-|     `GoldenHourDusk`| Sun is decreasing in brightness and is transitioning between `Day` toward `CivilDusk`|
-|     `Nadir`| Opposite of Noon. Sun is at its lowest point below the horizon|
-|     `NauticalDawn`| Sun is increasing in brightness and is transitioning from `Night` toward `CivilDawn`|
-|     `NauticalDawn`| Sun is decreasing in brightness and is transitioning from `CivilDusk` toward `Astronomical`|
-|     `Night`| Sun is below the horizon|
-|     `Noon`| Opposite of Nadir. Sun is at its highest point above the horizon|
-|     `Sunrise`| Sun's top edge first rises above the horizon|
-|     `Sunset`| Sun's top edge completely disappears below the horizon|
+|     Astronomical twlight| During dawn, the sun is increaing in brightness and transitioning from night toward nautical twilight. During dusk, the sun is decreasing in brightness and is transitioning from nautical twilight toward night|
+|     Blue hour| During dawn, the sun is increasing in brightness and is transitioning between nautical twilight toward civil twilight. During dusk, the sun is decreasing in brightness and is transitioning between civil dusk toward nautical dusk|
+|     Civil twilight| During dawn, the sun is increasing in brightness and is transitioning from nautical twilight toward day. During dusk, the sun is decreasing in brightness and transitioning from day toward nautical dusk|
+|     Day| The sun is above the horizon|
+|     Golden hour| During dawn, the sun is increasing in brightness and is transitioning between civil twilight toward day. During dusk, the sun is decreasing in brightness and is transitioning between day toward civil twilight|
+|     Nadir| Opposite of noon. The sun is at its lowest point below the horizon|
+|     Nautical twilight| During dawn, the sun is increasing in brightness and is transitioning from night toward civil twilight. During dusk, the sun is decreasing in brightness and is transitioning from civil twilight toward astronomical twilight|
+|     Night| The sun is below the horizon|
+|     Noon| Opposite of nadir. The sun is at its highest point above the horizon|
+|     Sunrise| The sun's top edge first rises above the horizon|
+|     Sunset| The sun's top edge completely disappears below the horizon|
 
+## Lunar Phases
 
-## Lunar Events
+You can calculate the following lunar phases:
 
 | Event | Description |
 |-----:|---------------|
-|     `FirstQuarter` | Moon is increasing in brightness and is transitioning toward `FullMoon`|
-|     `FullMoon` | Moon is fully illuminated|
-|     `LastQuarter` | Moon is decreasing in brightness and is transitioning toward `NewMoon`|
-|     `NewMoon` | Moon is not illuminated|
-
->[!NOTE]
->Waning crescent, waning gibbous, waxing crescent, and waxing gibbous are phases, and can be defined in-between the events above. For example, waning crescent is when the moon is decreasing in brightness and is transitioning between `LastQuarter` and `NewMoon`. For more information on lunar phases, see the NASA article, "Moon Phases | Phases, Eclipses & Supermoons," [referenced below](https://github.com/yoxjames/Kastro?tab=readme-ov-file#references).
+|     First quarter| Moon is increasing in brightness and is transitioning toward full moon|
+|     Full moon| Moon is fully illuminated|
+|     Last quarter| Moon is decreasing in brightness and is transitioning toward new moon|
+|     New moon| Moon is not illuminated|
+|     Waning crescent| The moon is decreasing in brightness and is transitioning between last quarter and new moon|
+|     Waning gibbous| The moon is decreasing in brightness and is transitioning between full moon and last quarter|
+|     Waxing crescent| The moon is increasing in brightness and is transitioning between new moon and first quarter|
+|     Waxing gibbous| The moon is increasing in brightness and is transitioning between first quarter and full moon|
 
 ## Examples
 
@@ -241,7 +238,7 @@ I am also curious to potentially make the library usable for other languages lik
 * Körber, Richard. “Shred/Commons-Suncalc.” GitHub, 16 Jan. 2024, github.com/shred/commons-suncalc.
 * Meeus, Jean. Astronomical Algorithms. Richmond, Va., Willmann-Bell, 1998.‌
 * Montenbruck, Oliver, and Thomas Pfleger. Astronomy on the Personal Computer. Springer, 14 Mar. 2013.
-* NASA. “Moon Phases | Phases, Eclipses & Supermoons.” Moon: NASA Science, www.moon.nasa.gov/moon-in-motion/phases-eclipses-supermoons/moon-phases/.
+* NASA. “Moon Phases | Phases, Eclipses & Supermoons.” Moon: NASA Science, https://moon.nasa.gov/moon-in-motion/phases-eclipses-supermoons/moon-phases/
 * US Department of Commerce, NOAA. “Definitions of Twilight.” www.weather.gov, www.weather.gov/fsd/twilight.
 
 ‌
