@@ -31,7 +31,7 @@ implementation("dev.jamesyox:kastro:0.1.0")
 
 You can calculate the following solar phases:
 
-| Event | Description |
+| Phase | Description |
 |-----:|-----------|
 |     Astronomical twlight| During dawn, the sun is increaing in brightness and transitioning from night toward nautical twilight. During dusk, the sun is decreasing in brightness and is transitioning from nautical twilight toward night|
 |     Blue hour| Twilight phase when the sun is far enough below the horizon that blue light dominates|
