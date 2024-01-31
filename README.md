@@ -50,7 +50,7 @@ You can calculate the following solar phases:
 
 You can calculate the following lunar phases:
 
-| Event | Description |
+| Phase | Description |
 |-----:|---------------|
 |     First quarter| Moon is increasing in brightness and is transitioning toward full moon|
 |     Full moon| Moon is fully illuminated|
