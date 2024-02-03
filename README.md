@@ -34,11 +34,10 @@ You can calculate the following solar phases:
 | Phase | Description |
 |-----:|-----------|
 |     Astronomical twlight| During dawn, the sun is increaing in brightness and transitioning from night toward nautical twilight. During dusk, the sun is decreasing in brightness and is transitioning from nautical twilight toward night|
-|     Blue hour| Twilight phase when the sun is far enough below the horizon that blue light dominates|
-``
+|     Blue hour| Happens during both dawn and dusk, when the sun is below the horizon, causing the light to look mostly blue.|
 |     Civil twilight| During dawn, the sun is increasing in brightness and is transitioning from nautical twilight toward day. During dusk, the sun is decreasing in brightness and transitioning from day toward nautical dusk|
 |     Day| The sun is above the horizon|
-|     Golden hour| During dawn, the sun is increasing in brightness and is transitioning between civil twilight toward day. During dusk, the sun is decreasing in brightness and is transitioning between day toward civil twilight|
+|     Golden hour| Happens during both dawn and dusk, when the sun is close to the horizon, causing the light to look golden. Ideal time to take pictures. |
 |     Nadir| Opposite of noon. The sun is at its lowest point below the horizon|
 |     Nautical twilight| During dawn, the sun is increasing in brightness and is transitioning from night toward civil twilight. During dusk, the sun is decreasing in brightness and is transitioning from civil twilight toward astronomical twilight|
 |     Night| The sun is below the horizon|
