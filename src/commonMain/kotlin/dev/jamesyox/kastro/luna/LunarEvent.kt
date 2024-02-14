@@ -76,7 +76,7 @@ public sealed interface LunarEvent : Comparable<LunarEvent> {
             }
 
             override fun toString(): String {
-                return "Rise(time=$time)"
+                return "Moonrise(time=$time)"
             }
         }
 
@@ -105,7 +105,7 @@ public sealed interface LunarEvent : Comparable<LunarEvent> {
             }
 
             override fun toString(): String {
-                return "Set(time=$time)"
+                return "Moonset(time=$time)"
             }
         }
     }

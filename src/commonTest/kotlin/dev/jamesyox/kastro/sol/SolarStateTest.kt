@@ -42,14 +42,16 @@ class SolarStateTest {
         assertSimilar(actual = sp1.trueAltitude, expected = 48.6)
         assertEquals(actual = sp1.horizonState, expected = HorizonState.Up)
         assertEquals(actual = sp1.horizonMovementState, expected = HorizonMovementState.Setting)
+        assertEquals(actual = sp1.solarPhase, expected = SolarPhase.Day)
         val sp2 = LocalDateTime(2017, 7, 12, 13, 37, 0)
             .toInstant(COLOGNE_TZ)
             .calculateSolarState(COLOGNE)
         assertSimilar(actual = sp2.azimuth, expected = 179.6)
         assertSimilar(actual = sp2.altitude, expected = 61.0)
         assertSimilar(actual = sp2.trueAltitude, expected = 61.0)
-        assertEquals(actual = sp1.horizonState, expected = HorizonState.Up)
-        assertEquals(actual = sp1.horizonMovementState, expected = HorizonMovementState.Setting)
+        assertEquals(actual = sp2.horizonState, expected = HorizonState.Up)
+        assertEquals(actual = sp2.horizonMovementState, expected = HorizonMovementState.Rising)
+        assertEquals(actual = sp2.solarPhase, expected = SolarPhase.Day)
     }
 
     @Test
@@ -62,14 +64,16 @@ class SolarStateTest {
         assertSimilar(actual = sp1.trueAltitude, expected = 21.8)
         assertEquals(actual = sp1.horizonState, expected = HorizonState.Up)
         assertEquals(actual = sp1.horizonMovementState, expected = HorizonMovementState.Rising)
+        assertEquals(actual = sp1.solarPhase, expected = SolarPhase.Day)
         val sp2 = LocalDateTime(2017, 7, 12, 12, 14, 0)
             .toInstant(ALERT_TZ)
             .calculateSolarState(ALERT)
         assertSimilar(actual = sp2.azimuth, expected = 179.7)
         assertSimilar(actual = sp2.altitude, expected = 29.4)
         assertSimilar(actual = sp2.trueAltitude, expected = 29.4)
-        assertEquals(actual = sp1.horizonState, expected = HorizonState.Up)
-        assertEquals(actual = sp1.horizonMovementState, expected = HorizonMovementState.Rising)
+        assertEquals(actual = sp2.horizonState, expected = HorizonState.Up)
+        assertEquals(actual = sp2.horizonMovementState, expected = HorizonMovementState.Rising)
+        assertEquals(actual = sp2.solarPhase, expected = SolarPhase.Day)
     }
 
     @Test

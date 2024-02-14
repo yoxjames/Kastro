@@ -18,7 +18,8 @@ import kotlinx.datetime.Instant
 
 /**
  * Times when particular solar events of interest happen. Examples would be things like
- * Sunrise, sunset, solar noon, start of civil dawn, etc.
+ * Sunrise, sunset, solar noon, start of civil dawn, etc. These events represent moments or [Instants][Instant] in time.
+ * This time can be extracted via [SolarEvent.time]
  */
 public sealed interface SolarEvent : Comparable<SolarEvent> {
     /**
@@ -52,7 +53,7 @@ public sealed interface SolarEvent : Comparable<SolarEvent> {
     public sealed interface LightEvent : SolarEvent
 
     /**
-     * Sunset is defined as when the top edge of the sun completely disappears behind the horizon
+     * Moment when the top edge of the sun completely disappears behind the horizon
      */
     public class Sunset(
         override val time: Instant
@@ -81,14 +82,13 @@ public sealed interface SolarEvent : Comparable<SolarEvent> {
     }
 
     /**
-     * Begins when the sun sets to 0.0 degrees and ends when the sun sets to -6.0 degrees.
-     * @see [SolarPhase.CivilTwilight]
+     * Moment when the sun sets to 0.0 degrees. Begins [SolarPhase.CivilDusk].
      */
     public class CivilDusk(
         override val time: Instant
     ) : TwilightEvent {
         public companion object : SolarEventType.Angle.Dusk {
-            override val angle: Double = SolarPhase.CivilTwilight.duskAngle
+            override val angle: Double = SolarPhase.CivilDusk.startAngle
         }
 
         override fun equals(other: Any?): Boolean {
@@ -110,14 +110,13 @@ public sealed interface SolarEvent : Comparable<SolarEvent> {
     }
 
     /**
-     * Begins when the sun sets to -6.0 degrees and ends when the sun sets to -12.0 degrees.
-     * @see [SolarPhase.NauticalTwilight]
+     * Moment when the sun sets to -6.0 degrees. Begins [SolarPhase.NauticalDusk].
      */
     public class NauticalDusk(
         override val time: Instant
     ) : TwilightEvent {
         public companion object : SolarEventType.Angle.Dusk {
-            override val angle: Double = SolarPhase.NauticalTwilight.duskAngle
+            override val angle: Double = SolarPhase.NauticalDusk.startAngle
         }
 
         override fun equals(other: Any?): Boolean {
@@ -139,14 +138,13 @@ public sealed interface SolarEvent : Comparable<SolarEvent> {
     }
 
     /**
-     * Begins when the sun sets to -12.0 degrees and ends when the sun sets to -18.0 degrees.
-     * See [SolarPhase.AstronomicalTwilight]
+     * Moment when the sun sets to -12.0 degrees. Begins [SolarPhase.AstronomicalDusk].
      */
     public class AstronomicalDusk(
         override val time: Instant
     ) : TwilightEvent {
         public companion object : SolarEventType.Angle.Dusk {
-            override val angle: Double = SolarPhase.AstronomicalTwilight.duskAngle
+            override val angle: Double = SolarPhase.AstronomicalDusk.startAngle
         }
 
         override fun equals(other: Any?): Boolean {
@@ -168,14 +166,13 @@ public sealed interface SolarEvent : Comparable<SolarEvent> {
     }
 
     /**
-     * Begins when AstronomicalDawn ends when the sun sets to -18.0 degrees. Continues until
-     * the start of [AstronomicalDawn] when the sun rises to -18.0 degrees.
+     * Moment when the sun sets to -18.0 degrees. Begins [SolarPhase.Night].
      */
     public class Night(
         override val time: Instant
     ) : TwilightEvent {
         public companion object : SolarEventType.Angle.Dusk {
-            override val angle: Double = SolarPhase.Night.duskAngle
+            override val angle: Double = SolarPhase.Night.startAngle
         }
 
         override fun equals(other: Any?): Boolean {
@@ -197,14 +194,13 @@ public sealed interface SolarEvent : Comparable<SolarEvent> {
     }
 
     /**
-     * Begins when the sun rises to -18.0 degrees. Ends when the sun rises to -12.0 degrees.
-     * @see [SolarPhase.AstronomicalTwilight]
+     * Moment when the sun rises to -18.0 degrees. Begins [SolarPhase.AstronomicalDawn].
      */
     public class AstronomicalDawn(
         override val time: Instant
     ) : TwilightEvent {
         public companion object : SolarEventType.Angle.Dawn {
-            override val angle: Double = SolarPhase.AstronomicalTwilight.dawnAngle
+            override val angle: Double = SolarPhase.AstronomicalDawn.startAngle
         }
 
         override fun equals(other: Any?): Boolean {
@@ -226,14 +222,13 @@ public sealed interface SolarEvent : Comparable<SolarEvent> {
     }
 
     /**
-     * Begins when the sun rises to -12.0 degrees. Ends when the sun rises to -6.0 degrees.
-     * @see [SolarPhase.NauticalTwilight]
+     * Moment when the sun rises to -12.0 degrees. Begins [SolarPhase.NauticalDawn].
      */
     public class NauticalDawn(
         override val time: Instant
     ) : TwilightEvent {
         public companion object : SolarEventType.Angle.Dawn {
-            override val angle: Double = SolarPhase.NauticalTwilight.dawnAngle
+            override val angle: Double = SolarPhase.NauticalDawn.startAngle
         }
 
         override fun equals(other: Any?): Boolean {
@@ -255,14 +250,13 @@ public sealed interface SolarEvent : Comparable<SolarEvent> {
     }
 
     /**
-     * Begins when the sun rises to -6.0 degrees. Ends when the sun rises to 0.0 degrees.
-     * @see [SolarPhase.CivilTwilight]
+     * Moment when the sun rises to -6.0 degrees. Begins [SolarPhase.CivilDawn].
      */
     public class CivilDawn(
         override val time: Instant
     ) : TwilightEvent {
         public companion object : SolarEventType.Angle.Dawn {
-            override val angle: Double = SolarPhase.CivilTwilight.dawnAngle
+            override val angle: Double = SolarPhase.CivilDawn.startAngle
         }
 
         override fun equals(other: Any?): Boolean {
@@ -284,7 +278,7 @@ public sealed interface SolarEvent : Comparable<SolarEvent> {
     }
 
     /**
-     * Sunrise is defined as when the top edge of the sun first rises from the horizon.
+     * Moment when the top edge of the sun first rises from the horizon.
      */
     public class Sunrise(
         override val time: Instant
@@ -313,13 +307,13 @@ public sealed interface SolarEvent : Comparable<SolarEvent> {
     }
 
     /**
-     * When the solar angle rises to 0.0. This event marks the end of [CivilDawn]
+     * Moment when the solar angle rises to 0.0. Begins [SolarPhase.Day].
      */
     public class Day(
         override val time: Instant
     ) : TwilightEvent {
         public companion object : SolarEventType.Angle.Dawn {
-            override val angle: Double = SolarPhase.Day.dawnAngle
+            override val angle: Double = SolarPhase.Day.startAngle
         }
 
         override fun equals(other: Any?): Boolean {
@@ -341,13 +335,13 @@ public sealed interface SolarEvent : Comparable<SolarEvent> {
     }
 
     /**
-     * When the solar angle sets to 0.0. Marks the start of [LightState.GoldenHour] during dusk
+     * When the solar angle sets to 0.0. Marks the start of [LightState.GoldenHourDusk].
      */
     public class GoldenHourDusk(
         override val time: Instant
     ) : LightEvent {
         public companion object : SolarEventType.Angle.Dusk {
-            override val angle: Double = LightState.GoldenHour.duskAngle
+            override val angle: Double = LightPhase.GoldenHour.duskAngle
         }
 
         override fun equals(other: Any?): Boolean {
@@ -369,13 +363,13 @@ public sealed interface SolarEvent : Comparable<SolarEvent> {
     }
 
     /**
-     * When the solar angle rises to -6.0. Marks the start of [LightState.GoldenHour] during dawn.
+     * When the solar angle rises to -6.0. Marks the start of [LightState.GoldenHourDawn].
      */
     public class GoldenHourDawn(
         override val time: Instant
     ) : LightEvent {
         public companion object : SolarEventType.Angle.Dawn {
-            override val angle: Double = LightState.GoldenHour.dawnAngle
+            override val angle: Double = LightPhase.GoldenHour.dawnAngle
         }
 
         override fun equals(other: Any?): Boolean {
@@ -397,13 +391,13 @@ public sealed interface SolarEvent : Comparable<SolarEvent> {
     }
 
     /**
-     * When the solar angle sets to -4.0. Marks the start of [LightState.BlueHour] during dusk.
+     * When the solar angle sets to -4.0. Marks the start of [LightState.BlueHourDusk].
      */
     public class BlueHourDusk(
         override val time: Instant
     ) : LightEvent {
         public companion object : SolarEventType.Angle.Dusk {
-            override val angle: Double = LightState.BlueHour.duskAngle
+            override val angle: Double = LightPhase.BlueHour.duskAngle
         }
 
         override fun equals(other: Any?): Boolean {
@@ -425,13 +419,13 @@ public sealed interface SolarEvent : Comparable<SolarEvent> {
     }
 
     /**
-     * When the solar angle rises to -8.0. Marks the start of [LightState.BlueHour] during dawn.
+     * When the solar angle rises to -8.0. Marks the start of [LightState.BlueHourDawn].
      */
     public class BlueHourDawn(
         override val time: Instant
     ) : LightEvent {
         public companion object : SolarEventType.Angle.Dawn {
-            override val angle: Double = LightState.BlueHour.dawnAngle
+            override val angle: Double = LightPhase.BlueHour.dawnAngle
         }
 
         override fun equals(other: Any?): Boolean {
@@ -563,13 +557,13 @@ public sealed interface SolarEvent : Comparable<SolarEvent> {
     }
 
     /**
-     * The end of [LightState.BlueHour] during dusk. Happens when the sun sets past -8.0 degrees.
+     * The end of [LightState.BlueHourDusk]. Happens when the sun sets past -8.0 degrees.
      */
     public class BlueHourDuskEnd(
         override val time: Instant
     ) : LightEvent {
         public companion object : SolarEventType.Angle.Dusk {
-            override val angle: Double = LightState.BlueHour.dawnAngle
+            override val angle: Double = LightPhase.BlueHour.dawnAngle
         }
 
         override fun equals(other: Any?): Boolean {
@@ -591,13 +585,13 @@ public sealed interface SolarEvent : Comparable<SolarEvent> {
     }
 
     /**
-     * The end of [LightState.BlueHour] during dawn. Happens when the sun rises past -4.0 degrees.
+     * The end of [LightState.BlueHourDawn]. Happens when the sun rises past -4.0 degrees.
      */
     public class BlueHourDawnEnd(
         override val time: Instant
     ) : LightEvent {
         public companion object : SolarEventType.Angle.Dawn {
-            override val angle: Double = LightState.BlueHour.duskAngle
+            override val angle: Double = LightPhase.BlueHour.duskAngle
         }
 
         override fun equals(other: Any?): Boolean {
@@ -619,13 +613,13 @@ public sealed interface SolarEvent : Comparable<SolarEvent> {
     }
 
     /**
-     * The end of [LightState.GoldenHour] during dusk. Happens when the sun sets past - 6.0 degrees.
+     * The end of [LightState.GoldenHourDusk]. Happens when the sun sets past - 6.0 degrees.
      */
     public class GoldenHourDuskEnd(
         override val time: Instant
     ) : LightEvent {
         public companion object : SolarEventType.Angle.Dusk {
-            override val angle: Double = LightState.GoldenHour.dawnAngle
+            override val angle: Double = LightPhase.GoldenHour.dawnAngle
         }
 
         override fun equals(other: Any?): Boolean {
@@ -647,13 +641,13 @@ public sealed interface SolarEvent : Comparable<SolarEvent> {
     }
 
     /**
-     * The end of [LightState.GoldenHour] during dawn. Happens when the sun rises past 6.0 degrees.
+     * The end of [LightState.GoldenHourDawn]. Happens when the sun rises past 6.0 degrees.
      */
     public class GoldenHourDawnEnd(
         override val time: Instant
     ) : LightEvent {
         public companion object : SolarEventType.Angle.Dawn {
-            override val angle: Double = LightState.GoldenHour.duskAngle
+            override val angle: Double = LightPhase.GoldenHour.duskAngle
         }
 
         override fun equals(other: Any?): Boolean {

@@ -678,6 +678,18 @@ class SolarEventSequenceTest {
         assertFalse(iter.hasNext())
     }
 
+    @Test
+    fun testAWeirdCaseIfound() {
+        val iter = SolarEventSequence(
+            start = LocalDate(2023, 8, 1).atStartOfDayIn(DENVER_TZ),
+            location = Pair(71.0, -105.0),
+            requestedSolarEvents = SolarEventType.all,
+            limit = 1.days
+        )
+
+        println(iter.toList())
+    }
+
     private fun assertNoonNadirPrecision(time: Instant, location: Pair<Double, Double>) {
         val sunTimes = SolarEventSequence(
             start = time,

@@ -20,6 +20,7 @@ import kotlin.test.assertTrue
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.seconds
 
+@Suppress("NOTHING_TO_INLINE")
 internal inline fun assertSimilar(
     expected: Instant,
     actual: Instant,
@@ -30,6 +31,7 @@ internal inline fun assertSimilar(
         message = "Expected $expected Actual $actual tolerance $tolerance but they differ by ${(actual - expected).absoluteValue}")
 }
 
+@Suppress("NOTHING_TO_INLINE")
 internal inline fun assertSimilar(
     expected: Double,
     actual: Double,

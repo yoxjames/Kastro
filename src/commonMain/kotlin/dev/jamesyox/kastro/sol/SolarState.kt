@@ -17,11 +17,6 @@ package dev.jamesyox.kastro.sol
 import dev.jamesyox.kastro.common.HorizonMovementState
 import dev.jamesyox.kastro.common.HorizonState
 import dev.jamesyox.kastro.common.fromAzimuth
-import dev.jamesyox.kastro.sol.SolarPhase.AstronomicalTwilight
-import dev.jamesyox.kastro.sol.SolarPhase.CivilTwilight
-import dev.jamesyox.kastro.sol.SolarPhase.Day
-import dev.jamesyox.kastro.sol.SolarPhase.NauticalTwilight
-import dev.jamesyox.kastro.sol.SolarPhase.Night
 import dev.jamesyox.kastro.util.Moon.angularRadius
 import dev.jamesyox.kastro.util.degrees
 
@@ -106,29 +101,49 @@ public class SolarState internal constructor(
         }
 
     /**
-     * The current [SolarPhase]. There can be only one active [SolarPhase] at a given time
-     */
-    public val twilightState: SolarPhase = when {
-        trueAltitude in (CivilTwilight.dawnAngle..CivilTwilight.duskAngle) -> CivilTwilight
-        trueAltitude in (NauticalTwilight.dawnAngle..NauticalTwilight.duskAngle) -> NauticalTwilight
-        trueAltitude in (AstronomicalTwilight.dawnAngle..AstronomicalTwilight.duskAngle) -> AstronomicalTwilight
-        (trueAltitude > 0.0) -> Day
-        else -> Night
-    }
-
-    /**
      * The current active [LightState]s. There can be more than one active [LightState] at a time.
-     * For instance, [LightState.GoldenHour] and [LightState.BlueHour] intersect a bit, so it's possible
+     * For instance, [LightState.GoldenHourDusk] and [LightState.BlueHourDusk] intersect a bit, so it's possible
      * to have both of those or neither. Can be empty.
      */
-    public val lightStates: List<LightState> = LightState.entries.filter {
-        trueAltitude in (it.dawnAngle..it.duskAngle)
-    }
+    public val lightStates: List<LightState> = LightPhaseInfo.all
+        .filter { trueAltitude in it.angleRange }
+        .map {
+            when (it) {
+                LightPhase.GoldenHour -> when (horizonMovementState) {
+                    HorizonMovementState.Rising -> LightState.GoldenHourDawn
+                    HorizonMovementState.Setting -> LightState.GoldenHourDusk
+                }
+                LightPhase.BlueHour -> when (horizonMovementState) {
+                    HorizonMovementState.Rising -> LightState.BlueHourDawn
+                    HorizonMovementState.Setting -> LightState.BlueHourDusk
+                }
+            }
+        }
 
     /**
      * Whether the Sun is rising or setting.
      */
     public val horizonMovementState: HorizonMovementState = fromAzimuth(azimuth)
+
+    /**
+     * The current [SolarPhase]. There can be only one active [SolarPhase] at a given time
+     */
+    public val solarPhase: SolarPhase = when {
+        trueAltitude in Twilight.CivilTwilight.angleRange -> when (horizonMovementState) {
+            HorizonMovementState.Rising -> SolarPhase.CivilDawn
+            HorizonMovementState.Setting -> SolarPhase.CivilDusk
+        }
+        trueAltitude in Twilight.NauticalTwilight.angleRange -> when (horizonMovementState) {
+            HorizonMovementState.Rising -> SolarPhase.NauticalDawn
+            HorizonMovementState.Setting -> SolarPhase.NauticalDusk
+        }
+        trueAltitude in Twilight.AstronomicalTwilight.angleRange -> when (horizonMovementState) {
+            HorizonMovementState.Rising -> SolarPhase.AstronomicalDawn
+            HorizonMovementState.Setting -> SolarPhase.AstronomicalDusk
+        }
+        trueAltitude > 0.0 -> SolarPhase.Day
+        else -> SolarPhase.Night
+    }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -163,7 +178,7 @@ public class SolarState internal constructor(
             "parallax=$parallax, " +
             "altitude=$altitude, " +
             "horizonState=$horizonState, " +
-            "twilightState=$twilightState, " +
+            "solarPhase=$solarPhase, " +
             "lightStates=$lightStates, " +
             "horizonMovementState=$horizonMovementState" +
             ")"
