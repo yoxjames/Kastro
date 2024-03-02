@@ -156,4 +156,4 @@ public sealed interface TwilightInfo {
 /**
  * Range of angles for which a given [TwilightInfo] is active for.
  */
-public val TwilightInfo.angleRange: ClosedRange<Double> get() = duskAngle..dawnAngle
+public val TwilightInfo.angleRange: ClosedRange<Double> get() = dawnAngle..duskAngle

@@ -26,7 +26,6 @@ import kotlin.math.abs
 import kotlin.math.ceil
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.hours
-import kotlin.time.Duration.Companion.seconds
 
 internal class NoonAndNadirSequence(
     private val start: Instant,
@@ -43,7 +42,9 @@ internal class NoonAndNadirSequence(
 
         return generateSequence(calculateNextNoonAndNadir(start)) {
             it.lastOrNull()?.time?.let { lastTime ->
-                if (lastTime <= start + limit) calculateNextNoonAndNadir((lastTime + 1.seconds)) else null
+                // Jumping ahead by an hour is fine since Noon and Nadir must be pretty far apart.
+                // Probably could jump farther.
+                if (lastTime <= start + limit) calculateNextNoonAndNadir((lastTime + 1.hours)) else null
             }
         }.flatten().iterator()
     }

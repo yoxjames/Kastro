@@ -101,4 +101,4 @@ public sealed interface LightPhaseInfo {
 /**
  * Range of angles for which a given [LightPhaseInfo] is active for.
  */
-public val LightPhaseInfo.angleRange: ClosedRange<Double> get() = duskAngle..dawnAngle
+public val LightPhaseInfo.angleRange: ClosedRange<Double> get() = dawnAngle..duskAngle

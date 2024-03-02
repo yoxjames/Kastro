@@ -48,6 +48,7 @@ import kotlin.time.Duration.Companion.days
 import kotlin.time.Duration.Companion.minutes
 import kotlin.time.Duration.Companion.seconds
 import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
 
 class SolarEventSequenceTest {
     @Test
@@ -679,15 +680,49 @@ class SolarEventSequenceTest {
     }
 
     @Test
-    fun testAWeirdCaseIfound() {
-        val iter = SolarEventSequence(
-            start = LocalDate(2023, 8, 1).atStartOfDayIn(DENVER_TZ),
-            location = Pair(71.0, -105.0),
-            requestedSolarEvents = SolarEventType.all,
-            limit = 1.days
+    fun testSuperLowLatitude() {
+        val seq = SolarEventSequence(
+            start = LocalDate(2024, 2, 17).atStartOfDayIn(DENVER_TZ),
+            location = Pair(-83.0, -105.0),
+            requestedSolarEvents = SolarEventType.all
         )
 
-        println(iter.toList())
+        println(seq.map { Pair(it, it.time.toLocalDateTime(DENVER_TZ)) }.take(10).toList())
+
+        val iter = seq.iterator()
+
+        iter.assertSimilar<SolarEvent.Nadir>(
+            expected = LocalDateTime(2024, 2, 17, 0, 15, 54),
+            timeZone = DENVER_TZ
+        )
+        iter.assertSimilar<SolarEvent.GoldenHourDawnEnd>(
+            expected = LocalDateTime(2024, 2, 17, 2, 13, 5),
+            timeZone = DENVER_TZ
+        )
+        iter.assertSimilar<SolarEvent.Noon>(
+            expected = LocalDateTime(2024, 2, 17, 12, 12, 10),
+            timeZone = DENVER_TZ
+        )
+        iter.assertSimilar<SolarEvent.GoldenHourDusk>(
+            expected = LocalDateTime(2024, 2, 17, 21, 57, 3),
+            timeZone = DENVER_TZ
+        )
+        iter.assertSimilar<SolarEvent.Nadir>(
+            expected = LocalDateTime(2024, 2, 18, 0, 15, 50),
+            timeZone = DENVER_TZ
+        )
+        iter.assertSimilar<SolarEvent.GoldenHourDawnEnd>(
+            expected = LocalDateTime(2024, 2, 18, 2, 35, 10),
+            timeZone = DENVER_TZ
+        )
+        iter.assertSimilar<SolarEvent.Noon>(
+            expected = LocalDateTime(2024, 2, 18, 12, 12, 9),
+            timeZone = DENVER_TZ
+        )
+        iter.assertSimilar<SolarEvent.GoldenHourDusk>(
+            expected = LocalDateTime(2024, 2, 18, 21, 37, 47),
+            timeZone = DENVER_TZ
+        )
     }
 
     private fun assertNoonNadirPrecision(time: Instant, location: Pair<Double, Double>) {

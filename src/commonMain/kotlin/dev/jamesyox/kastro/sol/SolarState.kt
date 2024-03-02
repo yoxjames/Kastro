@@ -101,6 +101,11 @@ public class SolarState internal constructor(
         }
 
     /**
+     * Whether the Sun is rising or setting.
+     */
+    public val horizonMovementState: HorizonMovementState = fromAzimuth(azimuth)
+
+    /**
      * The current active [LightState]s. There can be more than one active [LightState] at a time.
      * For instance, [LightState.GoldenHourDusk] and [LightState.BlueHourDusk] intersect a bit, so it's possible
      * to have both of those or neither. Can be empty.
@@ -119,11 +124,6 @@ public class SolarState internal constructor(
                 }
             }
         }
-
-    /**
-     * Whether the Sun is rising or setting.
-     */
-    public val horizonMovementState: HorizonMovementState = fromAzimuth(azimuth)
 
     /**
      * The current [SolarPhase]. There can be only one active [SolarPhase] at a given time

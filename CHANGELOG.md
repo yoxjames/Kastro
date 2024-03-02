@@ -1,5 +1,5 @@
 ## Version: 0.2.0 (Pending)
-* **NON PASSIVE**: Renamed `LunarIllumination.angle` to `LunarIllumination.illuminationAngle`. Too many things that are different were called `angle` which is what led to the bug above.
+* **NON PASSIVE**: Renamed `LunarIllumination.angle` to `LunarIllumination.illuminationAngle`. Too many things that are different were called `angle` which is what led to bugs.
 * **NON PASSIVE** Renamed `TwilightPhase` to `SolarPhase` and made it so `TwilightPhases` represent _actual_ twilight phases rather than things like `SolarPhase.Day` or `SolarPhase.Night`. This was misleading.
 * **NON PASSIVE** Broke `SolarPhase` into distinct Dawn and Dusk phases. This really simplified  a lot of things including documentation. Also, this means that `SolarState.solarPhase` returns the correct phase based on whether it's dawn or dusk.
 * **NON PASSIVE** Did the same thing as above with `LightState` and `LightPhase`.
