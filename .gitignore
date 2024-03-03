@@ -40,3 +40,4 @@ bin/
 ### Custom Stuff ###
 kotlin-js-store
 *.jar
+!gradle/wrapper/gradle-wrapper.jar

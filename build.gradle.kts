@@ -72,24 +72,23 @@ kotlin {
         }
     }
 
-    // TODO: I dont own any Apple products so I cannot build Apple artifacts. However it will probably work....
     // Native: https://kotlinlang.org/docs/native-target-support.html
     // Tier 1
     linuxX64()
-    //macosX64()
-    //macosArm64()
-    //iosSimulatorArm64()
-    //iosX64()
+    macosX64()
+    macosArm64()
+    iosSimulatorArm64()
+    iosX64()
     // Tier 2
     linuxArm64()
-    //watchosSimulatorArm64()
-    //watchosX64()
-    //watchosArm32()
-    //watchosArm64()
-    //tvosSimulatorArm64()
-    //tvosX64()
-    //tvosArm64()
-    //iosArm64()
+    watchosSimulatorArm64()
+    watchosX64()
+    watchosArm32()
+    watchosArm64()
+    tvosSimulatorArm64()
+    tvosX64()
+    tvosArm64()
+    iosArm64()
     // Tier 3
     mingwX64()
 

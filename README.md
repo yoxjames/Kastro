@@ -226,9 +226,9 @@ Run `./gradlew apiCheck` to see if your changes maintain binary compatibility!
 Enhancements to the overall shape of the API are welcome though as this has not yet reached the `1.0` milestone.
 
 ## Future Work
-I ran into some difficulties getting the height offset calculation to work correctly for `SolarEventSequence`. I hope to eventually resolve that but didn't think it should block an alpha release. It's something something I want for the future `1.0` release.
+I ran into some difficulties getting the height offset calculation to work correctly for `SolarEventSequence`. I hope to eventually resolve that but didn't think it should block an alpha release. It's something I want for the future `1.0` release.
 
-I would also like to add additional KMP targets. I don't own any Apple products, so I cannot build any Apple targets. I hope to eventually have a solution to that if there is demand. I am also curious to look into WASM and any other KMP targets added in the future.
+I would also like to add additional KMP targets. I recently added various Apple targets. I am currently looking into WASM targets next.
 
 I am also curious to potentially make the library usable for other languages like Javascript. This library is a Kotlin Multiplatform project, but it would be cool to also have it be on npm for use in Javascript/Typescript projects or even be a Swift package (SPM) for use on iOS/Apple targets. There are some challenges to doing that (such as how the exposed API could be adapted to better fit those languages) but I plan to actively look into this as it's something I am generally curious about.
 
