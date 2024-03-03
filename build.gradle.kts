@@ -128,9 +128,9 @@ tasks.register("detektAll") {
 nexusPublishing {
     repositories {
         sonatype {
-            val ossrhUsername: String by project
-            val ossrhPassword: String by project
-            val ossrhStagingProfileId: String by project
+            val ossrhUsername: String? by project
+            val ossrhPassword: String? by project
+            val ossrhStagingProfileId: String? by project
 
             nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
             snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
