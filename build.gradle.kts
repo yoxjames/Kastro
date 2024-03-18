@@ -104,10 +104,8 @@ kotlin {
             }
         }
         val jsMain by getting {
-            val jsMain by getting {
-                dependencies {
-                    implementation(npm("@js-joda/timezone", libs.versions.npm.joda.time.get()))
-                }
+            dependencies {
+                implementation(npm("@js-joda/timezone", libs.versions.npm.joda.time.get()))
             }
         }
     }

@@ -20,7 +20,7 @@ package dev.jamesyox.kastro.sol
  * All the [LightStates][LightState] are [LightPhases][LightPhase] but these states have different dawn and dusk
  * objects which allow you to distinguish between the two.
  */
-public sealed interface LightState {
+public sealed interface LightState : LightPhase {
     /**
      * Represents [LightPhase.GoldenHour] during dawn.
      */

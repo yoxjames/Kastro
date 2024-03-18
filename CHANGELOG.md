@@ -16,8 +16,10 @@
 * Fixed bug where `SolarEventSequence.limit` was not respected in certain situations and the resulting sequence could contain values beyond the specified limit.
 
 ### Other
-* Bumped Kotlin version to 1.9.22
+* Bumped Kotlin version to 1.9.23
 * Adjust coroutine readme example to use `Duration.INFINITE` as the intended functionality is to run "forever" when technically the limit defaults to `365.days`
+* `LightState` now implements `LightPhase`
+* Bumped js-joda/timezone to 2.18.3
 
 ## Version: 0.1.0
 Initial Release
