@@ -49,7 +49,7 @@ private fun calculateLunarIllumination(jd: JulianDate): LunarIllumination {
     )
     return LunarIllumination(
         fraction = (1 + cos(phi)) / 2,
-        phase = (phi * sign(sunMoon.theta)).degrees,
+        phase = (phi * sign(sunMoon.theta)).degrees + 180.0,
         illuminationAngle = angle.degrees
     )
 }

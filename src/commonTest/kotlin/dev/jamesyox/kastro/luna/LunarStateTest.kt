@@ -29,7 +29,7 @@ class LunarStateTest {
             ),
             illumination = LunarIllumination(
                 fraction = 0.40620985480701605,
-                phase = 100.81160627293151,
+                phase = 280.81160627293151,
                 illuminationAngle = 111.39120207982295
             ),
         )

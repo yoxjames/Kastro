@@ -117,7 +117,7 @@ allprojects {
     }
 }
 
-tasks.register("detektAll") {
+tasks.register("allDetekt") {
     allprojects {
         this@register.dependsOn(tasks.withType<Detekt>())
     }

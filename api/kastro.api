@@ -117,7 +117,7 @@ public final class dev/jamesyox/kastro/luna/LunarEvent$PhaseEvent$FirstQuarter :
 }
 
 public final class dev/jamesyox/kastro/luna/LunarEvent$PhaseEvent$FirstQuarter$Companion : dev/jamesyox/kastro/luna/LunarPhase$Primary {
-	public fun getAngle ()D
+	public fun getPhase ()D
 }
 
 public final class dev/jamesyox/kastro/luna/LunarEvent$PhaseEvent$FullMoon : dev/jamesyox/kastro/luna/LunarEvent$PhaseEvent {
@@ -132,7 +132,7 @@ public final class dev/jamesyox/kastro/luna/LunarEvent$PhaseEvent$FullMoon : dev
 }
 
 public final class dev/jamesyox/kastro/luna/LunarEvent$PhaseEvent$FullMoon$Companion : dev/jamesyox/kastro/luna/LunarPhase$Primary {
-	public fun getAngle ()D
+	public fun getPhase ()D
 }
 
 public final class dev/jamesyox/kastro/luna/LunarEvent$PhaseEvent$LastQuarter : dev/jamesyox/kastro/luna/LunarEvent$PhaseEvent {
@@ -147,7 +147,7 @@ public final class dev/jamesyox/kastro/luna/LunarEvent$PhaseEvent$LastQuarter : 
 }
 
 public final class dev/jamesyox/kastro/luna/LunarEvent$PhaseEvent$LastQuarter$Companion : dev/jamesyox/kastro/luna/LunarPhase$Primary {
-	public fun getAngle ()D
+	public fun getPhase ()D
 }
 
 public final class dev/jamesyox/kastro/luna/LunarEvent$PhaseEvent$NewMoon : dev/jamesyox/kastro/luna/LunarEvent$PhaseEvent {
@@ -162,7 +162,7 @@ public final class dev/jamesyox/kastro/luna/LunarEvent$PhaseEvent$NewMoon : dev/
 }
 
 public final class dev/jamesyox/kastro/luna/LunarEvent$PhaseEvent$NewMoon$Companion : dev/jamesyox/kastro/luna/LunarPhase$Primary {
-	public fun getAngle ()D
+	public fun getPhase ()D
 }
 
 public final class dev/jamesyox/kastro/luna/LunarEventSequence : kotlin/sequences/Sequence {
@@ -255,7 +255,7 @@ public final class dev/jamesyox/kastro/luna/LunarPhase$Intermediate$WaxingGibbou
 
 public abstract interface class dev/jamesyox/kastro/luna/LunarPhase$Primary : dev/jamesyox/kastro/luna/LunarEvent$LunarEventType, dev/jamesyox/kastro/luna/LunarPhase {
 	public static final field Companion Ldev/jamesyox/kastro/luna/LunarPhase$Primary$Companion;
-	public abstract fun getAngle ()D
+	public abstract fun getPhase ()D
 }
 
 public final class dev/jamesyox/kastro/luna/LunarPhase$Primary$Companion {
@@ -301,21 +301,70 @@ public final class dev/jamesyox/kastro/sol/CalculateSolarStateKt {
 	public static synthetic fun calculateSolarState$default (Lkotlinx/datetime/Instant;Lkotlin/Pair;DILjava/lang/Object;)Ldev/jamesyox/kastro/sol/SolarState;
 }
 
-public abstract interface class dev/jamesyox/kastro/sol/DawnPhase {
-	public abstract fun getDawnAngle ()D
+public abstract interface class dev/jamesyox/kastro/sol/LightPhase {
 }
 
-public abstract interface class dev/jamesyox/kastro/sol/DuskPhase {
+public abstract interface class dev/jamesyox/kastro/sol/LightPhase$BlueHour : dev/jamesyox/kastro/sol/LightPhase {
+	public static final field Companion Ldev/jamesyox/kastro/sol/LightPhase$BlueHour$Companion;
+}
+
+public final class dev/jamesyox/kastro/sol/LightPhase$BlueHour$Companion : dev/jamesyox/kastro/sol/LightPhaseInfo {
+	public fun getDawnAngle ()D
+	public fun getDuskAngle ()D
+}
+
+public abstract interface class dev/jamesyox/kastro/sol/LightPhase$GoldenHour : dev/jamesyox/kastro/sol/LightPhase {
+	public static final field Companion Ldev/jamesyox/kastro/sol/LightPhase$GoldenHour$Companion;
+}
+
+public final class dev/jamesyox/kastro/sol/LightPhase$GoldenHour$Companion : dev/jamesyox/kastro/sol/LightPhaseInfo {
+	public fun getDawnAngle ()D
+	public fun getDuskAngle ()D
+}
+
+public abstract interface class dev/jamesyox/kastro/sol/LightPhaseInfo {
+	public static final field Companion Ldev/jamesyox/kastro/sol/LightPhaseInfo$Companion;
+	public abstract fun getDawnAngle ()D
 	public abstract fun getDuskAngle ()D
 }
 
-public abstract class dev/jamesyox/kastro/sol/LightState : java/lang/Enum, dev/jamesyox/kastro/sol/DawnPhase, dev/jamesyox/kastro/sol/DuskPhase {
-	public static final field BlueHour Ldev/jamesyox/kastro/sol/LightState;
-	public static final field GoldenHour Ldev/jamesyox/kastro/sol/LightState;
-	public synthetic fun <init> (Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public static fun getEntries ()Lkotlin/enums/EnumEntries;
-	public static fun valueOf (Ljava/lang/String;)Ldev/jamesyox/kastro/sol/LightState;
-	public static fun values ()[Ldev/jamesyox/kastro/sol/LightState;
+public final class dev/jamesyox/kastro/sol/LightPhaseInfo$Companion {
+	public final fun getAll ()Ljava/util/List;
+}
+
+public abstract interface class dev/jamesyox/kastro/sol/LightState : dev/jamesyox/kastro/sol/LightPhase {
+}
+
+public final class dev/jamesyox/kastro/sol/LightState$BlueHourDawn : dev/jamesyox/kastro/sol/LightPhase$BlueHour, dev/jamesyox/kastro/sol/LightState {
+	public static final field INSTANCE Ldev/jamesyox/kastro/sol/LightState$BlueHourDawn;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/jamesyox/kastro/sol/LightState$BlueHourDusk : dev/jamesyox/kastro/sol/LightPhase$BlueHour, dev/jamesyox/kastro/sol/LightState {
+	public static final field INSTANCE Ldev/jamesyox/kastro/sol/LightState$BlueHourDusk;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/jamesyox/kastro/sol/LightState$GoldenHourDawn : dev/jamesyox/kastro/sol/LightPhase$GoldenHour, dev/jamesyox/kastro/sol/LightState {
+	public static final field INSTANCE Ldev/jamesyox/kastro/sol/LightState$GoldenHourDawn;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/jamesyox/kastro/sol/LightState$GoldenHourDusk : dev/jamesyox/kastro/sol/LightPhase$GoldenHour, dev/jamesyox/kastro/sol/LightState {
+	public static final field INSTANCE Ldev/jamesyox/kastro/sol/LightState$GoldenHourDusk;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/jamesyox/kastro/sol/LightStateKt {
+	public static final fun getAngleRange (Ldev/jamesyox/kastro/sol/LightPhaseInfo;)Lkotlin/ranges/ClosedRange;
 }
 
 public abstract interface class dev/jamesyox/kastro/sol/SolarEvent : java/lang/Comparable {
@@ -722,47 +771,69 @@ public abstract interface class dev/jamesyox/kastro/sol/SolarEventType$Topocentr
 }
 
 public abstract interface class dev/jamesyox/kastro/sol/SolarPhase {
+	public abstract fun getStartAngle ()D
 }
 
-public final class dev/jamesyox/kastro/sol/SolarPhase$AstronomicalTwilight : dev/jamesyox/kastro/sol/DawnPhase, dev/jamesyox/kastro/sol/DuskPhase, dev/jamesyox/kastro/sol/TwilightPhase {
-	public static final field INSTANCE Ldev/jamesyox/kastro/sol/SolarPhase$AstronomicalTwilight;
+public final class dev/jamesyox/kastro/sol/SolarPhase$AstronomicalDawn : dev/jamesyox/kastro/sol/SolarPhase, dev/jamesyox/kastro/sol/Twilight$AstronomicalTwilight {
+	public static final field INSTANCE Ldev/jamesyox/kastro/sol/SolarPhase$AstronomicalDawn;
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getDawnAngle ()D
-	public fun getDuskAngle ()D
+	public fun getStartAngle ()D
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class dev/jamesyox/kastro/sol/SolarPhase$CivilTwilight : dev/jamesyox/kastro/sol/DawnPhase, dev/jamesyox/kastro/sol/DuskPhase, dev/jamesyox/kastro/sol/TwilightPhase {
-	public static final field INSTANCE Ldev/jamesyox/kastro/sol/SolarPhase$CivilTwilight;
+public final class dev/jamesyox/kastro/sol/SolarPhase$AstronomicalDusk : dev/jamesyox/kastro/sol/SolarPhase, dev/jamesyox/kastro/sol/Twilight$AstronomicalTwilight {
+	public static final field INSTANCE Ldev/jamesyox/kastro/sol/SolarPhase$AstronomicalDusk;
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getDawnAngle ()D
-	public fun getDuskAngle ()D
+	public fun getStartAngle ()D
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class dev/jamesyox/kastro/sol/SolarPhase$Day : dev/jamesyox/kastro/sol/DawnPhase, dev/jamesyox/kastro/sol/SolarPhase {
+public final class dev/jamesyox/kastro/sol/SolarPhase$CivilDawn : dev/jamesyox/kastro/sol/SolarPhase, dev/jamesyox/kastro/sol/Twilight$CivilTwilight {
+	public static final field INSTANCE Ldev/jamesyox/kastro/sol/SolarPhase$CivilDawn;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getStartAngle ()D
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/jamesyox/kastro/sol/SolarPhase$CivilDusk : dev/jamesyox/kastro/sol/SolarPhase, dev/jamesyox/kastro/sol/Twilight$CivilTwilight {
+	public static final field INSTANCE Ldev/jamesyox/kastro/sol/SolarPhase$CivilDusk;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getStartAngle ()D
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/jamesyox/kastro/sol/SolarPhase$Day : dev/jamesyox/kastro/sol/SolarPhase {
 	public static final field INSTANCE Ldev/jamesyox/kastro/sol/SolarPhase$Day;
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getDawnAngle ()D
+	public fun getStartAngle ()D
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class dev/jamesyox/kastro/sol/SolarPhase$NauticalTwilight : dev/jamesyox/kastro/sol/DawnPhase, dev/jamesyox/kastro/sol/DuskPhase, dev/jamesyox/kastro/sol/TwilightPhase {
-	public static final field INSTANCE Ldev/jamesyox/kastro/sol/SolarPhase$NauticalTwilight;
+public final class dev/jamesyox/kastro/sol/SolarPhase$NauticalDawn : dev/jamesyox/kastro/sol/SolarPhase, dev/jamesyox/kastro/sol/Twilight$NauticalTwilight {
+	public static final field INSTANCE Ldev/jamesyox/kastro/sol/SolarPhase$NauticalDawn;
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getDawnAngle ()D
-	public fun getDuskAngle ()D
+	public fun getStartAngle ()D
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class dev/jamesyox/kastro/sol/SolarPhase$Night : dev/jamesyox/kastro/sol/DuskPhase, dev/jamesyox/kastro/sol/SolarPhase {
+public final class dev/jamesyox/kastro/sol/SolarPhase$NauticalDusk : dev/jamesyox/kastro/sol/SolarPhase, dev/jamesyox/kastro/sol/Twilight$NauticalTwilight {
+	public static final field INSTANCE Ldev/jamesyox/kastro/sol/SolarPhase$NauticalDusk;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getStartAngle ()D
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/jamesyox/kastro/sol/SolarPhase$Night : dev/jamesyox/kastro/sol/SolarPhase {
 	public static final field INSTANCE Ldev/jamesyox/kastro/sol/SolarPhase$Night;
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getDuskAngle ()D
+	public fun getStartAngle ()D
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -778,16 +849,53 @@ public final class dev/jamesyox/kastro/sol/SolarState {
 	public final fun getHorizonState ()Ldev/jamesyox/kastro/common/HorizonState;
 	public final fun getLightStates ()Ljava/util/List;
 	public final fun getParallax ()D
+	public final fun getSolarPhase ()Ldev/jamesyox/kastro/sol/SolarPhase;
 	public final fun getTrueAltitude ()D
-	public final fun getTwilightState ()Ldev/jamesyox/kastro/sol/SolarPhase;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
 
-public synthetic class dev/jamesyox/kastro/sol/SolarState$EntriesMappings {
-	public static final synthetic field entries$0 Lkotlin/enums/EnumEntries;
+public abstract interface class dev/jamesyox/kastro/sol/Twilight {
 }
 
-public abstract interface class dev/jamesyox/kastro/sol/TwilightPhase : dev/jamesyox/kastro/sol/SolarPhase {
+public abstract interface class dev/jamesyox/kastro/sol/Twilight$AstronomicalTwilight : dev/jamesyox/kastro/sol/Twilight {
+	public static final field Companion Ldev/jamesyox/kastro/sol/Twilight$AstronomicalTwilight$Companion;
+}
+
+public final class dev/jamesyox/kastro/sol/Twilight$AstronomicalTwilight$Companion : dev/jamesyox/kastro/sol/TwilightInfo {
+	public fun getDawnAngle ()D
+	public fun getDuskAngle ()D
+}
+
+public abstract interface class dev/jamesyox/kastro/sol/Twilight$CivilTwilight : dev/jamesyox/kastro/sol/Twilight {
+	public static final field Companion Ldev/jamesyox/kastro/sol/Twilight$CivilTwilight$Companion;
+}
+
+public final class dev/jamesyox/kastro/sol/Twilight$CivilTwilight$Companion : dev/jamesyox/kastro/sol/TwilightInfo {
+	public fun getDawnAngle ()D
+	public fun getDuskAngle ()D
+}
+
+public abstract interface class dev/jamesyox/kastro/sol/Twilight$NauticalTwilight : dev/jamesyox/kastro/sol/Twilight {
+	public static final field Companion Ldev/jamesyox/kastro/sol/Twilight$NauticalTwilight$Companion;
+}
+
+public final class dev/jamesyox/kastro/sol/Twilight$NauticalTwilight$Companion : dev/jamesyox/kastro/sol/TwilightInfo {
+	public fun getDawnAngle ()D
+	public fun getDuskAngle ()D
+}
+
+public abstract interface class dev/jamesyox/kastro/sol/TwilightInfo {
+	public static final field Companion Ldev/jamesyox/kastro/sol/TwilightInfo$Companion;
+	public abstract fun getDawnAngle ()D
+	public abstract fun getDuskAngle ()D
+}
+
+public final class dev/jamesyox/kastro/sol/TwilightInfo$Companion {
+	public final fun getAll ()Ljava/util/List;
+}
+
+public final class dev/jamesyox/kastro/sol/TwilightInfoKt {
+	public static final fun getAngleRange (Ldev/jamesyox/kastro/sol/TwilightInfo;)Lkotlin/ranges/ClosedRange;
 }
 

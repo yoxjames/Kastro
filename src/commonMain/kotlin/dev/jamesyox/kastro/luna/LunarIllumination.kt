@@ -26,8 +26,8 @@ public class LunarIllumination(
     public val fraction: Double,
 
     /**
-     * Moon phase. Starts at `-180.0` (new moon, waxing), passes `0.0` (full
-     * moon) and moves toward `180.0` (waning, new moon).
+     * Moon phase. Starts at `0.0` (new moon, waxing), passes `180.0` (full moon) and moves toward `360.0`
+     * (waning, new moon).
      *
      */
     public val phase: Double,
@@ -74,4 +74,4 @@ public class LunarIllumination(
  *
  * @return Closest [LunarPhase]
  */
-public val LunarIllumination.closestPhase: LunarPhase get() = LunarPhase.closestMoonPhase(phase + 180.0)
+public val LunarIllumination.closestPhase: LunarPhase get() = LunarPhase.closestMoonPhase(phase)

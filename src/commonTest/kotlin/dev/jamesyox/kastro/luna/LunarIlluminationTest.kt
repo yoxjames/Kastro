@@ -31,7 +31,7 @@ class LunarIlluminationTest {
             .toInstant(COLOGNE_TZ)
             .calculateLunarIllumination()
         assertSimilar(actual = mi.fraction, expected = 0.0)
-        assertSimilar(actual = mi.phase, expected = 176.0)
+        assertSimilar(actual = mi.phase, expected = 356.0)
         assertSimilar(actual = mi.illuminationAngle, expected = 2.0)
         assertEquals(actual = mi.closestPhase, expected = NewMoon)
     }
@@ -42,7 +42,7 @@ class LunarIlluminationTest {
             .toInstant(COLOGNE_TZ)
             .calculateLunarIllumination()
         assertSimilar(actual = mi.fraction, expected = 0.5)
-        assertSimilar(actual = mi.phase, expected = -90.0)
+        assertSimilar(actual = mi.phase, expected = 90.0)
         assertSimilar(actual = mi.illuminationAngle, expected = -66.9)
         assertEquals(actual = mi.closestPhase, expected = FirstQuarter)
     }
@@ -53,7 +53,7 @@ class LunarIlluminationTest {
             .toInstant(COLOGNE_TZ)
             .calculateLunarIllumination()
         assertSimilar(actual = mi.fraction, expected =  1.0)
-        assertSimilar(actual = mi.phase, expected = -3.2) // 0.0
+        assertSimilar(actual = mi.phase, expected = 176.8) // 0.0
         assertSimilar(actual = mi.illuminationAngle, expected = -7.4)
         assertEquals(actual = mi.closestPhase, expected = FullMoon)
     }
@@ -64,7 +64,7 @@ class LunarIlluminationTest {
             .toInstant(COLOGNE_TZ)
             .calculateLunarIllumination()
         assertSimilar(actual = mi.fraction, expected = 0.5)
-        assertSimilar(actual = mi.phase, expected = 90.0)
+        assertSimilar(actual = mi.phase, expected = 270.0)
         assertSimilar(actual = mi.illuminationAngle, expected = 68.7)
         assertEquals(actual = mi.closestPhase, expected = LastQuarter)
     }

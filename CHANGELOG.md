@@ -4,10 +4,12 @@
 * Added GoldenHourDuskEnd and GoldenHourDawnEnd to be consistent with `BlueHourDuskEnd` and `BlueHourDawnEnd`. The golden hour events were conspicuously missing.
 
 ### Non-Passive
-* Renamed `LunarIllumination.angle` to `LunarIllumination.illuminationAngle`. Too many things that are different were called `angle` which is what led to bugs.
 * Renamed `TwilightPhase` to `SolarPhase` and made it so `TwilightPhases` represent _actual_ twilight phases rather than things like `SolarPhase.Day` or `SolarPhase.Night`. This was misleading.
 * Broke `SolarPhase` into distinct Dawn and Dusk phases. This really simplified  a lot of things including documentation. Also, this means that `SolarState.solarPhase` returns the correct phase based on whether it's dawn or dusk.
 * Did the same thing as above with `LightState` and `LightPhase`.
+* `LunarEvent.angle` was renamed to `LunarEvent.phase`. See below.
+* `LunarIllumination.phase` now represents the same concept as `LunarEvent.phase`.
+  * Prior to this change there was `angle` (0..360) and `phase` (-180..180). These have been combined into a single concept called `phase` (0..360). Having two similarly named numeric types was a recipe for confusion.
 
 ### Bugfixes
 * Made kotlinx-datetime an api dependency

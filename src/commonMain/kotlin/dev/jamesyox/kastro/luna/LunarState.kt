@@ -34,10 +34,10 @@ public class LunarState internal constructor(
     public val illumination: LunarIllumination,
 ) {
     /**
-     * The phase of the moon. This can only be an [LunarPhase.Intermediate] phase as [LunarPhase.Primary] only occur
+     * The phase of the moon. This can only be an [LunarPhase.Intermediate] phase as [LunarPhase.Primary] can only occur
      * for an instant.
      */
-    public val phase: LunarPhase.Intermediate = LunarPhase.lunarPhase(illumination.phase + 180.0)
+    public val phase: LunarPhase.Intermediate = LunarPhase.lunarPhase(illumination.phase)
 
     /**
      * Whether Luna (the moon) is above or below the horizon

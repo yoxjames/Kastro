@@ -19,7 +19,7 @@ import kotlin.math.absoluteValue
 
 /**
  * A [LunarPhase] is a specific shape of the moon's sunlit portion. There are [Primary] moon phases which are described
- * by [LunarPhase.Primary.angle] and [Intermediate] moon phases which are described by
+ * by [LunarPhase.Primary.phase] and [Intermediate] moon phases which are described by
  * [LunarPhase.Intermediate.angleRange]
  *
  * See [Lunar Phase](https://en.wikipedia.org/wiki/Lunar_phase) for more information
@@ -55,7 +55,7 @@ public sealed interface LunarPhase {
          *
          * 270 represents [Last Quarter][LunarEvent.PhaseEvent.LastQuarter.Companion]
          */
-        public val angle: Double
+        public val phase: Double
     }
 
     /**
@@ -83,7 +83,7 @@ public sealed interface LunarPhase {
          */
         public data object WaxingCrescent : Intermediate {
             override val angleRange: OpenEndRange<Double> =
-                LunarEvent.PhaseEvent.NewMoon.angle..<LunarEvent.PhaseEvent.FirstQuarter.angle
+                LunarEvent.PhaseEvent.NewMoon.phase..<LunarEvent.PhaseEvent.FirstQuarter.phase
         }
 
         /**
@@ -92,7 +92,7 @@ public sealed interface LunarPhase {
          */
         public data object WaxingGibbous : Intermediate {
             override val angleRange: OpenEndRange<Double> =
-                LunarEvent.PhaseEvent.FirstQuarter.angle..<LunarEvent.PhaseEvent.FullMoon.angle
+                LunarEvent.PhaseEvent.FirstQuarter.phase..<LunarEvent.PhaseEvent.FullMoon.phase
         }
 
         /**
@@ -101,7 +101,7 @@ public sealed interface LunarPhase {
          */
         public data object WaningGibbous : Intermediate {
             override val angleRange: OpenEndRange<Double> =
-                LunarEvent.PhaseEvent.FullMoon.angle..<LunarEvent.PhaseEvent.LastQuarter.angle
+                LunarEvent.PhaseEvent.FullMoon.phase..<LunarEvent.PhaseEvent.LastQuarter.phase
         }
 
         /**
@@ -110,7 +110,7 @@ public sealed interface LunarPhase {
          */
         public data object WaningCrescent : Intermediate {
             override val angleRange: OpenEndRange<Double> =
-                LunarEvent.PhaseEvent.LastQuarter.angle..<360.0
+                LunarEvent.PhaseEvent.LastQuarter.phase..<360.0
         }
     }
 
@@ -149,7 +149,7 @@ public sealed interface LunarPhase {
             } else {
                 return all.minBy {
                     val midpointAngle = when (it) {
-                        is Primary -> it.angle
+                        is Primary -> it.phase
                         is Intermediate -> it.midpointAngle
                     }
                     (midpointAngle - normalized).absoluteValue

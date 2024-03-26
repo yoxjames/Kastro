@@ -72,15 +72,15 @@ public class LunarPhaseSequence(
         val accuracy = 0.5 / 1440.0 / daysInJulianCentury // accuracy: 30 seconds
         var t0 = start.julianDate.julianCentury
         var t1 = t0 + dT
-        var d0 = lunarPhase(t0, phase.angle.radians)
-        var d1 = lunarPhase(t1, phase.angle.radians)
+        var d0 = lunarPhase(t0, phase.phase.radians)
+        var d1 = lunarPhase(t1, phase.phase.radians)
         while (d0 * d1 > 0.0 || d1 < d0) {
             t0 = t1
             d0 = d1
             t1 += dT
-            d1 = lunarPhase(t1, phase.angle.radians)
+            d1 = lunarPhase(t1, phase.phase.radians)
         }
-        val tPhase = calculate(t0, t1, accuracy) { lunarPhase(it, phase.angle.radians) }
+        val tPhase = calculate(t0, t1, accuracy) { lunarPhase(it, phase.phase.radians) }
         val tjd = atJulianCentury(tPhase)
         return if (tjd.instant <= (this.start + limit)) phase.phaseInformation(time = tjd.instant) else null
     }

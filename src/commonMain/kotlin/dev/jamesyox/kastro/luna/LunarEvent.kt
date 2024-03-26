@@ -151,7 +151,7 @@ public sealed interface LunarEvent : Comparable<LunarEvent> {
             override val time: Instant,
         ) : PhaseEvent {
             public companion object : LunarPhase.Primary {
-                override val angle: Double = 0.0
+                override val phase: Double = 0.0
             }
 
             override fun equals(other: Any?): Boolean {
@@ -180,7 +180,7 @@ public sealed interface LunarEvent : Comparable<LunarEvent> {
             override val time: Instant,
         ) : PhaseEvent {
             public companion object : LunarPhase.Primary {
-                override val angle: Double = 90.0
+                override val phase: Double = 90.0
             }
 
             override fun equals(other: Any?): Boolean {
@@ -209,7 +209,7 @@ public sealed interface LunarEvent : Comparable<LunarEvent> {
             override val time: Instant,
         ) : PhaseEvent {
             public companion object : LunarPhase.Primary {
-                override val angle: Double = 180.0
+                override val phase: Double = 180.0
             }
 
             override fun equals(other: Any?): Boolean {
@@ -238,7 +238,7 @@ public sealed interface LunarEvent : Comparable<LunarEvent> {
             override val time: Instant,
         ) : PhaseEvent {
             public companion object : LunarPhase.Primary {
-                override val angle: Double = 270.0
+                override val phase: Double = 270.0
             }
 
             override fun equals(other: Any?): Boolean {
