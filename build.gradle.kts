@@ -15,6 +15,7 @@
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
 import kotlin.time.Duration.Companion.seconds
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -52,7 +53,9 @@ tasks.withType<DetektCreateBaselineTask> {
 kotlin {
     explicitApi()
     jvm {
-        jvmToolchain(libs.versions.jvm.get().toInt())
+        compilations.configureEach {
+            compilerOptions.options.jvmTarget.set(JvmTarget.JVM_1_8)
+        }
     }
     js(IR) {
         browser {

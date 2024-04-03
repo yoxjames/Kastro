@@ -2,6 +2,7 @@
 ### New Features
 * Added iOS/Mac targets. This can now be used in KMP projects targeting those platforms!
 * Added GoldenHourDuskEnd and GoldenHourDawnEnd to be consistent with `BlueHourDuskEnd` and `BlueHourDawnEnd`. The golden hour events were conspicuously missing.
+* Now compiled down to JRE 8 (1.8). Can be used with much older JVMs.
 
 ### Non-Passive
 * Renamed `TwilightPhase` to `SolarPhase` and made it so `TwilightPhases` represent _actual_ twilight phases rather than things like `SolarPhase.Day` or `SolarPhase.Night`. This was misleading.
