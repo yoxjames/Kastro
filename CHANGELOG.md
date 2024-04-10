@@ -1,4 +1,4 @@
-## Version: 0.2.0 (Pending)
+## Version: 0.2.0 
 ### New Features
 * Added iOS/Mac targets. This can now be used in KMP projects targeting those platforms!
 * Added GoldenHourDuskEnd and GoldenHourDawnEnd to be consistent with `BlueHourDuskEnd` and `BlueHourDawnEnd`. The golden hour events were conspicuously missing.

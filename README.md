@@ -15,16 +15,12 @@ groupId: `dev.jamesyox`
 
 artifactId: `kastro`
 
-version: `0.1.0`
-
->[!IMPORTANT]
->This project depends on kotlinx-datetime, so to use Kastro you must add that as a dependency. This will be corrected in the next release of Kastro where kotlinx-datetime will be made an api dependency.
+version: `0.2.0`
 
 ## Gradle
 If you use Gradle you should be able to add the following to your dependencies to use Kastro:
 ```kotlin
-implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.5.0")
-implementation("dev.jamesyox:kastro:0.1.0")
+implementation("dev.jamesyox:kastro:0.2.0")
 ```
 
 ## Solar Phases
