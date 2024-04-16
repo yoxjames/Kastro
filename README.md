@@ -1,5 +1,10 @@
 # Kastro
-Kastro is a pure Kotlin library for calculating astronimcal events for the Moon and Sun (Luna and Sol). What makes Kastro special is the lazily evaluated `Sequence`-based implementation, which allows you to use the data in powerful ways. Kastro builds on the work of Richard Körber (shred) in his library commons-suncalc. Much of the math in Kastro comes from commons-suncalc but was ported to common Kotlin. 
+![Maven Central Version](https://img.shields.io/maven-central/v/dev.jamesyox/kastro)
+[![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0)
+[![Kotlin](https://img.shields.io/badge/kotlin-1.9.23-blue.svg?logo=kotlin)](http://kotlinlang.org)
+
+Kastro is a Kotlin multiplatform library for calculating astronomical events for the Moon and Sun (Luna and Sol). What makes Kastro special is the lazily evaluated `Sequence`-based implementation, which allows you to use the data in powerful ways. Kastro builds on the work of Richard Körber (shred) in his library commons-suncalc. Much of the math in Kastro comes from commons-suncalc but was ported to common Kotlin. 
+
 
 > [!NOTE] 
 > For a pure Java API be sure to check out [Richard Körber's project](https://github.com/shred/commons-suncalc)!.
