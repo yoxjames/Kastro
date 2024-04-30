@@ -13,6 +13,11 @@ Kastro is a Kotlin multiplatform library for calculating astronomical events for
 Like commons-suncalc, this library strives on getting "close enough" without using a lot of computational resources. 
 Most calculations should be accurate to within a minute. Moon phase events may be off by as much as five minutes.
 
+## Live Demo
+https://yoxjames.github.io/kastro-demo/ 
+
+This is a static site which embeds Kastro as a Javascript library. A simple GUI has been created to allow you to easily try Kastro in your browser. 
+
 # Getting Started
 This project is deployed on Maven Central. Coordinates are as follows:
 
@@ -212,14 +217,14 @@ SolarEventSequence(
 Pull requests are welcome. Feel free to fork and open a PR. Beforeopening a PR, make sure that both tests detekt static analysis pass.
 
 ```bash
-./gradlew allTest detektAll
+./gradlew allTest allDetekt
 ```
 Should return successfully
 
 You may run into issues depending on your host OS. At the very least ensure that the following returns successfully:
 
 ```bash
-./gradlew jvmTest detektAll
+./gradlew jvmTest allDetekt
 ```
 
 This project is still alpha so API changes are possible, but we strive for no breaking changes.

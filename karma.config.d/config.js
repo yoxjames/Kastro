@@ -5,3 +5,5 @@ config.set({
         }
     }
 });
+
+delete config.webpack.optimization

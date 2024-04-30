@@ -12,10 +12,13 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 
+@file:OptIn(ExperimentalWasmDsl::class)
+
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
 import kotlin.time.Duration.Companion.seconds
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -50,6 +53,7 @@ tasks.withType<DetektCreateBaselineTask> {
     jvmTarget = libs.versions.jvm.get()
 }
 
+
 kotlin {
     explicitApi()
     jvm {
@@ -58,6 +62,7 @@ kotlin {
         }
     }
     js(IR) {
+        binaries.library()
         browser {
             testTask {
                 useKarma {
@@ -73,6 +78,19 @@ kotlin {
                 }
             }
         }
+    }
+
+    wasmJs {
+        binaries.library()
+        browser {
+            testTask {
+                useKarma {
+                    useChromium()
+                    useFirefox()
+                }
+            }
+        }
+        //nodejs { }
     }
 
     // Native: https://kotlinlang.org/docs/native-target-support.html
@@ -96,17 +114,22 @@ kotlin {
     mingwX64()
 
     sourceSets {
-        val commonMain by getting {
+        commonMain {
             dependencies {
                 api(libs.kotlinx.datetime)
             }
         }
-        val commonTest by getting {
+        commonTest {
             dependencies {
                 implementation(kotlin("test"))
             }
         }
-        val jsMain by getting {
+        jsMain {
+            dependencies {
+                implementation(npm("@js-joda/timezone", libs.versions.npm.joda.time.get()))
+            }
+        }
+        val wasmJsMain by getting {
             dependencies {
                 implementation(npm("@js-joda/timezone", libs.versions.npm.joda.time.get()))
             }
@@ -114,10 +137,8 @@ kotlin {
     }
 }
 
-allprojects {
-    repositories {
-        mavenCentral()
-    }
+repositories {
+    mavenCentral()
 }
 
 tasks.register("allDetekt") {

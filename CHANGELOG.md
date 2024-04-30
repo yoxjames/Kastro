@@ -1,3 +1,7 @@
+## Version: 0.3.0 (Pending Release)
+### New Features
+* Added `wasmJs` target. `wasmWasi` cannot be added yet as kotlinx-datetime does not support `wasmWasi`. Once kotlinx-datetime supports `wasmWasi` I plan to add support for it!
+
 ## Version: 0.2.0 
 ### New Features
 * Added iOS/Mac targets. This can now be used in KMP projects targeting those platforms!
