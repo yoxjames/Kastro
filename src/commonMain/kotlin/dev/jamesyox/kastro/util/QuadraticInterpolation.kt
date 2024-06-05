@@ -13,12 +13,14 @@
  */
 package dev.jamesyox.kastro.util
 
+import dev.drewhamilton.poko.Poko
 import kotlin.math.abs
 import kotlin.math.sqrt
 
 /**
  * Calculates the roots and extremum of a quadratic equation.
  */
+@Poko
 internal class QuadraticInterpolation private constructor(
     /**
      * Returns X of extremum. Can be outside [-1 .. 1].
@@ -96,45 +98,5 @@ internal class QuadraticInterpolation private constructor(
 
             return QuadraticInterpolation(xe, ye, root1, root2, numberOfRoots, isMaximum)
         }
-    }
-
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (other == null || this::class != other::class) return false
-
-        other as QuadraticInterpolation
-
-        if (xe != other.xe) return false
-        if (ye != other.ye) return false
-        if (_root1 != other._root1) return false
-        if (root2 != other.root2) return false
-        if (numberOfRoots != other.numberOfRoots) return false
-        if (isMaximum != other.isMaximum) return false
-        if (root1 != other.root1) return false
-
-        return true
-    }
-
-    override fun hashCode(): Int {
-        var result = xe.hashCode()
-        result = 31 * result + ye.hashCode()
-        result = 31 * result + _root1.hashCode()
-        result = 31 * result + root2.hashCode()
-        result = 31 * result + numberOfRoots
-        result = 31 * result + isMaximum.hashCode()
-        result = 31 * result + root1.hashCode()
-        return result
-    }
-
-    override fun toString(): String {
-        return "QuadraticInterpolation(" +
-            "xe=$xe, " +
-            "ye=$ye, " +
-            "_root1=$_root1, " +
-            "root2=$root2, " +
-            "numberOfRoots=$numberOfRoots, " +
-            "isMaximum=$isMaximum, " +
-            "root1=$root1" +
-            ")"
     }
 }

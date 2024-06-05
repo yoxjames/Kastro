@@ -14,6 +14,7 @@
 
 package dev.jamesyox.kastro.luna
 
+import dev.drewhamilton.poko.Poko
 import kotlinx.datetime.Instant
 
 /**
@@ -54,6 +55,7 @@ public sealed interface LunarEvent : Comparable<LunarEvent> {
         /**
          * When the moon rises above the horizon.
          */
+        @Poko
         public class Moonrise(
             override val time: Instant
         ) : HorizonEvent {
@@ -61,28 +63,12 @@ public sealed interface LunarEvent : Comparable<LunarEvent> {
              * [HorizonEventType] for [Moonrise].
              */
             public companion object : HorizonEventType
-
-            override fun equals(other: Any?): Boolean {
-                if (this === other) return true
-                if (other == null || this::class != other::class) return false
-
-                other as Moonrise
-
-                return time == other.time
-            }
-
-            override fun hashCode(): Int {
-                return time.hashCode()
-            }
-
-            override fun toString(): String {
-                return "Moonrise(time=$time)"
-            }
         }
 
         /**
          * When the moon sets below the horizon.
          */
+        @Poko
         public class Moonset(
             override val time: Instant
         ) : HorizonEvent {
@@ -90,23 +76,6 @@ public sealed interface LunarEvent : Comparable<LunarEvent> {
              * [HorizonEventType] for [Moonset].
              */
             public companion object : HorizonEventType
-
-            override fun equals(other: Any?): Boolean {
-                if (this === other) return true
-                if (other == null || this::class != other::class) return false
-
-                other as Moonset
-
-                return time == other.time
-            }
-
-            override fun hashCode(): Int {
-                return time.hashCode()
-            }
-
-            override fun toString(): String {
-                return "Moonset(time=$time)"
-            }
         }
     }
 
@@ -147,28 +116,12 @@ public sealed interface LunarEvent : Comparable<LunarEvent> {
          *
          * See [Wikipedia: New Moon](https://en.wikipedia.org/wiki/New_moon)
          */
+        @Poko
         public class NewMoon(
             override val time: Instant,
         ) : PhaseEvent {
             public companion object : LunarPhase.Primary {
                 override val phase: Double = 0.0
-            }
-
-            override fun equals(other: Any?): Boolean {
-                if (this === other) return true
-                if (other == null || this::class != other::class) return false
-
-                other as NewMoon
-
-                return time == other.time
-            }
-
-            override fun hashCode(): Int {
-                return time.hashCode()
-            }
-
-            override fun toString(): String {
-                return "NewMoon(time=$time)"
             }
         }
 
@@ -176,28 +129,12 @@ public sealed interface LunarEvent : Comparable<LunarEvent> {
          * Moment when half of the lunar disk is illuminated. This event also is the start of the intermediate phase
          * [LunarPhase.Intermediate.WaxingGibbous].
          */
+        @Poko
         public class FirstQuarter(
             override val time: Instant,
         ) : PhaseEvent {
             public companion object : LunarPhase.Primary {
                 override val phase: Double = 90.0
-            }
-
-            override fun equals(other: Any?): Boolean {
-                if (this === other) return true
-                if (other == null || this::class != other::class) return false
-
-                other as FirstQuarter
-
-                return time == other.time
-            }
-
-            override fun hashCode(): Int {
-                return time.hashCode()
-            }
-
-            override fun toString(): String {
-                return "FirstQuarter(time=$time)"
             }
         }
 
@@ -205,28 +142,12 @@ public sealed interface LunarEvent : Comparable<LunarEvent> {
          * Moment when all of the lunar disk is illuminated. This event also is the start of the intermediate phase
          * [LunarPhase.Intermediate.WaningGibbous].
          */
+        @Poko
         public class FullMoon(
             override val time: Instant,
         ) : PhaseEvent {
             public companion object : LunarPhase.Primary {
                 override val phase: Double = 180.0
-            }
-
-            override fun equals(other: Any?): Boolean {
-                if (this === other) return true
-                if (other == null || this::class != other::class) return false
-
-                other as FullMoon
-
-                return time == other.time
-            }
-
-            override fun hashCode(): Int {
-                return time.hashCode()
-            }
-
-            override fun toString(): String {
-                return "FullMoon(time=$time)"
             }
         }
 
@@ -234,28 +155,12 @@ public sealed interface LunarEvent : Comparable<LunarEvent> {
          * Moment when half of the lunar disk is illuminated. This event also is the start of the intermediate phase
          * [LunarPhase.Intermediate.WaningCrescent].
          */
+        @Poko
         public class LastQuarter(
             override val time: Instant,
         ) : PhaseEvent {
             public companion object : LunarPhase.Primary {
                 override val phase: Double = 270.0
-            }
-
-            override fun equals(other: Any?): Boolean {
-                if (this === other) return true
-                if (other == null || this::class != other::class) return false
-
-                other as LastQuarter
-
-                return time == other.time
-            }
-
-            override fun hashCode(): Int {
-                return time.hashCode()
-            }
-
-            override fun toString(): String {
-                return "LastQuarter(time=$time)"
             }
         }
     }

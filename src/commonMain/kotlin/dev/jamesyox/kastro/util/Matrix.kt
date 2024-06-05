@@ -15,6 +15,8 @@
 
 package dev.jamesyox.kastro.util
 
+import dev.drewhamilton.poko.ArrayContentBased
+import dev.drewhamilton.poko.Poko
 import kotlin.math.cos
 import kotlin.math.sin
 
@@ -22,20 +24,23 @@ import kotlin.math.sin
  * A three-dimensional matrix.
  */
 @Suppress("LongParameterList")
+@Poko
 internal class Matrix(
-    d1: Double,
-    d2: Double,
-    d3: Double,
-    d4: Double,
-    d5: Double,
-    d6: Double,
-    d7: Double,
-    d8: Double,
-    d9: Double
+    @ArrayContentBased private val mx: DoubleArray
 ) {
-    constructor() : this(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+    constructor(
+        d1: Double,
+        d2: Double,
+        d3: Double,
+        d4: Double,
+        d5: Double,
+        d6: Double,
+        d7: Double,
+        d8: Double,
+        d9: Double
+    ) : this(doubleArrayOf(d1, d2, d3, d4, d5, d6, d7, d8, d9))
 
-    private val mx: DoubleArray = doubleArrayOf(d1, d2, d3, d4, d5, d6, d7, d8, d9)
+    constructor() : this(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
 
     /**
      * Transposes this matrix.
@@ -179,23 +184,6 @@ internal class Matrix(
     private operator fun set(r: Int, c: Int, v: Double) {
         require(!(r < 0 || r > 2 || c < 0 || c > 2)) { "row/column out of range: $r:$c" }
         mx[r * 3 + c] = v
-    }
-
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (other == null || this::class != other::class) return false
-
-        other as Matrix
-
-        return mx.contentEquals(other.mx)
-    }
-
-    override fun hashCode(): Int {
-        return mx.contentHashCode()
-    }
-
-    override fun toString(): String {
-        return "Matrix(mx=${mx.contentToString()})"
     }
 
     companion object {

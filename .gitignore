@@ -41,3 +41,4 @@ bin/
 kotlin-js-store
 *.jar
 !gradle/wrapper/gradle-wrapper.jar
+.kotlin

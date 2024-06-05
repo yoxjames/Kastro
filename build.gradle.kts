@@ -28,6 +28,7 @@ plugins {
     alias(libs.plugins.kover)
     alias(libs.plugins.binarycompatibility)
     alias(libs.plugins.nexus)
+    alias(libs.plugins.poko)
     `maven-publish`
     signing
 }
@@ -53,15 +54,17 @@ tasks.withType<DetektCreateBaselineTask> {
     jvmTarget = libs.versions.jvm.get()
 }
 
-
 kotlin {
     explicitApi()
     jvm {
-        compilations.configureEach {
-            compilerOptions.options.jvmTarget.set(JvmTarget.JVM_1_8)
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_1_8)
         }
     }
     js(IR) {
+        compilerOptions {
+            target.set("es2015")
+        }
         binaries.library()
         browser {
             testTask {

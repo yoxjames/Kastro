@@ -14,9 +14,12 @@
 
 package dev.jamesyox.kastro.luna
 
+import dev.drewhamilton.poko.Poko
+
 /**
  * Calculates the illumination of the moon.
  */
+@Poko
 public class LunarIllumination(
 
     /**
@@ -43,31 +46,7 @@ public class LunarIllumination(
      * moon lying on its back).
      */
     public val illuminationAngle: Double
-) {
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (other == null || this::class != other::class) return false
-
-        other as LunarIllumination
-
-        if (fraction != other.fraction) return false
-        if (phase != other.phase) return false
-        if (illuminationAngle != other.illuminationAngle) return false
-
-        return true
-    }
-
-    override fun hashCode(): Int {
-        var result = fraction.hashCode()
-        result = 31 * result + phase.hashCode()
-        result = 31 * result + illuminationAngle.hashCode()
-        return result
-    }
-
-    override fun toString(): String {
-        return "LunarIllumination(fraction=$fraction, phase=$phase, angle=$illuminationAngle)"
-    }
-}
+)
 
 /**
  * The closest [LunarPhase] to the [LunarIllumination]'s angle.

@@ -14,11 +14,13 @@
 
 package dev.jamesyox.kastro.luna
 
+import dev.drewhamilton.poko.Poko
 import dev.jamesyox.kastro.util.degrees
 
 /**
  * Calculates the position of the moon.
  */
+@Poko
 public class LunarPosition internal constructor(
     /**
      * Distance to the moon in kilometers.
@@ -49,37 +51,6 @@ public class LunarPosition internal constructor(
      * Parallactic angle of the moon, in degrees.
      */
     public val parallacticAngle: Double = parallacticAngleRad.degrees
-
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (other == null || this::class != other::class) return false
-
-        other as LunarPosition
-
-        if (distance != other.distance) return false
-        if (azimuth != other.azimuth) return false
-        if (altitude != other.altitude) return false
-        if (parallacticAngle != other.parallacticAngle) return false
-
-        return true
-    }
-
-    override fun hashCode(): Int {
-        var result = distance.hashCode()
-        result = 31 * result + azimuth.hashCode()
-        result = 31 * result + altitude.hashCode()
-        result = 31 * result + parallacticAngle.hashCode()
-        return result
-    }
-
-    override fun toString(): String {
-        return "LunarPosition(" +
-            "distance=$distance, " +
-            "azimuth=$azimuth, " +
-            "altitude=$altitude, " +
-            "parallacticAngle=$parallacticAngle" +
-            ")"
-    }
 }
 
 /**

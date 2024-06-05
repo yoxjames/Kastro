@@ -1,15 +1,16 @@
 [versions]
 current = "0.3.0"
 benmanes-versions = "0.51.0"
-kotlin = "1.9.23"
+kotlin = "2.0.0"
 jvm = "17"
 detekt = "1.23.6"
 dokka = "1.9.20"
-kotlin-datetime = "0.5.0"
+kotlin-datetime = "0.6.0"
 npm-joda-time = "2.18.3"
-kover = "0.7.6"
+kover = "0.8.0"
 binary-compatibility-validator = "0.14.0"
 nexus = "2.0.0"
+poko = "0.16.0"
 
 [libraries]
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlin-datetime" }
@@ -24,3 +25,4 @@ kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
 benmanes-versions = { id = "com.github.ben-manes.versions", version.ref = "benmanes-versions" }
 binarycompatibility = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "binary-compatibility-validator"}
 nexus = { id = "io.github.gradle-nexus.publish-plugin", version.ref = "nexus" }
+poko = { id = "dev.drewhamilton.poko", version.ref = "poko" }

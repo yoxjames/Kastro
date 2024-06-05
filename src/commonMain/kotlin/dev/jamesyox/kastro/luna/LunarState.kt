@@ -14,6 +14,7 @@
 
 package dev.jamesyox.kastro.luna
 
+import dev.drewhamilton.poko.Poko
 import dev.jamesyox.kastro.common.HorizonMovementState
 import dev.jamesyox.kastro.common.HorizonState
 import dev.jamesyox.kastro.common.fromAzimuth
@@ -22,6 +23,7 @@ import dev.jamesyox.kastro.common.fromAzimuth
  * Single class containing all the information Kastro can calculate about Luna for a given instant of time. Contains
  * the result of multiple calculations.
  */
+@Poko
 public class LunarState internal constructor(
     /**
      * Information pertaining to the Lunar position
@@ -51,26 +53,4 @@ public class LunarState internal constructor(
      * Whether the moon is rising or setting
      */
     public val horizonMovementState: HorizonMovementState = fromAzimuth(position.azimuth)
-
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (other == null || this::class != other::class) return false
-
-        other as LunarState
-
-        if (position != other.position) return false
-        if (illumination != other.illumination) return false
-
-        return true
-    }
-
-    override fun hashCode(): Int {
-        var result = position.hashCode()
-        result = 31 * result + illumination.hashCode()
-        return result
-    }
-
-    override fun toString(): String {
-        return "LunarState(position=$position, illumination=$illumination, phase=$phase, horizonState=$horizonState)"
-    }
 }

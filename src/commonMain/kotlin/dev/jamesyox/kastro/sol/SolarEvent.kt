@@ -14,6 +14,7 @@
 
 package dev.jamesyox.kastro.sol
 
+import dev.drewhamilton.poko.Poko
 import kotlinx.datetime.Instant
 
 /**
@@ -55,6 +56,7 @@ public sealed interface SolarEvent : Comparable<SolarEvent> {
     /**
      * Moment when the top edge of the sun completely disappears behind the horizon
      */
+    @Poko
     public class Sunset(
         override val time: Instant
     ) : HorizonEvent.Simple {
@@ -62,224 +64,96 @@ public sealed interface SolarEvent : Comparable<SolarEvent> {
             override val angle: Double = 0.0
             override val angularPosition: Double = 1.0
         }
-
-        override fun equals(other: Any?): Boolean {
-            if (this === other) return true
-            if (other == null || this::class != other::class) return false
-
-            other as Sunset
-
-            return time == other.time
-        }
-
-        override fun hashCode(): Int {
-            return time.hashCode()
-        }
-
-        override fun toString(): String {
-            return "Sunset(time=$time)"
-        }
     }
 
     /**
      * Moment when the sun sets to 0.0 degrees. Begins [SolarPhase.CivilDusk].
      */
+    @Poko
     public class CivilDusk(
         override val time: Instant
     ) : TwilightEvent {
         public companion object : SolarEventType.Angle.Dusk {
             override val angle: Double = SolarPhase.CivilDusk.startAngle
         }
-
-        override fun equals(other: Any?): Boolean {
-            if (this === other) return true
-            if (other == null || this::class != other::class) return false
-
-            other as CivilDusk
-
-            return time == other.time
-        }
-
-        override fun hashCode(): Int {
-            return time.hashCode()
-        }
-
-        override fun toString(): String {
-            return "CivilDusk(time=$time)"
-        }
     }
 
     /**
      * Moment when the sun sets to -6.0 degrees. Begins [SolarPhase.NauticalDusk].
      */
+    @Poko
     public class NauticalDusk(
         override val time: Instant
     ) : TwilightEvent {
         public companion object : SolarEventType.Angle.Dusk {
             override val angle: Double = SolarPhase.NauticalDusk.startAngle
         }
-
-        override fun equals(other: Any?): Boolean {
-            if (this === other) return true
-            if (other == null || this::class != other::class) return false
-
-            other as NauticalDusk
-
-            return time == other.time
-        }
-
-        override fun hashCode(): Int {
-            return time.hashCode()
-        }
-
-        override fun toString(): String {
-            return "NauticalDusk(time=$time)"
-        }
     }
 
     /**
      * Moment when the sun sets to -12.0 degrees. Begins [SolarPhase.AstronomicalDusk].
      */
+    @Poko
     public class AstronomicalDusk(
         override val time: Instant
     ) : TwilightEvent {
         public companion object : SolarEventType.Angle.Dusk {
             override val angle: Double = SolarPhase.AstronomicalDusk.startAngle
         }
-
-        override fun equals(other: Any?): Boolean {
-            if (this === other) return true
-            if (other == null || this::class != other::class) return false
-
-            other as AstronomicalDusk
-
-            return time == other.time
-        }
-
-        override fun hashCode(): Int {
-            return time.hashCode()
-        }
-
-        override fun toString(): String {
-            return "AstronomicalDusk(time=$time)"
-        }
     }
 
     /**
      * Moment when the sun sets to -18.0 degrees. Begins [SolarPhase.Night].
      */
+    @Poko
     public class Night(
         override val time: Instant
     ) : TwilightEvent {
         public companion object : SolarEventType.Angle.Dusk {
             override val angle: Double = SolarPhase.Night.startAngle
         }
-
-        override fun equals(other: Any?): Boolean {
-            if (this === other) return true
-            if (other == null || this::class != other::class) return false
-
-            other as Night
-
-            return time == other.time
-        }
-
-        override fun hashCode(): Int {
-            return time.hashCode()
-        }
-
-        override fun toString(): String {
-            return "Night(time=$time)"
-        }
     }
 
     /**
      * Moment when the sun rises to -18.0 degrees. Begins [SolarPhase.AstronomicalDawn].
      */
+    @Poko
     public class AstronomicalDawn(
         override val time: Instant
     ) : TwilightEvent {
         public companion object : SolarEventType.Angle.Dawn {
             override val angle: Double = SolarPhase.AstronomicalDawn.startAngle
         }
-
-        override fun equals(other: Any?): Boolean {
-            if (this === other) return true
-            if (other == null || this::class != other::class) return false
-
-            other as AstronomicalDawn
-
-            return time == other.time
-        }
-
-        override fun hashCode(): Int {
-            return time.hashCode()
-        }
-
-        override fun toString(): String {
-            return "AstronomicalDawn(time=$time)"
-        }
     }
 
     /**
      * Moment when the sun rises to -12.0 degrees. Begins [SolarPhase.NauticalDawn].
      */
+    @Poko
     public class NauticalDawn(
         override val time: Instant
     ) : TwilightEvent {
         public companion object : SolarEventType.Angle.Dawn {
             override val angle: Double = SolarPhase.NauticalDawn.startAngle
         }
-
-        override fun equals(other: Any?): Boolean {
-            if (this === other) return true
-            if (other == null || this::class != other::class) return false
-
-            other as NauticalDawn
-
-            return time == other.time
-        }
-
-        override fun hashCode(): Int {
-            return time.hashCode()
-        }
-
-        override fun toString(): String {
-            return "NauticalDawn(time=$time)"
-        }
     }
 
     /**
      * Moment when the sun rises to -6.0 degrees. Begins [SolarPhase.CivilDawn].
      */
+    @Poko
     public class CivilDawn(
         override val time: Instant
     ) : TwilightEvent {
         public companion object : SolarEventType.Angle.Dawn {
             override val angle: Double = SolarPhase.CivilDawn.startAngle
         }
-
-        override fun equals(other: Any?): Boolean {
-            if (this === other) return true
-            if (other == null || this::class != other::class) return false
-
-            other as CivilDawn
-
-            return time == other.time
-        }
-
-        override fun hashCode(): Int {
-            return time.hashCode()
-        }
-
-        override fun toString(): String {
-            return "CivilDawn(time=$time)"
-        }
     }
 
     /**
      * Moment when the top edge of the sun first rises from the horizon.
      */
+    @Poko
     public class Sunrise(
         override val time: Instant
     ) : HorizonEvent.Simple {
@@ -287,220 +161,92 @@ public sealed interface SolarEvent : Comparable<SolarEvent> {
             override val angle: Double = 0.0
             override val angularPosition: Double = 1.0
         }
-
-        override fun equals(other: Any?): Boolean {
-            if (this === other) return true
-            if (other == null || this::class != other::class) return false
-
-            other as Sunrise
-
-            return time == other.time
-        }
-
-        override fun hashCode(): Int {
-            return time.hashCode()
-        }
-
-        override fun toString(): String {
-            return "Sunrise(time=$time)"
-        }
     }
 
     /**
      * Moment when the solar angle rises to 0.0. Begins [SolarPhase.Day].
      */
+    @Poko
     public class Day(
         override val time: Instant
     ) : TwilightEvent {
         public companion object : SolarEventType.Angle.Dawn {
             override val angle: Double = SolarPhase.Day.startAngle
         }
-
-        override fun equals(other: Any?): Boolean {
-            if (this === other) return true
-            if (other == null || this::class != other::class) return false
-
-            other as Day
-
-            return time == other.time
-        }
-
-        override fun hashCode(): Int {
-            return time.hashCode()
-        }
-
-        override fun toString(): String {
-            return "Day(time=$time)"
-        }
     }
 
     /**
      * When the solar angle sets to 0.0. Marks the start of [LightState.GoldenHourDusk].
      */
+    @Poko
     public class GoldenHourDusk(
         override val time: Instant
     ) : LightEvent {
         public companion object : SolarEventType.Angle.Dusk {
             override val angle: Double = LightPhase.GoldenHour.duskAngle
         }
-
-        override fun equals(other: Any?): Boolean {
-            if (this === other) return true
-            if (other == null || this::class != other::class) return false
-
-            other as GoldenHourDusk
-
-            return time == other.time
-        }
-
-        override fun hashCode(): Int {
-            return time.hashCode()
-        }
-
-        override fun toString(): String {
-            return "GoldenHourDusk(time=$time)"
-        }
     }
 
     /**
      * When the solar angle rises to -6.0. Marks the start of [LightState.GoldenHourDawn].
      */
+    @Poko
     public class GoldenHourDawn(
         override val time: Instant
     ) : LightEvent {
         public companion object : SolarEventType.Angle.Dawn {
             override val angle: Double = LightPhase.GoldenHour.dawnAngle
         }
-
-        override fun equals(other: Any?): Boolean {
-            if (this === other) return true
-            if (other == null || this::class != other::class) return false
-
-            other as GoldenHourDawn
-
-            return time == other.time
-        }
-
-        override fun hashCode(): Int {
-            return time.hashCode()
-        }
-
-        override fun toString(): String {
-            return "GoldenHourDawn(time=$time)"
-        }
     }
 
     /**
      * When the solar angle sets to -4.0. Marks the start of [LightState.BlueHourDusk].
      */
+    @Poko
     public class BlueHourDusk(
         override val time: Instant
     ) : LightEvent {
         public companion object : SolarEventType.Angle.Dusk {
             override val angle: Double = LightPhase.BlueHour.duskAngle
         }
-
-        override fun equals(other: Any?): Boolean {
-            if (this === other) return true
-            if (other == null || this::class != other::class) return false
-
-            other as BlueHourDusk
-
-            return time == other.time
-        }
-
-        override fun hashCode(): Int {
-            return time.hashCode()
-        }
-
-        override fun toString(): String {
-            return "BlueHourDusk(time=$time)"
-        }
     }
 
     /**
      * When the solar angle rises to -8.0. Marks the start of [LightState.BlueHourDawn].
      */
+    @Poko
     public class BlueHourDawn(
         override val time: Instant
     ) : LightEvent {
         public companion object : SolarEventType.Angle.Dawn {
             override val angle: Double = LightPhase.BlueHour.dawnAngle
         }
-
-        override fun equals(other: Any?): Boolean {
-            if (this === other) return true
-            if (other == null || this::class != other::class) return false
-
-            other as BlueHourDawn
-
-            return time == other.time
-        }
-
-        override fun hashCode(): Int {
-            return time.hashCode()
-        }
-
-        override fun toString(): String {
-            return "BlueHourDawn(time=$time)"
-        }
     }
 
     /**
      * Solar noon. When the sun is at its highest position in the sky for a given cycle.
      */
+    @Poko
     public class Noon(
         override val time: Instant
     ) : SolarEvent {
         public companion object : SolarEventType.Culmination
-
-        override fun equals(other: Any?): Boolean {
-            if (this === other) return true
-            if (other == null || this::class != other::class) return false
-
-            other as Noon
-
-            return time == other.time
-        }
-
-        override fun hashCode(): Int {
-            return time.hashCode()
-        }
-
-        override fun toString(): String {
-            return "Noon(time=$time)"
-        }
     }
 
     /**
      * The opposite of solar noon. When the sun is at its lowest position in the sky for a given cycle.
      */
+    @Poko
     public class Nadir(
         override val time: Instant
     ) : SolarEvent {
         public companion object : SolarEventType.Culmination
-
-        override fun equals(other: Any?): Boolean {
-            if (this === other) return true
-            if (other == null || this::class != other::class) return false
-
-            other as Nadir
-
-            return time == other.time
-        }
-
-        override fun hashCode(): Int {
-            return time.hashCode()
-        }
-
-        override fun toString(): String {
-            return "Nadir(time=$time)"
-        }
     }
 
     /**
      * When the bottom edge of the sun touches the horizon when the sun is setting.
      */
+    @Poko
     public class SunsetBegin(
         override val time: Instant
     ) : HorizonEvent {
@@ -508,28 +254,12 @@ public sealed interface SolarEvent : Comparable<SolarEvent> {
             override val angle: Double = 0.0
             override val angularPosition: Double = -1.0
         }
-
-        override fun equals(other: Any?): Boolean {
-            if (this === other) return true
-            if (other == null || this::class != other::class) return false
-
-            other as SunsetBegin
-
-            return time == other.time
-        }
-
-        override fun hashCode(): Int {
-            return time.hashCode()
-        }
-
-        override fun toString(): String {
-            return "SunsetBegin(time=$time)"
-        }
     }
 
     /**
      * When the bottom edge of the sun rises above the horizon.
      */
+    @Poko
     public class SunriseEnd(
         override val time: Instant
     ) : HorizonEvent {
@@ -537,134 +267,53 @@ public sealed interface SolarEvent : Comparable<SolarEvent> {
             override val angle: Double = 0.0
             override val angularPosition: Double = -1.0
         }
-
-        override fun equals(other: Any?): Boolean {
-            if (this === other) return true
-            if (other == null || this::class != other::class) return false
-
-            other as SunriseEnd
-
-            return time == other.time
-        }
-
-        override fun hashCode(): Int {
-            return time.hashCode()
-        }
-
-        override fun toString(): String {
-            return "SunriseEnd(time=$time)"
-        }
     }
 
     /**
      * The end of [LightState.BlueHourDusk]. Happens when the sun sets past -8.0 degrees.
      */
+    @Poko
     public class BlueHourDuskEnd(
         override val time: Instant
     ) : LightEvent {
         public companion object : SolarEventType.Angle.Dusk {
             override val angle: Double = LightPhase.BlueHour.dawnAngle
         }
-
-        override fun equals(other: Any?): Boolean {
-            if (this === other) return true
-            if (other == null || this::class != other::class) return false
-
-            other as BlueHourDuskEnd
-
-            return time == other.time
-        }
-
-        override fun hashCode(): Int {
-            return time.hashCode()
-        }
-
-        override fun toString(): String {
-            return "BlueHourDuskEnd(time=$time)"
-        }
     }
 
     /**
      * The end of [LightState.BlueHourDawn]. Happens when the sun rises past -4.0 degrees.
      */
+    @Poko
     public class BlueHourDawnEnd(
         override val time: Instant
     ) : LightEvent {
         public companion object : SolarEventType.Angle.Dawn {
             override val angle: Double = LightPhase.BlueHour.duskAngle
         }
-
-        override fun equals(other: Any?): Boolean {
-            if (this === other) return true
-            if (other == null || this::class != other::class) return false
-
-            other as BlueHourDawnEnd
-
-            return time == other.time
-        }
-
-        override fun hashCode(): Int {
-            return time.hashCode()
-        }
-
-        override fun toString(): String {
-            return "BlueHourDawnEnd(time=$time)"
-        }
     }
 
     /**
      * The end of [LightState.GoldenHourDusk]. Happens when the sun sets past - 6.0 degrees.
      */
+    @Poko
     public class GoldenHourDuskEnd(
         override val time: Instant
     ) : LightEvent {
         public companion object : SolarEventType.Angle.Dusk {
             override val angle: Double = LightPhase.GoldenHour.dawnAngle
         }
-
-        override fun equals(other: Any?): Boolean {
-            if (this === other) return true
-            if (other == null || this::class != other::class) return false
-
-            other as GoldenHourDuskEnd
-
-            return time == other.time
-        }
-
-        override fun hashCode(): Int {
-            return time.hashCode()
-        }
-
-        override fun toString(): String {
-            return "GoldenHourDuskEnd(time=$time)"
-        }
     }
 
     /**
      * The end of [LightState.GoldenHourDawn]. Happens when the sun rises past 6.0 degrees.
      */
+    @Poko
     public class GoldenHourDawnEnd(
         override val time: Instant
     ) : LightEvent {
         public companion object : SolarEventType.Angle.Dawn {
             override val angle: Double = LightPhase.GoldenHour.duskAngle
-        }
-
-        override fun equals(other: Any?): Boolean {
-            if (this === other) return true
-            if (other == null || this::class != other::class) return false
-
-            other as GoldenHourDawnEnd
-
-            return time == other.time
-        }
-
-        override fun hashCode(): Int {
-            return time.hashCode()
-        }
-
-        override fun toString(): String {
-            return "GoldenHourDawnEnd(time=$time)"
         }
     }
 }

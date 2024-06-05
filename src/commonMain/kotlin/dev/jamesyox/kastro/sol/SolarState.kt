@@ -14,6 +14,7 @@
 
 package dev.jamesyox.kastro.sol
 
+import dev.drewhamilton.poko.Poko
 import dev.jamesyox.kastro.common.HorizonMovementState
 import dev.jamesyox.kastro.common.HorizonState
 import dev.jamesyox.kastro.common.fromAzimuth
@@ -24,6 +25,7 @@ import dev.jamesyox.kastro.util.degrees
  * Single class containing all the information Kastro can calculate about Sol for a given instant of time. Contains
  * the result of multiple calculations.
  */
+@Poko
 public class SolarState internal constructor(
     /**
      * Sun azimuth, in degrees, north-based.
@@ -143,44 +145,5 @@ public class SolarState internal constructor(
         }
         trueAltitude > 0.0 -> SolarPhase.Day
         else -> SolarPhase.Night
-    }
-
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (other == null || this::class != other::class) return false
-
-        other as SolarState
-
-        if (azimuth != other.azimuth) return false
-        if (distance != other.distance) return false
-        if (atmosphericRefractionRad != other.atmosphericRefractionRad) return false
-        if (trueAltitudeRad != other.trueAltitudeRad) return false
-        if (parallaxRad != other.parallaxRad) return false
-
-        return true
-    }
-
-    override fun hashCode(): Int {
-        var result = azimuth.hashCode()
-        result = 31 * result + distance.hashCode()
-        result = 31 * result + atmosphericRefractionRad.hashCode()
-        result = 31 * result + trueAltitudeRad.hashCode()
-        result = 31 * result + parallaxRad.hashCode()
-        return result
-    }
-
-    override fun toString(): String {
-        return "SunState(" +
-            "azimuth=$azimuth, " +
-            "distance=$distance, " +
-            "atmosphericRefraction=$atmosphericRefraction, " +
-            "trueAltitude=$trueAltitude, " +
-            "parallax=$parallax, " +
-            "altitude=$altitude, " +
-            "horizonState=$horizonState, " +
-            "solarPhase=$solarPhase, " +
-            "lightStates=$lightStates, " +
-            "horizonMovementState=$horizonMovementState" +
-            ")"
     }
 }

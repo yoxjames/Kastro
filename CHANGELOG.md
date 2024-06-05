@@ -1,6 +1,13 @@
 ## Version: 0.3.0 (Pending Release)
 ### New Features
 * Added `wasmJs` target. `wasmWasi` cannot be added yet as kotlinx-datetime does not support `wasmWasi`. Once kotlinx-datetime supports `wasmWasi` I plan to add support for it!
+* JS compilation now targets ECMAScript 2015.
+
+### Other
+* Upgraded Kotlin to 2.0.0
+* Upgraded kotlinx-datetime to 6.0
+* Added Poko to make dealing with public "data" classes easier. Should be completely passive from a user perspective.
+* Upgraded Gradle to 8.8. Fixed some deprecated Gradle config
 
 ## Version: 0.2.0 
 ### New Features
