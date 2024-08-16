@@ -53,6 +53,19 @@ class ReadmeExamples {
     }
 
     @Test @Ignore
+    fun WhatTimeDidTheSunLastSet() {
+        val lastSunset = SolarEventSequence(
+            start = clock.now(),
+            latitude = latitude,
+            longitude = longitude,
+            requestedSolarEvents = listOf(SolarEvent.Sunset), // Not required but makes calculations more efficient,
+            reverse = true // Sequence goes backwards in time
+        ).first() // This example is safe, but first() can throw on empty sequences!
+
+        println(lastSunset)
+    }
+
+    @Test @Ignore
     fun WhenIsSolarNoonOnThe13thOfDecember() {
         val solarNoon = SolarEventSequence(
             start = LocalDate(2023, 12, 13).atStartOfDayIn(timeZone),
@@ -140,6 +153,19 @@ class ReadmeExamples {
     }
 
     @Test @Ignore
+    fun WhenWasTheLastMoonrise() {
+        val lastMoonrise = LunarHorizonEventSequence(
+            start = clock.now(),
+            latitude = latitude,
+            longitude = longitude,
+            requestedHorizonEvents = listOf(LunarEvent.HorizonEvent.Moonrise),
+            reverse = true
+        ).first()
+
+        println(lastMoonrise)
+    }
+
+    @Test @Ignore
     fun WhenIsTheNextFullMoon() {
         val nextFullMoon = LunarPhaseSequence(
             start = clock.now(),
@@ -147,6 +173,17 @@ class ReadmeExamples {
         ).first()
 
         println(nextFullMoon)
+    }
+
+    @Test @Ignore
+    fun WhenWasTheLastFullMoon() {
+        val lastFullMoon = LunarPhaseSequence(
+            start = clock.now(),
+            requestedLunarPhases = listOf(LunarEvent.PhaseEvent.FullMoon),
+            reverse = true
+        ).first()
+
+        println(lastFullMoon)
     }
 
     @Test @Ignore

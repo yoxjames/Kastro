@@ -1,4 +1,4 @@
-## Version: 0.3.0 (Pending Release. Should be done very soon)
+## Version: 0.3.0 
 ### New Features
 * Added `wasmJs` target. `wasmWasi` cannot be added yet as kotlinx-datetime does not support `wasmWasi`. Once kotlinx-datetime supports `wasmWasi` I plan to add support for it!
 * JS compilation now targets ECMAScript 2015.

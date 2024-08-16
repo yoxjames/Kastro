@@ -1,10 +1,9 @@
 # Kastro
 ![Maven Central Version](https://img.shields.io/maven-central/v/dev.jamesyox/kastro)
 [![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0)
-[![Kotlin](https://img.shields.io/badge/kotlin-1.9.23-blue.svg?logo=kotlin)](http://kotlinlang.org)
+[![Kotlin](https://img.shields.io/badge/kotlin-2.0.10-blue.svg?logo=kotlin)](http://kotlinlang.org)
 
 Kastro is a Kotlin multiplatform library for calculating astronomical events for the Moon and Sun (Luna and Sol). What makes Kastro special is the lazily evaluated `Sequence`-based implementation, which allows you to use the data in powerful ways. Kastro builds on the work of Richard Körber (shred) in his library commons-suncalc. Much of the math in Kastro comes from commons-suncalc but was ported to common Kotlin. 
-
 
 > [!NOTE] 
 > For a pure Java API be sure to check out [Richard Körber's project](https://github.com/shred/commons-suncalc)!.
@@ -25,12 +24,12 @@ groupId: `dev.jamesyox`
 
 artifactId: `kastro`
 
-version: `0.2.0`
+version: `0.3.0`
 
 ## Gradle
 If you use Gradle you should be able to add the following to your dependencies to use Kastro:
 ```kotlin
-implementation("dev.jamesyox:kastro:0.2.0")
+implementation("dev.jamesyox:kastro:0.3.0")
 ```
 
 ## Solar Phases
@@ -86,6 +85,17 @@ val nextSunset = SolarEventSequence(
     latitude = 39.7348,
     longitude = -104.9653,
     requestedSolarEvents = listOf(SolarEvent.Sunset) // Not required but makes calculations more efficient
+).first() // This example is safe, but first() can throw on empty sequences!
+```
+### What time did the sun last set in Denver, CO?
+This use case uses the `reverse` parameter to return a `Sequence` that goes backwards in time. All sequences in Kastro support going in reverse chronological order!
+```kotlin
+val lastSunset = SolarEventSequence(
+    start = clock.now(),
+    latitude = latitude,
+    longitude = longitude,
+    requestedSolarEvents = listOf(SolarEvent.Sunset), // Not required but makes calculations more efficient,
+    reverse = true // Sequence goes backwards in time
 ).first() // This example is safe, but first() can throw on empty sequences!
 ```
 
@@ -163,6 +173,17 @@ val nextMoonrise = LunarHorizonEventSequence(
 ).first()
 ```
 
+### When was the last moonrise in Denver, CO?
+```kotlin 
+val lastMoonrise = LunarHorizonEventSequence(
+    start = clock.now(),
+    latitude = latitude,
+    longitude = longitude,
+    requestedHorizonEvents = listOf(LunarEvent.HorizonEvent.Moonrise),
+    reverse = true
+).first()
+```
+
 ### When is the next full moon?
 ```kotlin
 val nextFullMoon = LunarPhaseSequence(
@@ -170,7 +191,16 @@ val nextFullMoon = LunarPhaseSequence(
     requestedLunarPhases = listOf(LunarEvent.PhaseEvent.FullMoon)
 ).first()
 ```
-
+>[!NOTE]
+> This example does not require location because moon phases are the same across Earth.
+### When was the last full moon?
+```kotlin
+val lastFullMoon = LunarPhaseSequence(
+    start = clock.now(),
+    requestedLunarPhases = listOf(LunarEvent.PhaseEvent.FullMoon),
+    reverse = true
+).first()
+```
 >[!NOTE]
 > This example does not require location because moon phases are the same across Earth.
 
@@ -184,6 +214,7 @@ val moonList = LunarEventSequence(
     limit = 30.days
 ).toList()
 ```
+
 ### Do any full moons happen on Fridays this year?
 ```kotlin
 val fridayFullMoon = LunarPhaseSequence(
@@ -200,7 +231,7 @@ Kastro guarantees all sequences are ordered by time. This means that events clos
 events. This means that if you wanted to execute some code on each sunset (maybe to turn off your lights?) the following
 would work. 
 
-Please note you will need to add [kotlinx-coroutines](https://github.com/Kotlin/kotlinx.coroutines) as a dependency to do this. Kastro strives to include as few dependencies as possible (really just [kotlinx-datetime](https://github.com/Kotlin/kotlinx-datetime))
+Please note you will need to add [kotlinx-coroutines](https://github.com/Kotlin/kotlinx.coroutines) as a dependency to do this. Kastro strives to include as few dependencies as possible.
 ```kotlin
 SolarEventSequence(
     start = clock.now(),
@@ -234,9 +265,7 @@ Enhancements to the overall shape of the API are welcome though as this has not 
 ## Future Work
 I ran into some difficulties getting the height offset calculation to work correctly for `SolarEventSequence`. I hope to eventually resolve that but didn't think it should block an alpha release. It's something I want for the future `1.0` release.
 
-I would also like to add additional KMP targets. I recently added various Apple targets. I am currently looking into WASM targets next.
-
-I am also curious to potentially make the library usable for other languages like Javascript. This library is a Kotlin Multiplatform project, but it would be cool to also have it be on npm for use in Javascript/Typescript projects or even be a Swift package (SPM) for use on iOS/Apple targets. There are some challenges to doing that (such as how the exposed API could be adapted to better fit those languages) but I plan to actively look into this as it's something I am generally curious about.
+I am curious to potentially make the library usable for other languages like Javascript or Swift. This library is a Kotlin Multiplatform project, but it would be cool to also have it be on npm for use in Javascript/Typescript projects or even be a Swift package (SPM) for use on iOS/Apple targets. There are some challenges to doing that (such as how the exposed API could be adapted to better fit those languages) but I plan to actively look into this as it's something I am generally curious about. 
 
 # References
 * “Blue Hour – Magic Hour.” Timeanddate.com, 2019, www.timeanddate.com/astronomy/blue-hour.html.
@@ -246,5 +275,3 @@ I am also curious to potentially make the library usable for other languages lik
 * Montenbruck, Oliver, and Thomas Pfleger. Astronomy on the Personal Computer. Springer, 14 Mar. 2013.
 * NASA. “Moon Phases | Phases, Eclipses & Supermoons.” Moon: NASA Science, https://moon.nasa.gov/moon-in-motion/phases-eclipses-supermoons/moon-phases/
 * US Department of Commerce, NOAA. “Definitions of Twilight.” www.weather.gov, www.weather.gov/fsd/twilight.
-
-‌
