@@ -15,15 +15,20 @@
 package dev.jamesyox.kastro.sol
 
 import dev.jamesyox.kastro.util.ExtendedMath
+import dev.jamesyox.kastro.util.ExtendedMath.readjustMax
 import dev.jamesyox.kastro.util.JulianDate
 import dev.jamesyox.kastro.util.Latitude
 import dev.jamesyox.kastro.util.Longitude
 import dev.jamesyox.kastro.util.QuadraticInterpolation
 import dev.jamesyox.kastro.util.instant
+import dev.jamesyox.kastro.util.isOutsideLimit
+import dev.jamesyox.kastro.util.isWithinLimit
 import dev.jamesyox.kastro.util.julianDate
+import dev.jamesyox.kastro.util.sortedByReversible
 import kotlinx.datetime.Instant
 import kotlin.math.abs
 import kotlin.math.ceil
+import kotlin.math.floor
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.hours
 
@@ -32,19 +37,24 @@ internal class NoonAndNadirSequence(
     private val latitude: Latitude,
     private val longitude: Longitude,
     private val limit: Duration,
-    private val requestedCulminationEvents: List<SolarEventType.Culmination>
+    private val requestedCulminationEvents: List<SolarEventType.Culmination>,
+    private val reverse: Boolean
 ) : Sequence<SolarEvent> {
-    private val limitTime = start + limit
+    private val limitTime = if (reverse) start - limit else start + limit
 
     override fun iterator(): Iterator<SolarEvent> {
         // Skip everything if we requested no culmination events
         if (requestedCulminationEvents.isEmpty()) return emptySequence<SolarEvent>().iterator()
 
-        return generateSequence(calculateNextNoonAndNadir(start)) {
+        return generateSequence(calculateNextNoonAndNadir(start, reverse)) {
             it.lastOrNull()?.time?.let { lastTime ->
                 // Jumping ahead by an hour is fine since Noon and Nadir must be pretty far apart.
                 // Probably could jump farther.
-                if (lastTime <= start + limit) calculateNextNoonAndNadir((lastTime + 1.hours)) else null
+
+                // Determine whether to go back or forward 1 hours depending on reverse param
+                val advanceBy = if (reverse) (-1).hours else 1.hours
+                val withinThreshold = if (reverse) lastTime >= start - limit else lastTime <= start + limit
+                if (withinThreshold) calculateNextNoonAndNadir((lastTime + advanceBy), reverse) else null
             }
         }.flatten().iterator()
     }
@@ -62,24 +72,24 @@ internal class NoonAndNadirSequence(
 
     // This function is quite complex. There's potentially ways to simplify these algorithms or break them
     // up.
-    @Suppress("ComplexCondition", "NestedBlockDepth", "CyclomaticComplexMethod")
-    private fun calculateNextNoonAndNadir(localStart: Instant): Sequence<SolarEvent> {
+    @Suppress("ComplexCondition", "NestedBlockDepth", "CyclomaticComplexMethod", "LongMethod")
+    private fun calculateNextNoonAndNadir(localStart: Instant, reverse: Boolean): Sequence<SolarEvent> {
         val julianDate = localStart.julianDate
         var hour = 0
         var noon: Double? = null
         var nadir: Double? = null
         val limitHours = (limitTime - localStart).inWholeMilliseconds.toDouble() /
             1.hours.inWholeMilliseconds.toDouble()
-        val maxHours = ceil(limitHours).toInt()
+        val hourLimit = if (reverse) floor(limitHours).toInt() else ceil(limitHours).toInt()
         var yMinus = calculateSolHeightRad(julianDate.atHour(hour - 1.0))
         var y0 = calculateSolHeightRad(julianDate.atHour(hour.toDouble()))
         var yPlus = calculateSolHeightRad(julianDate.atHour(hour + 1.0))
-        while (hour <= maxHours) {
+        while (hour.isWithinLimit(reverse = reverse, limit = hourLimit)) {
             val qi = QuadraticInterpolation.of(yMinus, y0, yPlus)
             val xeAbs = abs(qi.xe)
             if (xeAbs <= 1.0) {
                 val xeHour = qi.xe + hour
-                if (xeHour >= 0.0) {
+                if (if (reverse) xeHour <= 0.0 else xeHour >= 0.0) {
                     if (qi.isMaximum) {
                         if (noon == null && isNoonRequested) {
                             noon = xeHour
@@ -92,16 +102,26 @@ internal class NoonAndNadirSequence(
                 }
             }
             if ((noon != null || !isNoonRequested) && (nadir != null || !isNadirRequested)) break
-            hour++
-            yMinus = y0
-            y0 = yPlus
-            yPlus = calculateSolHeightRad(julianDate.atHour(hour + 1.0))
+            when (reverse) {
+                true -> {
+                    hour--
+                    yPlus = y0
+                    y0 = yMinus
+                    yMinus = calculateSolHeightRad(julianDate.atHour(hour - 1.0))
+                }
+                false -> {
+                    hour++
+                    yMinus = y0
+                    y0 = yPlus
+                    yPlus = calculateSolHeightRad(julianDate.atHour(hour + 1.0))
+                }
+            }
         }
         if (noon != null && isNoonRequested) {
-            noon = ExtendedMath.readjustMax(time = noon, frame = 2.0, depth = 14) {
+            noon = readjustMax(time = noon, frame = 2.0, depth = 14) {
                 calculateSolHeightRad(julianDate.atHour(it))
             }
-            if (noon < 0.0 || noon >= limitHours) {
+            if (noon.isOutsideLimit(reverse, limitHours)) {
                 noon = null
             }
         }
@@ -109,13 +129,13 @@ internal class NoonAndNadirSequence(
             nadir = ExtendedMath.readjustMin(time = nadir, frame = 2.0, depth = 14) {
                 calculateSolHeightRad(julianDate.atHour(it))
             }
-            if (nadir < 0.0 || nadir >= limitHours) {
+            if (nadir.isOutsideLimit(reverse, limitHours)) {
                 nadir = null
             }
         }
         return sequence {
             noon?.also { yield(SolarEvent.Noon(julianDate.atHour(it).instant)) }
             nadir?.also { yield(SolarEvent.Nadir(julianDate.atHour(it).instant)) }
-        }.sortedBy { it.time }
+        }.sortedByReversible(reverse) { it.time }
     }
 }

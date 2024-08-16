@@ -22,8 +22,10 @@ import kotlin.time.Duration.Companion.days
 
 /**
  * [Sequence] representing all [SolarEvent]s supported by Kastro. The sequence will be ordered by [SolarEvent.time]
- * with times farthest in the future being later in the [Sequence]. As implied by being a [Sequence] values will be
- * lazily calculated so setting a large or even infinite limit is fine.
+ * either advancing forwards or backwards in time depending on the `reverse` parameter.
+
+ * As implied by being a [Sequence] values will be lazily calculated so setting a large or even infinite
+ * limit is acceptable.
  *
  * @param start Time representing the beginning of the sequence
  * @param latitude Latitude of the observer in degrees
@@ -34,14 +36,26 @@ import kotlin.time.Duration.Companion.days
  * next hour you could use limit and then check if the resulting sequence is empty. Defaults to 365 days.
  * @param requestedSolarEvents A [List] of [SolarEventType]s to calculate event times for. Requesting only events you
  * are interested in will save computation resources. By default, only includes [SolarEventType.simple] events.
+ * @param reverse Whether the sequence should advance in reverse chronological order. By default, this is false
+ * resulting in a Sequence that advances chronologically in time.
  */
 public class SolarEventSequence(
     start: Instant,
     latitude: Double,
     longitude: Double,
     limit: Duration = 365.days,
-    requestedSolarEvents: List<SolarEventType> = SolarEventType.simple
+    requestedSolarEvents: List<SolarEventType> = SolarEventType.simple,
+    private val reverse: Boolean = false
 ) : Sequence<SolarEvent> {
+
+    @Deprecated(message = "", level = DeprecationLevel.HIDDEN)
+    public constructor(
+        start: Instant,
+        latitude: Double,
+        longitude: Double,
+        limit: Duration = 365.days,
+        requestedSolarEvents: List<SolarEventType> = SolarEventType.simple,
+    ) : this(start, latitude, longitude, limit, requestedSolarEvents, false)
 
     /**
      * Alternative constructor with location as a [Pair]. Provided as a convenience. See primary constructor for more
@@ -53,6 +67,8 @@ public class SolarEventSequence(
      * @param limit The limit or outer bound of the Sequence see primary constructor for more information.
      * @param requestedSolarEvents A [List] of [SolarEventType]s to calculate event times for. Requesting only events
      * you are interested in will save computation resources. By default, only includes [SolarEventType.simple] events.
+     * @param reverse Whether the sequence should advance in reverse chronological order. By default, this is false
+     * resulting in a Sequence that advances chronologically in time.
      *
      * @see SolarEventSequence
      */
@@ -60,15 +76,25 @@ public class SolarEventSequence(
         start: Instant,
         location: Pair<Double, Double>,
         limit: Duration = 365.days,
-        requestedSolarEvents: List<SolarEventType> = SolarEventType.simple
-    ) : this(start, location.first, location.second, limit, requestedSolarEvents)
+        requestedSolarEvents: List<SolarEventType> = SolarEventType.simple,
+        reverse: Boolean = false
+    ) : this(start, location.first, location.second, limit, requestedSolarEvents, reverse)
+
+    @Deprecated(message = "", level = DeprecationLevel.HIDDEN)
+    public constructor(
+        start: Instant,
+        location: Pair<Double, Double>,
+        limit: Duration = 365.days,
+        requestedSolarEvents: List<SolarEventType> = SolarEventType.simple,
+    ) : this(start, location.first, location.second, limit, requestedSolarEvents, false)
 
     private val noonAndNadirSequence = NoonAndNadirSequence(
         start = start,
         latitude = latitude.latitude,
         longitude = longitude.longitude,
         limit = limit,
-        requestedCulminationEvents = requestedSolarEvents.filterIsInstance<SolarEventType.Culmination>()
+        requestedCulminationEvents = requestedSolarEvents.filterIsInstance<SolarEventType.Culmination>(),
+        reverse = reverse
     )
 
     private val solarAngleEventSequence = SolarAngleEventSequence(
@@ -76,10 +102,11 @@ public class SolarEventSequence(
         latitude = latitude.latitude,
         longitude = longitude.longitude,
         limit = limit,
-        requestedAngleEvents = requestedSolarEvents.filterIsInstance<SolarEventType.Angle>()
+        requestedAngleEvents = requestedSolarEvents.filterIsInstance<SolarEventType.Angle>(),
+        reverse = reverse
     )
 
     override fun iterator(): Iterator<SolarEvent> {
-        return solarAngleEventSequence.mergeWith(noonAndNadirSequence).iterator()
+        return solarAngleEventSequence.mergeWith(noonAndNadirSequence, reverse).iterator()
     }
 }

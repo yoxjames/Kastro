@@ -314,6 +314,31 @@ class SolarEventSequenceTest {
         assertSimilar(expected, actual)
     }
 
+    @Test
+    fun testWellingtonReverse() {
+        val actual = SolarEventSequence(
+            start = LocalDate(2017, 8, 10).atStartOfDayIn(WELLINGTON_TZ),
+            location = WELLINGTON,
+            reverse = true
+        ).take(4).toList()
+        println(actual)
+        val expected = listOf(
+            SolarEvent.Sunset(
+                LocalDateTime(2017, 8, 9, 5, 33, 36).toInstant(UTC)
+            ),
+            SolarEvent.Noon(
+                LocalDateTime(2017, 8, 9, 0, 26, 42).toInstant(UTC)
+            ),
+            SolarEvent.Sunrise(
+                LocalDateTime(2017, 8, 8, 19, 19, 35).toInstant(UTC)
+            ),
+            SolarEvent.Nadir(
+                LocalDateTime(2017, 8, 8, 12, 26, 26).toInstant(UTC)
+            )
+        )
+        assertSimilar(expected, actual)
+    }
+
 
     @Test
     fun testPuertoWilliams() {
@@ -333,7 +358,7 @@ class SolarEventSequenceTest {
             ),
             SolarEvent.Sunset(
                 LocalDateTime(2017, 8, 10, 21, 10, 36).toInstant(UTC)
-            )
+            ),
         )
         assertSimilar(expected, actual)
     }
@@ -635,6 +660,60 @@ class SolarEventSequenceTest {
         )
         iter.assertSimilar<SolarEvent.Sunset>(
             expected = LocalDateTime(2023, 12, 3, 16, 35),
+            timeZone = DENVER_TZ
+        )
+
+        assertFalse(iter.hasNext())
+    }
+
+    @Test
+    fun testDenverReversed() {
+        val seq = SolarEventSequence(
+            start = LocalDate(2023, 12, 4).atStartOfDayIn(DENVER_TZ),
+            location = DENVER,
+            limit = 3.days,
+            requestedSolarEvents = SolarEventType.simple - SolarEvent.Nadir,
+            reverse = true
+        )
+
+        println(seq.toList())
+        val iter = seq.iterator()
+
+        iter.assertSimilar<SolarEvent.Sunset>(
+            expected = LocalDateTime(2023, 12, 3, 16, 35),
+            timeZone = DENVER_TZ
+        )
+        iter.assertSimilar<SolarEvent.Noon>(
+            expected = LocalDateTime(2023, 12, 3, 11, 49),
+            timeZone = DENVER_TZ
+        )
+        iter.assertSimilar<SolarEvent.Sunrise>(
+            expected = LocalDateTime(2023, 12, 3, 7, 3),
+            timeZone = DENVER_TZ
+        )
+        iter.assertSimilar<SolarEvent.Sunset>(
+            expected = LocalDateTime(2023, 12, 2, 16, 35),
+            timeZone = DENVER_TZ
+        )
+        iter.assertSimilar<SolarEvent.Noon>(
+            expected = LocalDateTime(2023, 12, 2, 11, 49),
+            timeZone = DENVER_TZ
+        )
+        iter.assertSimilar<SolarEvent.Sunrise>(
+            expected = LocalDateTime(2023, 12, 2, 7, 2),
+            timeZone = DENVER_TZ
+        )
+        iter.assertSimilar<SolarEvent.Sunset>(
+            expected = LocalDateTime(2023, 12, 1, 16, 35),
+            timeZone = DENVER_TZ,
+            tolerance = 2.minutes
+        )
+        iter.assertSimilar<SolarEvent.Noon>(
+            expected = LocalDateTime(2023, 12, 1, 11, 48),
+            timeZone = DENVER_TZ
+        )
+        iter.assertSimilar<SolarEvent.Sunrise>(
+            expected = LocalDateTime(2023, 12, 1, 7, 1),
             timeZone = DENVER_TZ
         )
 

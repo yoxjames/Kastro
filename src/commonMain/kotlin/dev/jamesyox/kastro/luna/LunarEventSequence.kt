@@ -14,15 +14,18 @@
 
 package dev.jamesyox.kastro.luna
 
+import dev.jamesyox.kastro.sol.SolarEvent
 import dev.jamesyox.kastro.util.mergeWith
 import kotlinx.datetime.Instant
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.days
 
 /**
- * [Sequence] representing all [LunarEvent]s supported by Kastro. The sequence will be ordered by [LunarEvent.time]
- * with times farthest in the future being later in the [Sequence]. As implied by being a [Sequence] values will be
- * lazily calculated so setting a large or even infinite limit is fine.
+ * [Sequence] representing all [LunarEvent]s supported by Kastro. The sequence will be ordered by [SolarEvent.time]
+ * either advancing forwards or backwards in time depending on the `reverse` parameter.
+ *
+ * As implied by being a [Sequence] values will be lazily calculated so setting a large or even infinite
+ * limit is acceptable.
  *
  * @param start Time representing the beginning of the sequence
  * @param latitude Latitude of the observer in degrees
@@ -32,19 +35,32 @@ import kotlin.time.Duration.Companion.days
  * Limit only exists to allow certain logical checks such as if you wanted to know if there will be any event in the
  * next hour you could use limit and then check if the resulting sequence is empty. Defaults to 365 days.
  * @param requestedLunarEvents A [List] of [LunarEvent.LunarEventType]s to calculate event times for.
+ * @param reverse Whether the sequence should advance in reverse chronological order. By default, this is false
  */
 public class LunarEventSequence(
     start: Instant,
     latitude: Double,
     longitude: Double,
     limit: Duration = 365.days,
-    requestedLunarEvents: List<LunarEvent.LunarEventType> = LunarEvent.all
+    requestedLunarEvents: List<LunarEvent.LunarEventType> = LunarEvent.all,
+    private val reverse: Boolean = false
 ) : Sequence<LunarEvent> {
 
+    @Deprecated(message = "", level = DeprecationLevel.HIDDEN)
+    public constructor(
+        start: Instant,
+        latitude: Double,
+        longitude: Double,
+        limit: Duration = 365.days,
+        requestedLunarEvents: List<LunarEvent.LunarEventType> = LunarEvent.all,
+    ) : this(start, latitude, longitude, limit, requestedLunarEvents, false)
+
     /**
-     * [Sequence] representing all [LunarEvent]s supported by Kastro. The sequence will be ordered by [LunarEvent.time]
-     * with times farthest in the future being later in the [Sequence]. As implied by being a [Sequence] values will be
-     * lazily calculated so setting a large or even infinite limit is fine.
+     * [Sequence] representing all [LunarEvent]s supported by Kastro. The sequence will be ordered by [SolarEvent.time]
+     * either advancing forwards or backwards in time depending on the `reverse` parameter.
+     *
+     * As implied by being a [Sequence] values will be lazily calculated so setting a large or even infinite
+     * limit is acceptable.
      *
      * @param start Time representing the beginning of the sequence
      * @param location
@@ -54,18 +70,30 @@ public class LunarEventSequence(
      * Limit only exists to allow certain logical checks such as if you wanted to know if there will be any event in the
      * next hour you could use limit and then check if the resulting sequence is empty. Defaults to 365 days.
      * @param requestedLunarEvents A [List] of [LunarEvent.LunarEventType]s to calculate event times for.
+     * @param reverse Whether the sequence should advance in reverse chronological order. By default, this is false
+     * resulting in a Sequence that advances chronologically in time.
      */
     public constructor(
         start: Instant,
         location: Pair<Double, Double>,
         limit: Duration = 365.days,
-        requestedLunarEvents: List<LunarEvent.LunarEventType> = LunarEvent.all
-    ) : this(start, location.first, location.second, limit, requestedLunarEvents)
+        requestedLunarEvents: List<LunarEvent.LunarEventType> = LunarEvent.all,
+        reverse: Boolean = false,
+    ) : this(start, location.first, location.second, limit, requestedLunarEvents, reverse)
+
+    @Deprecated(message = "", level = DeprecationLevel.HIDDEN)
+    public constructor(
+        start: Instant,
+        location: Pair<Double, Double>,
+        limit: Duration = 365.days,
+        requestedLunarEvents: List<LunarEvent.LunarEventType> = LunarEvent.all,
+    ) : this(start, location.first, location.second, limit, requestedLunarEvents, false)
 
     private val lunarPhaseSequence = LunarPhaseSequence(
         start = start,
         limit = limit,
-        requestedLunarPhases = requestedLunarEvents.filterIsInstance<LunarPhase.Primary>()
+        requestedLunarPhases = requestedLunarEvents.filterIsInstance<LunarPhase.Primary>(),
+        reverse = reverse
     )
 
     private val lunarHorizonEventSequence = LunarHorizonEventSequence(
@@ -73,10 +101,11 @@ public class LunarEventSequence(
         latitude = latitude,
         longitude = longitude,
         limit = limit,
-        requestedHorizonEvents = requestedLunarEvents.filterIsInstance<LunarEvent.HorizonEvent.HorizonEventType>()
+        requestedHorizonEvents = requestedLunarEvents.filterIsInstance<LunarEvent.HorizonEvent.HorizonEventType>(),
+        reverse = reverse
     )
 
     override fun iterator(): Iterator<LunarEvent> {
-        return lunarPhaseSequence.mergeWith(lunarHorizonEventSequence).iterator()
+        return lunarPhaseSequence.mergeWith(lunarHorizonEventSequence, reverse).iterator()
     }
 }

@@ -132,7 +132,7 @@ kotlin {
                 implementation(npm("@js-joda/timezone", libs.versions.npm.joda.time.get()))
             }
         }
-        val wasmJsMain by getting {
+        wasmJsMain {
             dependencies {
                 implementation(npm("@js-joda/timezone", libs.versions.npm.joda.time.get()))
             }
@@ -218,3 +218,11 @@ publishing {
         }
     }
 }
+
+/*
+apiValidation {
+    @OptIn(kotlinx.validation.ExperimentalBCVApi::class)
+    klib {
+        enabled = true
+    }
+}*/

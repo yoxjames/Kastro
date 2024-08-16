@@ -1,13 +1,16 @@
-## Version: 0.3.0 (Pending Release)
+## Version: 0.3.0 (Pending Release. Should be done very soon)
 ### New Features
 * Added `wasmJs` target. `wasmWasi` cannot be added yet as kotlinx-datetime does not support `wasmWasi`. Once kotlinx-datetime supports `wasmWasi` I plan to add support for it!
 * JS compilation now targets ECMAScript 2015.
+* All sequences are now reversible with the `reverse` param. This means you can request events going _backwards_ in time
+  * This can be useful when you want to know the current solar state or lunar state. You can request a reverse `Sequence` and find the most recent event that occurred prior to a given start time.
+  * This lets you answer questions like "When was the last full moon" in a more straightforward way.
 
 ### Other
-* Upgraded Kotlin to 2.0.0
+* Upgraded Kotlin to 2.0.10
 * Upgraded kotlinx-datetime to 6.0
 * Added Poko to make dealing with public "data" classes easier. Should be completely passive from a user perspective.
-* Upgraded Gradle to 8.8. Fixed some deprecated Gradle config
+* Upgraded Gradle to 8.10. Fixed some deprecated Gradle config
 
 ## Version: 0.2.0 
 ### New Features

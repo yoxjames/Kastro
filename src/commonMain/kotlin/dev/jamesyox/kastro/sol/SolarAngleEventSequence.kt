@@ -21,10 +21,13 @@ import dev.jamesyox.kastro.util.Longitude
 import dev.jamesyox.kastro.util.QuadraticInterpolation
 import dev.jamesyox.kastro.util.Sol
 import dev.jamesyox.kastro.util.instant
+import dev.jamesyox.kastro.util.isWithinLimit
 import dev.jamesyox.kastro.util.julianDate
 import dev.jamesyox.kastro.util.radians
+import dev.jamesyox.kastro.util.sortedByReversible
 import kotlinx.datetime.Instant
 import kotlin.math.ceil
+import kotlin.math.floor
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.hours
 import kotlin.time.Duration.Companion.seconds
@@ -35,11 +38,12 @@ internal class SolarAngleEventSequence(
     private val longitude: Longitude,
     private val limit: Duration,
     private val requestedAngleEvents: List<SolarEventType.Angle>,
+    private val reverse: Boolean
     // private val height: Double = 0.0 // TODO [Alpha]: See comment below
 ) : Sequence<SolarEvent> {
 
-    private val limitTime = start + limit
-    private val chunkTime = 24.hours
+    private val limitTime = if (reverse) (start - limit) else (start + limit)
+    private val chunkTime = if (reverse) (-24).hours else 24.hours
 
     private fun getLocalLimit(start: Instant): Duration {
         return if ((start + chunkTime) < limitTime) chunkTime else limitTime - start
@@ -48,7 +52,7 @@ internal class SolarAngleEventSequence(
     override fun iterator(): Iterator<SolarEvent> {
         var currentTime = start
         return generateSequence {
-            if (currentTime <= start + limit) {
+            if (currentTime.isWithinLimit(reverse, limitTime)) {
                 calculateNextSolarEvents(
                     localStart = currentTime,
                     localLimit = getLocalLimit(currentTime)
@@ -56,7 +60,8 @@ internal class SolarAngleEventSequence(
             } else {
                 null
             }.also {
-                currentTime += (chunkTime + 1.seconds)
+                val advanceBy = if (reverse) (-1).seconds else 1.seconds
+                currentTime += chunkTime + advanceBy
             }
         }.flatten().iterator()
     }
@@ -73,7 +78,7 @@ internal class SolarAngleEventSequence(
                     angle = angle,
                     localLimit = localLimit
                 )
-            }.sortedBy { it.time }
+            }.sortedByReversible(reverse) { it.time }
     }
 
     // This function is quite complex. There's potentially ways to simplify these algorithms or break them
@@ -115,40 +120,53 @@ internal class SolarAngleEventSequence(
         var hour = 0
         val limitHours = localLimit.inWholeMilliseconds.toDouble() /
             1.hours.inWholeMilliseconds.toDouble()
-        val maxHours = ceil(limitHours).toInt()
+        val hourLimit = if (reverse) floor(limitHours).toInt() else ceil(limitHours).toInt()
         var yMinus = correctedSunHeight(julianDate.atHour(hour - 1.0))
         var y0 = correctedSunHeight(julianDate.atHour(hour.toDouble()))
         var yPlus = correctedSunHeight(julianDate.atHour(hour + 1.0))
-        while (hour <= maxHours) {
+        while (hour.isWithinLimit(reverse = reverse, limit = hourLimit)) {
             val qi = QuadraticInterpolation.of(yMinus, y0, yPlus)
             val ye = qi.ye
             if (qi.numberOfRoots == 1) {
                 val rt = qi.root1 + hour
+                val rtPastLimit = if (reverse) (rt <= 0.0 && rt > limitHours) else (rt >= 0.0 && rt < limitHours)
                 if (yMinus < 0.0) {
-                    if (angle is SolarEventType.Angle.Dawn && rt >= 0.0 && rt < limitHours) {
+                    if (angle is SolarEventType.Angle.Dawn && rtPastLimit) {
                         return angle.eventAt(julianDate.atHour(rt).instant)
                     }
                 } else {
-                    if (angle is SolarEventType.Angle.Dusk && rt >= 0.0 && rt < limitHours) {
+                    if (angle is SolarEventType.Angle.Dusk && rtPastLimit) {
                         return angle.eventAt(julianDate.atHour(rt).instant)
                     }
                 }
             } else if (qi.numberOfRoots == 2) {
                 (hour + if (ye < 0.0) qi.root2 else qi.root1).let { rt ->
-                    if (angle is SolarEventType.Angle.Dawn && rt >= 0.0 && rt < limitHours) {
+                    val rtPastLimit = if (reverse) (rt <= 0.0 && rt > limitHours) else (rt >= 0.0 && rt < limitHours)
+                    if (angle is SolarEventType.Angle.Dawn && rtPastLimit) {
                         return angle.eventAt(julianDate.atHour(rt).instant)
                     }
                 }
                 (hour + if (ye < 0.0) qi.root1 else qi.root2).let { rt ->
-                    if (angle is SolarEventType.Angle.Dusk && rt >= 0.0 && rt < limitHours) {
+                    val rtPastLimit = if (reverse) (rt <= 0.0 && rt > limitHours) else (rt >= 0.0 && rt < limitHours)
+                    if (angle is SolarEventType.Angle.Dusk && rtPastLimit) {
                         return angle.eventAt(julianDate.atHour(rt).instant)
                     }
                 }
             }
-            hour++
-            yMinus = y0
-            y0 = yPlus
-            yPlus = correctedSunHeight(julianDate.atHour(hour + 1.0))
+            when (reverse) {
+                true -> {
+                    hour--
+                    yPlus = y0
+                    y0 = yMinus
+                    yMinus = correctedSunHeight(julianDate.atHour(hour - 1.0))
+                }
+                false -> {
+                    hour++
+                    yMinus = y0
+                    y0 = yPlus
+                    yPlus = correctedSunHeight(julianDate.atHour(hour + 1.0))
+                }
+            }
         }
         return null
     }

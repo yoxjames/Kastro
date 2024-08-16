@@ -134,6 +134,54 @@ class LunarPhaseSequenceTest {
     }
 
     @Test
+    fun testTwoFullCyclesReversed() {
+        LunarPhaseSequence(
+            start = LocalDate(2024, 2, 4).atStartOfDayIn(DENVER_TZ),
+            reverse = true
+        ).take(10).toList().apply { println(this) }
+
+        val iter = LunarPhaseSequence(
+            start = LocalDate(2024, 2, 4).atStartOfDayIn(DENVER_TZ),
+            reverse = true
+        ).iterator()
+        iter.assertSimilar<LastQuarter>(
+            expected = LocalDateTime(2024, 2, 2, 16, 18),
+            timeZone = DENVER_TZ,
+            tolerance = 5.minutes
+        )
+        iter.assertSimilar<FullMoon>(
+            expected = LocalDateTime(2024, 1, 25, 10, 54),
+            timeZone = DENVER_TZ,
+            tolerance = 5.minutes
+        )
+        iter.assertSimilar<FirstQuarter>(
+            expected = LocalDateTime(2024, 1, 17, 20, 52),
+            timeZone = DENVER_TZ,
+            tolerance = 5.minutes
+        )
+        iter.assertSimilar<NewMoon>(
+            expected = LocalDateTime(2024, 1, 11, 4, 57),
+            timeZone = DENVER_TZ,
+            tolerance = 5.minutes
+        )
+        iter.assertSimilar<LastQuarter>(
+            expected = LocalDateTime(2024, 1, 3, 20, 30),
+            timeZone = DENVER_TZ,
+            tolerance = 5.minutes
+        )
+        iter.assertSimilar<FullMoon>(
+            expected = LocalDateTime(2023, 12, 26, 17, 33),
+            timeZone = DENVER_TZ,
+            tolerance = 5.minutes
+        )
+        iter.assertSimilar<FirstQuarter>(
+            expected = LocalDateTime(2023, 12, 19, 11, 39),
+            timeZone = DENVER_TZ,
+            tolerance = 5.minutes
+        )
+    }
+
+    @Test
     fun testNoPhases() {
         val iter = LunarPhaseSequence(
             start = LocalDate(2023, month = Month.DECEMBER, dayOfMonth = 15).atStartOfDayIn(DENVER_TZ),

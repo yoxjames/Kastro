@@ -19,7 +19,7 @@ package dev.jamesyox.kastro.util
  * There was nothing in the Kotlin Standard Library at the time of writing this that accomplishes this,
  * so I came up with this. Specifically we needed to properly handle infinite sequences.
  */
-internal fun <T : Comparable<T>>Sequence<T>.mergeWith(other: Sequence<T>): Sequence<T> {
+internal fun <T : Comparable<T>>Sequence<T>.mergeWith(other: Sequence<T>, reverse: Boolean): Sequence<T> {
     fun <T> Iterator<T>.nextOrNull(): T? = if (hasNext()) next() else null
 
     return sequence {
@@ -34,7 +34,7 @@ internal fun <T : Comparable<T>>Sequence<T>.mergeWith(other: Sequence<T>): Seque
             val otherItem = otherItemMut
             when {
                 (thisItem != null && otherItem != null) -> {
-                    if (thisItem <= otherItem) {
+                    if (thisItem.isWithinLimit(reverse, otherItem)) {
                         yield(thisItem)
                         thisItemMut = thisIter.nextOrNull()
                     } else {
@@ -54,4 +54,30 @@ internal fun <T : Comparable<T>>Sequence<T>.mergeWith(other: Sequence<T>): Seque
             }
         }
     }
+}
+
+internal inline fun <T, R : Comparable<R>> Sequence<T>.sortedByReversible(
+    reverse: Boolean,
+    crossinline selector: (T) -> R
+) = when (reverse) {
+    true -> sortedByDescending(selector)
+    false -> sortedBy(selector)
+}
+
+internal inline fun <T, R : Comparable<R>> List<T>.sortedByReversible(
+    reverse: Boolean,
+    crossinline selector: (T) -> R
+) = when (reverse) {
+    true -> sortedByDescending(selector)
+    false -> sortedBy(selector)
+}
+
+internal inline fun <T : Comparable<T>> T.isWithinLimit(reverse: Boolean, limit: T) = when (reverse) {
+    true -> this >= limit
+    false -> this <= limit
+}
+
+internal inline fun <T : Comparable<T>> T.isOutsideLimit(reverse: Boolean, limit: T) = when (reverse) {
+    true -> this < limit
+    false -> this > limit
 }

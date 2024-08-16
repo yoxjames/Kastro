@@ -186,6 +186,36 @@ class LunarHorizonEventSequenceTest {
         }
     }
 
+    @Test
+    fun testDenverReverse() {
+        LunarHorizonEventSequence(
+            start = LocalDate(2023, 12, 17).atStartOfDayIn(DENVER_TZ),
+            location = DENVER,
+            reverse = true
+        ).assertEvents {
+            assertEvent<Moonset>(
+                expected = LocalDateTime(2023, 12, 16, 20, 48),
+                timeZone = DENVER_TZ,
+                tolerance = 1.minutes
+            )
+            assertEvent<Moonrise>(
+                expected = LocalDateTime(2023, 12, 16, 10, 48),
+                timeZone = DENVER_TZ,
+                tolerance = 1.minutes
+            )
+            assertEvent<Moonset>(
+                expected = LocalDateTime(2023, 12, 15, 19, 30),
+                timeZone = DENVER_TZ,
+                tolerance = 1.minutes
+            )
+            assertEvent<Moonrise>(
+                expected = LocalDateTime(2023, 12, 15, 10, 7),
+                timeZone = DENVER_TZ,
+                tolerance = 1.minutes
+            )
+        }
+    }
+
     // This test tests a case where moon set and moon rise happen within the same hour
     @Test
     fun testFarNorth() {
