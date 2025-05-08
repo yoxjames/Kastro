@@ -127,12 +127,12 @@ kotlin {
                 implementation(kotlin("test"))
             }
         }
-        jsMain {
+        jsTest {
             dependencies {
                 implementation(npm("@js-joda/timezone", libs.versions.npm.joda.time.get()))
             }
         }
-        wasmJsMain {
+        wasmJsTest {
             dependencies {
                 implementation(npm("@js-joda/timezone", libs.versions.npm.joda.time.get()))
             }
@@ -216,6 +216,19 @@ publishing {
                 url = "https://github.com/yoxjames/Kastro"
             }
         }
+    }
+}
+
+fun String.isNonStable(): Boolean {
+    val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { uppercase().contains(it) }
+    val regex = "^[0-9,.v-]+(-r)?$".toRegex()
+    val isStable = stableKeyword || regex.matches(this)
+    return isStable.not()
+}
+
+tasks.dependencyUpdates {
+    rejectVersionIf {
+        candidate.version.isNonStable()
     }
 }
 

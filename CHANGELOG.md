@@ -1,3 +1,10 @@
+## Version: 0.4.0 (upcoming)
+### Bugfixes
+* Removed js-joda/timezone npm package dependency from js and wasmJs targets. This was only used for testing and should not have been a dependency for consumers.
+
+### Other
+* Various version updates. Eagerly awaiting a stable `kotlin.time.Instant` implementation.
+
 ## Version: 0.3.0 
 ### New Features
 * Added `wasmJs` target. `wasmWasi` cannot be added yet as kotlinx-datetime does not support `wasmWasi`. Once kotlinx-datetime supports `wasmWasi` I plan to add support for it!
