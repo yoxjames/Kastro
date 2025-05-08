@@ -433,9 +433,6 @@ class SolarEventSequenceTest {
         assertSimilar(expected, actual)
     }
     
-
-    /* TODO: These fail because the height calculation is incorrect. It was removed from the public API for now.
-             eventually I hope to figure out the problem and fix it and restore height to the public API.
     @Test
     fun testHeight() {
         // At the top of the Tokyo Skytree
@@ -444,7 +441,7 @@ class SolarEventSequenceTest {
                 .atStartOfDayIn(TimeZone.of("Asia/Tokyo")),
             latitude = 35.710046,
             longitude = 139.810718,
-            //height = 634.0
+            height = 634.0
         ).take(4).toList()
         val skytreeExpected = listOf(
             SolarEvent.Sunrise(
@@ -467,7 +464,7 @@ class SolarEventSequenceTest {
             start = LocalDate(year = 2020, monthNumber = 6, dayOfMonth = 25).atStartOfDayIn(UTC),
             latitude = 46.58,
             longitude = -6.3,
-            //height = 11582.4
+            height = 11582.4
         ).take(4).toList()
         val airplaneExpected = listOf(
             SolarEvent.Nadir(
@@ -485,7 +482,6 @@ class SolarEventSequenceTest {
         )
         assertSimilar(airplaneExpected, airplaneActual)
     }
-    */
 
     @Test
     fun testJustBeforeJustAfter() {
@@ -801,6 +797,22 @@ class SolarEventSequenceTest {
         iter.assertSimilar<SolarEvent.GoldenHourDusk>(
             expected = LocalDateTime(2024, 2, 18, 21, 37, 47),
             timeZone = DENVER_TZ
+        )
+    }
+
+    // Data generated from https://ssd.jpl.nasa.gov/horizons/app.html#
+    @Test
+    fun testHeightDenver() {
+        val iter = SolarEventSequence(
+            start = LocalDate(2025, 5, 8).atStartOfDayIn(UTC),
+            location = DENVER,
+            limit = 3.days,
+            requestedSolarEvents = SolarEventType.simple - SolarEvent.Nadir,
+            height = 1524.0
+        ).iterator()
+
+        iter.assertSimilar<SolarEvent.Sunset>(
+            expected = LocalDateTime(2025, 5, 8, 2, 8, 0),
         )
     }
 

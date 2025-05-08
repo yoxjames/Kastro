@@ -38,7 +38,8 @@ internal class NoonAndNadirSequence(
     private val longitude: Longitude,
     private val limit: Duration,
     private val requestedCulminationEvents: List<SolarEventType.Culmination>,
-    private val reverse: Boolean
+    private val reverse: Boolean,
+    private val height: Double
 ) : Sequence<SolarEvent> {
     private val limitTime = if (reverse) start - limit else start + limit
 
@@ -66,7 +67,7 @@ internal class NoonAndNadirSequence(
         return jd.calculateSolarState(
             latitude = latitude,
             longitude = longitude,
-            height = 0.0
+            height = height
         ).trueAltitudeRad
     }
 

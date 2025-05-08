@@ -1,4 +1,7 @@
 ## Version: 0.4.0 (upcoming)
+### New Features
+* Added height for solar calculations.
+meeu
 ### Bugfixes
 * Removed js-joda/timezone npm package dependency from js and wasmJs targets. This was only used for testing and should not have been a dependency for consumers.
 

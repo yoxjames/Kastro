@@ -45,7 +45,8 @@ public class SolarEventSequence(
     longitude: Double,
     limit: Duration = 365.days,
     requestedSolarEvents: List<SolarEventType> = SolarEventType.simple,
-    private val reverse: Boolean = false
+    private val reverse: Boolean = false,
+    private val height: Double = 0.0
 ) : Sequence<SolarEvent> {
 
     @Deprecated(message = "", level = DeprecationLevel.HIDDEN)
@@ -55,7 +56,17 @@ public class SolarEventSequence(
         longitude: Double,
         limit: Duration = 365.days,
         requestedSolarEvents: List<SolarEventType> = SolarEventType.simple,
-    ) : this(start, latitude, longitude, limit, requestedSolarEvents, false)
+    ) : this(start, latitude, longitude, limit, requestedSolarEvents, reverse = false, height = 0.0)
+
+    @Deprecated(message = "", level = DeprecationLevel.HIDDEN)
+    public constructor(
+        start: Instant,
+        latitude: Double,
+        longitude: Double,
+        limit: Duration = 365.days,
+        requestedSolarEvents: List<SolarEventType> = SolarEventType.simple,
+        reverse: Boolean = false,
+    ) : this(start, latitude, longitude, limit, requestedSolarEvents, reverse = false, height = 0.0)
 
     /**
      * Alternative constructor with location as a [Pair]. Provided as a convenience. See primary constructor for more
@@ -77,8 +88,9 @@ public class SolarEventSequence(
         location: Pair<Double, Double>,
         limit: Duration = 365.days,
         requestedSolarEvents: List<SolarEventType> = SolarEventType.simple,
-        reverse: Boolean = false
-    ) : this(start, location.first, location.second, limit, requestedSolarEvents, reverse)
+        reverse: Boolean = false,
+        height: Double = 0.0
+    ) : this(start, location.first, location.second, limit, requestedSolarEvents, reverse, height)
 
     @Deprecated(message = "", level = DeprecationLevel.HIDDEN)
     public constructor(
@@ -86,7 +98,31 @@ public class SolarEventSequence(
         location: Pair<Double, Double>,
         limit: Duration = 365.days,
         requestedSolarEvents: List<SolarEventType> = SolarEventType.simple,
-    ) : this(start, location.first, location.second, limit, requestedSolarEvents, false)
+    ) : this(
+        start = start,
+        latitude = location.first,
+        longitude = location.second,
+        limit = limit,
+        requestedSolarEvents = requestedSolarEvents,
+        reverse = false,
+        height = 0.0
+    )
+
+    @Deprecated(message = "", level = DeprecationLevel.HIDDEN)
+    public constructor(
+        start: Instant,
+        location: Pair<Double, Double>,
+        limit: Duration = 365.days,
+        requestedSolarEvents: List<SolarEventType> = SolarEventType.simple,
+        reverse: Boolean = false
+    ) : this(
+        start = start,
+        latitude = location.first,
+        longitude = location.second,
+        limit = limit,
+        requestedSolarEvents = requestedSolarEvents,
+        reverse = false
+    )
 
     private val noonAndNadirSequence = NoonAndNadirSequence(
         start = start,
@@ -94,7 +130,8 @@ public class SolarEventSequence(
         longitude = longitude.longitude,
         limit = limit,
         requestedCulminationEvents = requestedSolarEvents.filterIsInstance<SolarEventType.Culmination>(),
-        reverse = reverse
+        reverse = reverse,
+        height = height
     )
 
     private val solarAngleEventSequence = SolarAngleEventSequence(
@@ -103,7 +140,8 @@ public class SolarEventSequence(
         longitude = longitude.longitude,
         limit = limit,
         requestedAngleEvents = requestedSolarEvents.filterIsInstance<SolarEventType.Angle>(),
-        reverse = reverse
+        reverse = reverse,
+        height = height
     )
 
     override fun iterator(): Iterator<SolarEvent> {

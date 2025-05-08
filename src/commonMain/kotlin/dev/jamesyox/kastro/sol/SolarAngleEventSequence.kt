@@ -38,8 +38,8 @@ internal class SolarAngleEventSequence(
     private val longitude: Longitude,
     private val limit: Duration,
     private val requestedAngleEvents: List<SolarEventType.Angle>,
-    private val reverse: Boolean
-    // private val height: Double = 0.0 // TODO [Alpha]: See comment below
+    private val reverse: Boolean,
+    private val height: Double
 ) : Sequence<SolarEvent> {
 
     private val limitTime = if (reverse) (start - limit) else (start + limit)
@@ -72,9 +72,7 @@ internal class SolarAngleEventSequence(
             .mapNotNull { angle ->
                 calculateNextSolarAngleEvent(
                     localStart = localStart,
-                    // TODO [Alpha]: Height offset calculation is incorrect. This is safe for now but eventually want to
-                    //      add height back to public API.
-                    height = 0.0,
+                    height = height,
                     angle = angle,
                     localLimit = localLimit
                 )

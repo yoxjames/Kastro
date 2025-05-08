@@ -749,10 +749,14 @@ public final class dev/jamesyox/kastro/sol/SolarEvent$TwilightEvent$DefaultImpls
 public final class dev/jamesyox/kastro/sol/SolarEventSequence : kotlin/sequences/Sequence {
 	public synthetic fun <init> (Lkotlinx/datetime/Instant;DDJLjava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Lkotlinx/datetime/Instant;DDJLjava/util/List;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Lkotlinx/datetime/Instant;DDJLjava/util/List;ZDILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Lkotlinx/datetime/Instant;DDJLjava/util/List;ZDLkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Lkotlinx/datetime/Instant;DDJLjava/util/List;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Lkotlinx/datetime/Instant;DDJLjava/util/List;ZLkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Lkotlinx/datetime/Instant;Lkotlin/Pair;JLjava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Lkotlinx/datetime/Instant;Lkotlin/Pair;JLjava/util/List;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Lkotlinx/datetime/Instant;Lkotlin/Pair;JLjava/util/List;ZDILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Lkotlinx/datetime/Instant;Lkotlin/Pair;JLjava/util/List;ZDLkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Lkotlinx/datetime/Instant;Lkotlin/Pair;JLjava/util/List;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (Lkotlinx/datetime/Instant;Lkotlin/Pair;JLjava/util/List;ZLkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public fun iterator ()Ljava/util/Iterator;
