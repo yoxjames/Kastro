@@ -38,6 +38,7 @@ import kotlin.time.Duration.Companion.days
  * are interested in will save computation resources. By default, only includes [SolarEventType.simple] events.
  * @param reverse Whether the sequence should advance in reverse chronological order. By default, this is false
  * resulting in a Sequence that advances chronologically in time.
+ * @param height: The height, in meters, of the observer.
  */
 public class SolarEventSequence(
     start: Instant,
@@ -80,6 +81,7 @@ public class SolarEventSequence(
      * you are interested in will save computation resources. By default, only includes [SolarEventType.simple] events.
      * @param reverse Whether the sequence should advance in reverse chronological order. By default, this is false
      * resulting in a Sequence that advances chronologically in time.
+     * @param height: The height, in meters, of the observer.
      *
      * @see SolarEventSequence
      */

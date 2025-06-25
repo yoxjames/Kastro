@@ -15,6 +15,9 @@ naming:
 complexity:
   CyclomaticComplexMethod:
     ignoreSingleWhenExpression: true
+  # I think this is silly in a language with named parameters.
+  LongParameterList:
+    active: false
 comments:
   KDocReferencesNonPublicProperty:
     active: true
@@ -22,6 +25,7 @@ comments:
     active: true
   UndocumentedPublicClass:
     active: true
+    ignoreDefaultCompanionObject: true
   UndocumentedPublicFunction:
     active: true
   UndocumentedPublicProperty:

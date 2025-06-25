@@ -64,7 +64,9 @@ public sealed interface LunarPhase {
      */
     public sealed interface Intermediate : LunarPhase {
         public companion object {
-            internal val all: List<Intermediate> = listOf(WaxingCrescent, WaxingGibbous, WaningGibbous, WaningCrescent)
+            // TODO: I get a NPE if this get() is removed. Started on Kotlin 2.2.0.
+            internal val all: List<Intermediate> get() =
+                listOf(WaxingCrescent, WaxingGibbous, WaningGibbous, WaningCrescent)
         }
 
         /**
