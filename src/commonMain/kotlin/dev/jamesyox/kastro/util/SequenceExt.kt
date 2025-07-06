@@ -72,11 +72,13 @@ internal inline fun <T, R : Comparable<R>> List<T>.sortedByReversible(
     false -> sortedBy(selector)
 }
 
+@Suppress("NOTHING_TO_INLINE")
 internal inline fun <T : Comparable<T>> T.isWithinLimit(reverse: Boolean, limit: T) = when (reverse) {
     true -> this >= limit
     false -> this <= limit
 }
 
+@Suppress("NOTHING_TO_INLINE")
 internal inline fun <T : Comparable<T>> T.isOutsideLimit(reverse: Boolean, limit: T) = when (reverse) {
     true -> this < limit
     false -> this > limit

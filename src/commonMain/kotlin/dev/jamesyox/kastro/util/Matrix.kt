@@ -15,7 +15,6 @@
 
 package dev.jamesyox.kastro.util
 
-import dev.drewhamilton.poko.ArrayContentBased
 import dev.drewhamilton.poko.Poko
 import kotlin.math.cos
 import kotlin.math.sin
@@ -26,7 +25,7 @@ import kotlin.math.sin
 @Suppress("LongParameterList")
 @Poko
 internal class Matrix(
-    @ArrayContentBased private val mx: DoubleArray
+    @Poko.ReadArrayContent private val mx: DoubleArray
 ) {
     constructor(
         d1: Double,
