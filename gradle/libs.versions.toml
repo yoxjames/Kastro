@@ -9,8 +9,8 @@ kotlin-datetime = "0.6.2"
 npm-joda-time = "2.20.0"
 kover = "0.9.1"
 binary-compatibility-validator = "0.18.0"
-nexus = "2.0.0"
 poko = "0.19.0"
+maven-publish = "0.34.0-rc6"
 
 [libraries]
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlin-datetime" }
@@ -24,5 +24,5 @@ dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
 benmanes-versions = { id = "com.github.ben-manes.versions", version.ref = "benmanes-versions" }
 binarycompatibility = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "binary-compatibility-validator"}
-nexus = { id = "io.github.gradle-nexus.publish-plugin", version.ref = "nexus" }
 poko = { id = "dev.drewhamilton.poko", version.ref = "poko" }
+mavenpublish = { id = "com.vanniktech.maven.publish", version.ref = "maven-publish" }

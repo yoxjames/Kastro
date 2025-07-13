@@ -28,10 +28,8 @@ plugins {
     alias(libs.plugins.benmanes.versions)
     alias(libs.plugins.kover)
     alias(libs.plugins.binarycompatibility)
-    alias(libs.plugins.nexus)
     alias(libs.plugins.poko)
-    `maven-publish`
-    signing
+    alias(libs.plugins.mavenpublish)
 }
 
 group = "dev.jamesyox"
@@ -151,73 +149,39 @@ tasks.register("allDetekt") {
     }
 }
 
-nexusPublishing {
-    repositories {
-        sonatype {
-            val ossrhUsername: String? by project
-            val ossrhPassword: String? by project
-            val ossrhStagingProfileId: String? by project
+mavenPublishing {
+    publishToMavenCentral()
+    signAllPublications()
 
-            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
-            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+    coordinates(groupId = project.group.toString(), artifactId = project.name)
 
-            username = ossrhUsername
-            password = ossrhPassword
-            stagingProfileId = ossrhStagingProfileId
+    pom {
+        name = project.name
+        description = "Calculates the time of solar and lunar events"
+        url = "http://www.jamesyox.dev/kastro"
+
+        licenses {
+            license {
+                name = "Apache License, Version 2.0"
+                url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
+            }
+        }
+
+        developers {
+            developer {
+                name = "James Yox"
+                id = "yoxjames"
+                url = "http://www.jamesyox.dev"
+            }
+        }
+
+        scm {
+            connection = "scm:git:github.com/yoxjames/Kastro.git"
+            developerConnection = "scm:git:ssh://github.com/yoxjames/Kastro.git"
+            url = "https://github.com/yoxjames/Kastro"
         }
     }
-}
 
-signing {
-    isRequired = gradle.taskGraph.hasTask("publish")
-    sign(publishing.publications)
-}
-
-publishing {
-    publications.withType<MavenPublication> {
-        groupId = project.group.toString()
-        version = libs.versions.current.get()
-        val publication = this
-        val dokkaJar = tasks.register<Jar>("${publication.name}DokkaJar") {
-            group = JavaBasePlugin.DOCUMENTATION_GROUP
-            description = "Assembles Kotlin docs with Dokka into a Javadoc jar"
-            archiveClassifier.set("javadoc")
-            from(tasks.named("dokkaHtml"))
-            // Each archive name should be distinct, to avoid implicit dependency issues.
-            // We use the same format as the sources Jar tasks.
-            // https://youtrack.jetbrains.com/issue/KT-46466
-            archiveBaseName.set("${archiveBaseName.get()}-${publication.name}")
-        }
-
-        artifact(dokkaJar)
-
-        pom {
-            name = project.name
-            description = "TODO"
-            url = "http://www.jamesyox.dev/kastro"
-
-            licenses {
-                license {
-                    name = "Apache License, Version 2.0"
-                    url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
-                }
-            }
-
-            developers {
-                developer {
-                    name = "James Yox"
-                    id = "yoxjames"
-                    url = "http://www.jamesyox.dev"
-                }
-            }
-
-            scm {
-                connection = "scm:git:github.com/yoxjames/Kastro.git"
-                developerConnection = "scm:git:ssh://github.com/yoxjames/Kastro.git"
-                url = "https://github.com/yoxjames/Kastro"
-            }
-        }
-    }
 }
 
 fun String.isNonStable(): Boolean {
@@ -232,11 +196,3 @@ tasks.dependencyUpdates {
         candidate.version.isNonStable()
     }
 }
-
-/*
-apiValidation {
-    @OptIn(kotlinx.validation.ExperimentalBCVApi::class)
-    klib {
-        enabled = true
-    }
-}*/
