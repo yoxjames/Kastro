@@ -24,12 +24,12 @@ groupId: `dev.jamesyox`
 
 artifactId: `kastro`
 
-version: `0.3.0`
+version: `0.4.0`
 
 ## Gradle
 If you use Gradle you should be able to add the following to your dependencies to use Kastro:
 ```kotlin
-implementation("dev.jamesyox:kastro:0.3.0")
+implementation("dev.jamesyox:kastro:0.4.0")
 ```
 
 ## Solar Phases
