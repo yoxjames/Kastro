@@ -1,12 +1,11 @@
-## Version: 0.4.0 (upcoming)
+## Version: 0.4.0
 ### New Features
 * Added height for solar calculations.
-meeu
 ### Bugfixes
 * Removed js-joda/timezone npm package dependency from js and wasmJs targets. This was only used for testing and should not have been a dependency for consumers.
 
 ### Other
-* Various version updates. Eagerly awaiting a stable `kotlin.time.Instant` implementation.
+* Various version updates. Eagerly awaiting a stable `kotlin.time.Instant` implementation. Planning to publish a 1.0-alpha soon which features no kotlinx-datetime dependency!
 
 ## Version: 0.3.0 
 ### New Features

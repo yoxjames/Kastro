@@ -256,8 +256,8 @@ $dokka.location:dev.jamesyox.kastro.sol/SolarEvent///PointingToDeclaration/kast
 $dokka.location:dev.jamesyox.kastro.sol/SolarEvent/compareTo/#dev.jamesyox.kastro.sol.SolarEvent/PointingToDeclaration/kastro/dev.jamesyox.kastro.sol/-solar-event/compare-to.html
 $dokka.location:dev.jamesyox.kastro.sol/SolarEvent/time/#/PointingToDeclaration/kastro/dev.jamesyox.kastro.sol/-solar-event/time.html
 $dokka.location:dev.jamesyox.kastro.sol/SolarEventSequence///PointingToDeclaration/kastro/dev.jamesyox.kastro.sol/-solar-event-sequence/index.html
-$dokka.location:dev.jamesyox.kastro.sol/SolarEventSequence/SolarEventSequence/#kotlinx.datetime.Instant#kotlin.Double#kotlin.Double#kotlin.time.Duration#kotlin.collections.List[dev.jamesyox.kastro.sol.SolarEventType]#kotlin.Boolean/PointingToDeclaration/kastro/dev.jamesyox.kastro.sol/-solar-event-sequence/-solar-event-sequence.html
-$dokka.location:dev.jamesyox.kastro.sol/SolarEventSequence/SolarEventSequence/#kotlinx.datetime.Instant#kotlin.Pair[kotlin.Double,kotlin.Double]#kotlin.time.Duration#kotlin.collections.List[dev.jamesyox.kastro.sol.SolarEventType]#kotlin.Boolean/PointingToDeclaration/kastro/dev.jamesyox.kastro.sol/-solar-event-sequence/-solar-event-sequence.html
+$dokka.location:dev.jamesyox.kastro.sol/SolarEventSequence/SolarEventSequence/#kotlinx.datetime.Instant#kotlin.Double#kotlin.Double#kotlin.time.Duration#kotlin.collections.List[dev.jamesyox.kastro.sol.SolarEventType]#kotlin.Boolean#kotlin.Double/PointingToDeclaration/kastro/dev.jamesyox.kastro.sol/-solar-event-sequence/-solar-event-sequence.html
+$dokka.location:dev.jamesyox.kastro.sol/SolarEventSequence/SolarEventSequence/#kotlinx.datetime.Instant#kotlin.Pair[kotlin.Double,kotlin.Double]#kotlin.time.Duration#kotlin.collections.List[dev.jamesyox.kastro.sol.SolarEventType]#kotlin.Boolean#kotlin.Double/PointingToDeclaration/kastro/dev.jamesyox.kastro.sol/-solar-event-sequence/-solar-event-sequence.html
 $dokka.location:dev.jamesyox.kastro.sol/SolarEventSequence/iterator/#/PointingToDeclaration/kastro/dev.jamesyox.kastro.sol/-solar-event-sequence/iterator.html
 $dokka.location:dev.jamesyox.kastro.sol/SolarEventType.Angle.Dawn///PointingToDeclaration/kastro/dev.jamesyox.kastro.sol/-solar-event-type/-angle/-dawn/index.html
 $dokka.location:dev.jamesyox.kastro.sol/SolarEventType.Angle.Dusk///PointingToDeclaration/kastro/dev.jamesyox.kastro.sol/-solar-event-type/-angle/-dusk/index.html
@@ -321,4 +321,3 @@ $dokka.location:dev.jamesyox.kastro.sol/TwilightInfo/duskAngle/#/PointingToDecla
 dev.jamesyox.kastro.common
 dev.jamesyox.kastro.luna
 dev.jamesyox.kastro.sol
-

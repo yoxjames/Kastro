@@ -263,8 +263,6 @@ Run `./gradlew apiCheck` to see if your changes maintain binary compatibility!
 Enhancements to the overall shape of the API are welcome though as this has not yet reached the `1.0` milestone.
 
 ## Future Work
-I ran into some difficulties getting the height offset calculation to work correctly for `SolarEventSequence`. I hope to eventually resolve that but didn't think it should block an alpha release. It's something I want for the future `1.0` release.
-
 I am curious to potentially make the library usable for other languages like Javascript or Swift. This library is a Kotlin Multiplatform project, but it would be cool to also have it be on npm for use in Javascript/Typescript projects or even be a Swift package (SPM) for use on iOS/Apple targets. There are some challenges to doing that (such as how the exposed API could be adapted to better fit those languages) but I plan to actively look into this as it's something I am generally curious about. 
 
 # References
