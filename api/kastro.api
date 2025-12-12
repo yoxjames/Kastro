@@ -15,27 +15,28 @@ public final class dev/jamesyox/kastro/common/HorizonState : java/lang/Enum {
 }
 
 public final class dev/jamesyox/kastro/luna/CalculateLunarDistanceKt {
-	public static final fun calculateLunarDistance (Lkotlinx/datetime/Instant;)D
+	public static final fun calculateLunarDistance (Lkotlin/time/Instant;)D
 }
 
 public final class dev/jamesyox/kastro/luna/CalculateLunarIlluminationKt {
-	public static final fun calculateLunarIllumination (Lkotlinx/datetime/Instant;)Ldev/jamesyox/kastro/luna/LunarIllumination;
+	public static final fun calculateLunarIllumination (Lkotlin/time/Instant;)Ldev/jamesyox/kastro/luna/LunarIllumination;
 }
 
 public final class dev/jamesyox/kastro/luna/CalculateLunarPositionKt {
-	public static final fun calculateLunarPosition (Lkotlinx/datetime/Instant;DD)Ldev/jamesyox/kastro/luna/LunarPosition;
-	public static final fun calculateLunarPosition (Lkotlinx/datetime/Instant;Lkotlin/Pair;)Ldev/jamesyox/kastro/luna/LunarPosition;
+	public static final fun calculateLunarPosition (Lkotlin/time/Instant;DD)Ldev/jamesyox/kastro/luna/LunarPosition;
+	public static final fun calculateLunarPosition (Lkotlin/time/Instant;Lkotlin/Pair;)Ldev/jamesyox/kastro/luna/LunarPosition;
 }
 
 public final class dev/jamesyox/kastro/luna/CalculateLunarStateKt {
-	public static final fun calculateLunarState (Lkotlinx/datetime/Instant;DD)Ldev/jamesyox/kastro/luna/LunarState;
-	public static final fun calculateLunarState (Lkotlinx/datetime/Instant;Lkotlin/Pair;)Ldev/jamesyox/kastro/luna/LunarState;
+	public static final fun calculateLunarState (Lkotlin/time/Instant;DD)Ldev/jamesyox/kastro/luna/LunarState;
+	public static final fun calculateLunarState (Lkotlin/time/Instant;Lkotlin/Pair;)Ldev/jamesyox/kastro/luna/LunarState;
 }
 
 public abstract interface class dev/jamesyox/kastro/luna/LunarEvent : java/lang/Comparable {
 	public static final field Companion Ldev/jamesyox/kastro/luna/LunarEvent$Companion;
-	public abstract fun compareTo (Ldev/jamesyox/kastro/luna/LunarEvent;)I
-	public abstract fun getTime ()Lkotlinx/datetime/Instant;
+	public fun compareTo (Ldev/jamesyox/kastro/luna/LunarEvent;)I
+	public synthetic fun compareTo (Ljava/lang/Object;)I
+	public abstract fun getTime ()Lkotlin/time/Instant;
 }
 
 public final class dev/jamesyox/kastro/luna/LunarEvent$Companion {
@@ -63,11 +64,11 @@ public abstract interface class dev/jamesyox/kastro/luna/LunarEvent$HorizonEvent
 
 public final class dev/jamesyox/kastro/luna/LunarEvent$HorizonEvent$Moonrise : dev/jamesyox/kastro/luna/LunarEvent$HorizonEvent {
 	public static final field Companion Ldev/jamesyox/kastro/luna/LunarEvent$HorizonEvent$Moonrise$Companion;
-	public fun <init> (Lkotlinx/datetime/Instant;)V
+	public fun <init> (Lkotlin/time/Instant;)V
 	public fun compareTo (Ldev/jamesyox/kastro/luna/LunarEvent;)I
 	public synthetic fun compareTo (Ljava/lang/Object;)I
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getTime ()Lkotlinx/datetime/Instant;
+	public fun getTime ()Lkotlin/time/Instant;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -77,11 +78,11 @@ public final class dev/jamesyox/kastro/luna/LunarEvent$HorizonEvent$Moonrise$Com
 
 public final class dev/jamesyox/kastro/luna/LunarEvent$HorizonEvent$Moonset : dev/jamesyox/kastro/luna/LunarEvent$HorizonEvent {
 	public static final field Companion Ldev/jamesyox/kastro/luna/LunarEvent$HorizonEvent$Moonset$Companion;
-	public fun <init> (Lkotlinx/datetime/Instant;)V
+	public fun <init> (Lkotlin/time/Instant;)V
 	public fun compareTo (Ldev/jamesyox/kastro/luna/LunarEvent;)I
 	public synthetic fun compareTo (Ljava/lang/Object;)I
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getTime ()Lkotlinx/datetime/Instant;
+	public fun getTime ()Lkotlin/time/Instant;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -94,7 +95,7 @@ public abstract interface class dev/jamesyox/kastro/luna/LunarEvent$LunarEventTy
 
 public abstract interface class dev/jamesyox/kastro/luna/LunarEvent$PhaseEvent : dev/jamesyox/kastro/luna/LunarEvent {
 	public static final field Companion Ldev/jamesyox/kastro/luna/LunarEvent$PhaseEvent$Companion;
-	public abstract fun getTime ()Lkotlinx/datetime/Instant;
+	public abstract fun getTime ()Lkotlin/time/Instant;
 }
 
 public final class dev/jamesyox/kastro/luna/LunarEvent$PhaseEvent$Companion {
@@ -107,11 +108,11 @@ public final class dev/jamesyox/kastro/luna/LunarEvent$PhaseEvent$DefaultImpls {
 
 public final class dev/jamesyox/kastro/luna/LunarEvent$PhaseEvent$FirstQuarter : dev/jamesyox/kastro/luna/LunarEvent$PhaseEvent {
 	public static final field Companion Ldev/jamesyox/kastro/luna/LunarEvent$PhaseEvent$FirstQuarter$Companion;
-	public fun <init> (Lkotlinx/datetime/Instant;)V
+	public fun <init> (Lkotlin/time/Instant;)V
 	public fun compareTo (Ldev/jamesyox/kastro/luna/LunarEvent;)I
 	public synthetic fun compareTo (Ljava/lang/Object;)I
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getTime ()Lkotlinx/datetime/Instant;
+	public fun getTime ()Lkotlin/time/Instant;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -122,11 +123,11 @@ public final class dev/jamesyox/kastro/luna/LunarEvent$PhaseEvent$FirstQuarter$C
 
 public final class dev/jamesyox/kastro/luna/LunarEvent$PhaseEvent$FullMoon : dev/jamesyox/kastro/luna/LunarEvent$PhaseEvent {
 	public static final field Companion Ldev/jamesyox/kastro/luna/LunarEvent$PhaseEvent$FullMoon$Companion;
-	public fun <init> (Lkotlinx/datetime/Instant;)V
+	public fun <init> (Lkotlin/time/Instant;)V
 	public fun compareTo (Ldev/jamesyox/kastro/luna/LunarEvent;)I
 	public synthetic fun compareTo (Ljava/lang/Object;)I
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getTime ()Lkotlinx/datetime/Instant;
+	public fun getTime ()Lkotlin/time/Instant;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -137,11 +138,11 @@ public final class dev/jamesyox/kastro/luna/LunarEvent$PhaseEvent$FullMoon$Compa
 
 public final class dev/jamesyox/kastro/luna/LunarEvent$PhaseEvent$LastQuarter : dev/jamesyox/kastro/luna/LunarEvent$PhaseEvent {
 	public static final field Companion Ldev/jamesyox/kastro/luna/LunarEvent$PhaseEvent$LastQuarter$Companion;
-	public fun <init> (Lkotlinx/datetime/Instant;)V
+	public fun <init> (Lkotlin/time/Instant;)V
 	public fun compareTo (Ldev/jamesyox/kastro/luna/LunarEvent;)I
 	public synthetic fun compareTo (Ljava/lang/Object;)I
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getTime ()Lkotlinx/datetime/Instant;
+	public fun getTime ()Lkotlin/time/Instant;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -152,11 +153,11 @@ public final class dev/jamesyox/kastro/luna/LunarEvent$PhaseEvent$LastQuarter$Co
 
 public final class dev/jamesyox/kastro/luna/LunarEvent$PhaseEvent$NewMoon : dev/jamesyox/kastro/luna/LunarEvent$PhaseEvent {
 	public static final field Companion Ldev/jamesyox/kastro/luna/LunarEvent$PhaseEvent$NewMoon$Companion;
-	public fun <init> (Lkotlinx/datetime/Instant;)V
+	public fun <init> (Lkotlin/time/Instant;)V
 	public fun compareTo (Ldev/jamesyox/kastro/luna/LunarEvent;)I
 	public synthetic fun compareTo (Ljava/lang/Object;)I
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getTime ()Lkotlinx/datetime/Instant;
+	public fun getTime ()Lkotlin/time/Instant;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -166,26 +167,18 @@ public final class dev/jamesyox/kastro/luna/LunarEvent$PhaseEvent$NewMoon$Compan
 }
 
 public final class dev/jamesyox/kastro/luna/LunarEventSequence : kotlin/sequences/Sequence {
-	public synthetic fun <init> (Lkotlinx/datetime/Instant;DDJLjava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlinx/datetime/Instant;DDJLjava/util/List;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlinx/datetime/Instant;DDJLjava/util/List;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlinx/datetime/Instant;DDJLjava/util/List;ZLkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlinx/datetime/Instant;Lkotlin/Pair;JLjava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlinx/datetime/Instant;Lkotlin/Pair;JLjava/util/List;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlinx/datetime/Instant;Lkotlin/Pair;JLjava/util/List;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlinx/datetime/Instant;Lkotlin/Pair;JLjava/util/List;ZLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Lkotlin/time/Instant;DDJLjava/util/List;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Lkotlin/time/Instant;DDJLjava/util/List;ZLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Lkotlin/time/Instant;Lkotlin/Pair;JLjava/util/List;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Lkotlin/time/Instant;Lkotlin/Pair;JLjava/util/List;ZLkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public fun iterator ()Ljava/util/Iterator;
 }
 
 public final class dev/jamesyox/kastro/luna/LunarHorizonEventSequence : kotlin/sequences/Sequence {
-	public synthetic fun <init> (Lkotlinx/datetime/Instant;DDJLjava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlinx/datetime/Instant;DDJLjava/util/List;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlinx/datetime/Instant;DDJLjava/util/List;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlinx/datetime/Instant;DDJLjava/util/List;ZLkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlinx/datetime/Instant;Lkotlin/Pair;JLjava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlinx/datetime/Instant;Lkotlin/Pair;JLjava/util/List;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlinx/datetime/Instant;Lkotlin/Pair;JLjava/util/List;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlinx/datetime/Instant;Lkotlin/Pair;JLjava/util/List;ZLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Lkotlin/time/Instant;DDJLjava/util/List;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Lkotlin/time/Instant;DDJLjava/util/List;ZLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Lkotlin/time/Instant;Lkotlin/Pair;JLjava/util/List;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Lkotlin/time/Instant;Lkotlin/Pair;JLjava/util/List;ZLkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public fun iterator ()Ljava/util/Iterator;
 }
 
@@ -215,7 +208,7 @@ public final class dev/jamesyox/kastro/luna/LunarPhase$Companion {
 public abstract interface class dev/jamesyox/kastro/luna/LunarPhase$Intermediate : dev/jamesyox/kastro/luna/LunarPhase {
 	public static final field Companion Ldev/jamesyox/kastro/luna/LunarPhase$Intermediate$Companion;
 	public abstract fun getAngleRange ()Lkotlin/ranges/OpenEndRange;
-	public abstract fun getMidpointAngle ()D
+	public fun getMidpointAngle ()D
 }
 
 public final class dev/jamesyox/kastro/luna/LunarPhase$Intermediate$Companion {
@@ -271,10 +264,8 @@ public final class dev/jamesyox/kastro/luna/LunarPhase$Primary$Companion {
 }
 
 public final class dev/jamesyox/kastro/luna/LunarPhaseSequence : kotlin/sequences/Sequence {
-	public synthetic fun <init> (Lkotlinx/datetime/Instant;JLjava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlinx/datetime/Instant;JLjava/util/List;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlinx/datetime/Instant;JLjava/util/List;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlinx/datetime/Instant;JLjava/util/List;ZLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Lkotlin/time/Instant;JLjava/util/List;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Lkotlin/time/Instant;JLjava/util/List;ZLkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public fun iterator ()Ljava/util/Iterator;
 }
 
@@ -305,10 +296,10 @@ public final class dev/jamesyox/kastro/luna/LunarState {
 }
 
 public final class dev/jamesyox/kastro/sol/CalculateSolarStateKt {
-	public static final fun calculateSolarState (Lkotlinx/datetime/Instant;DDD)Ldev/jamesyox/kastro/sol/SolarState;
-	public static final fun calculateSolarState (Lkotlinx/datetime/Instant;Lkotlin/Pair;D)Ldev/jamesyox/kastro/sol/SolarState;
-	public static synthetic fun calculateSolarState$default (Lkotlinx/datetime/Instant;DDDILjava/lang/Object;)Ldev/jamesyox/kastro/sol/SolarState;
-	public static synthetic fun calculateSolarState$default (Lkotlinx/datetime/Instant;Lkotlin/Pair;DILjava/lang/Object;)Ldev/jamesyox/kastro/sol/SolarState;
+	public static final fun calculateSolarState (Lkotlin/time/Instant;DDD)Ldev/jamesyox/kastro/sol/SolarState;
+	public static final fun calculateSolarState (Lkotlin/time/Instant;Lkotlin/Pair;D)Ldev/jamesyox/kastro/sol/SolarState;
+	public static synthetic fun calculateSolarState$default (Lkotlin/time/Instant;DDDILjava/lang/Object;)Ldev/jamesyox/kastro/sol/SolarState;
+	public static synthetic fun calculateSolarState$default (Lkotlin/time/Instant;Lkotlin/Pair;DILjava/lang/Object;)Ldev/jamesyox/kastro/sol/SolarState;
 }
 
 public abstract interface class dev/jamesyox/kastro/sol/LightPhase {
@@ -378,17 +369,18 @@ public final class dev/jamesyox/kastro/sol/LightStateKt {
 }
 
 public abstract interface class dev/jamesyox/kastro/sol/SolarEvent : java/lang/Comparable {
-	public abstract fun compareTo (Ldev/jamesyox/kastro/sol/SolarEvent;)I
-	public abstract fun getTime ()Lkotlinx/datetime/Instant;
+	public fun compareTo (Ldev/jamesyox/kastro/sol/SolarEvent;)I
+	public synthetic fun compareTo (Ljava/lang/Object;)I
+	public abstract fun getTime ()Lkotlin/time/Instant;
 }
 
 public final class dev/jamesyox/kastro/sol/SolarEvent$AstronomicalDawn : dev/jamesyox/kastro/sol/SolarEvent$TwilightEvent {
 	public static final field Companion Ldev/jamesyox/kastro/sol/SolarEvent$AstronomicalDawn$Companion;
-	public fun <init> (Lkotlinx/datetime/Instant;)V
+	public fun <init> (Lkotlin/time/Instant;)V
 	public fun compareTo (Ldev/jamesyox/kastro/sol/SolarEvent;)I
 	public synthetic fun compareTo (Ljava/lang/Object;)I
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getTime ()Lkotlinx/datetime/Instant;
+	public fun getTime ()Lkotlin/time/Instant;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -399,11 +391,11 @@ public final class dev/jamesyox/kastro/sol/SolarEvent$AstronomicalDawn$Companion
 
 public final class dev/jamesyox/kastro/sol/SolarEvent$AstronomicalDusk : dev/jamesyox/kastro/sol/SolarEvent$TwilightEvent {
 	public static final field Companion Ldev/jamesyox/kastro/sol/SolarEvent$AstronomicalDusk$Companion;
-	public fun <init> (Lkotlinx/datetime/Instant;)V
+	public fun <init> (Lkotlin/time/Instant;)V
 	public fun compareTo (Ldev/jamesyox/kastro/sol/SolarEvent;)I
 	public synthetic fun compareTo (Ljava/lang/Object;)I
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getTime ()Lkotlinx/datetime/Instant;
+	public fun getTime ()Lkotlin/time/Instant;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -414,11 +406,11 @@ public final class dev/jamesyox/kastro/sol/SolarEvent$AstronomicalDusk$Companion
 
 public final class dev/jamesyox/kastro/sol/SolarEvent$BlueHourDawn : dev/jamesyox/kastro/sol/SolarEvent$LightEvent {
 	public static final field Companion Ldev/jamesyox/kastro/sol/SolarEvent$BlueHourDawn$Companion;
-	public fun <init> (Lkotlinx/datetime/Instant;)V
+	public fun <init> (Lkotlin/time/Instant;)V
 	public fun compareTo (Ldev/jamesyox/kastro/sol/SolarEvent;)I
 	public synthetic fun compareTo (Ljava/lang/Object;)I
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getTime ()Lkotlinx/datetime/Instant;
+	public fun getTime ()Lkotlin/time/Instant;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -429,11 +421,11 @@ public final class dev/jamesyox/kastro/sol/SolarEvent$BlueHourDawn$Companion : d
 
 public final class dev/jamesyox/kastro/sol/SolarEvent$BlueHourDawnEnd : dev/jamesyox/kastro/sol/SolarEvent$LightEvent {
 	public static final field Companion Ldev/jamesyox/kastro/sol/SolarEvent$BlueHourDawnEnd$Companion;
-	public fun <init> (Lkotlinx/datetime/Instant;)V
+	public fun <init> (Lkotlin/time/Instant;)V
 	public fun compareTo (Ldev/jamesyox/kastro/sol/SolarEvent;)I
 	public synthetic fun compareTo (Ljava/lang/Object;)I
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getTime ()Lkotlinx/datetime/Instant;
+	public fun getTime ()Lkotlin/time/Instant;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -444,11 +436,11 @@ public final class dev/jamesyox/kastro/sol/SolarEvent$BlueHourDawnEnd$Companion 
 
 public final class dev/jamesyox/kastro/sol/SolarEvent$BlueHourDusk : dev/jamesyox/kastro/sol/SolarEvent$LightEvent {
 	public static final field Companion Ldev/jamesyox/kastro/sol/SolarEvent$BlueHourDusk$Companion;
-	public fun <init> (Lkotlinx/datetime/Instant;)V
+	public fun <init> (Lkotlin/time/Instant;)V
 	public fun compareTo (Ldev/jamesyox/kastro/sol/SolarEvent;)I
 	public synthetic fun compareTo (Ljava/lang/Object;)I
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getTime ()Lkotlinx/datetime/Instant;
+	public fun getTime ()Lkotlin/time/Instant;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -459,11 +451,11 @@ public final class dev/jamesyox/kastro/sol/SolarEvent$BlueHourDusk$Companion : d
 
 public final class dev/jamesyox/kastro/sol/SolarEvent$BlueHourDuskEnd : dev/jamesyox/kastro/sol/SolarEvent$LightEvent {
 	public static final field Companion Ldev/jamesyox/kastro/sol/SolarEvent$BlueHourDuskEnd$Companion;
-	public fun <init> (Lkotlinx/datetime/Instant;)V
+	public fun <init> (Lkotlin/time/Instant;)V
 	public fun compareTo (Ldev/jamesyox/kastro/sol/SolarEvent;)I
 	public synthetic fun compareTo (Ljava/lang/Object;)I
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getTime ()Lkotlinx/datetime/Instant;
+	public fun getTime ()Lkotlin/time/Instant;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -474,11 +466,11 @@ public final class dev/jamesyox/kastro/sol/SolarEvent$BlueHourDuskEnd$Companion 
 
 public final class dev/jamesyox/kastro/sol/SolarEvent$CivilDawn : dev/jamesyox/kastro/sol/SolarEvent$TwilightEvent {
 	public static final field Companion Ldev/jamesyox/kastro/sol/SolarEvent$CivilDawn$Companion;
-	public fun <init> (Lkotlinx/datetime/Instant;)V
+	public fun <init> (Lkotlin/time/Instant;)V
 	public fun compareTo (Ldev/jamesyox/kastro/sol/SolarEvent;)I
 	public synthetic fun compareTo (Ljava/lang/Object;)I
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getTime ()Lkotlinx/datetime/Instant;
+	public fun getTime ()Lkotlin/time/Instant;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -489,11 +481,11 @@ public final class dev/jamesyox/kastro/sol/SolarEvent$CivilDawn$Companion : dev/
 
 public final class dev/jamesyox/kastro/sol/SolarEvent$CivilDusk : dev/jamesyox/kastro/sol/SolarEvent$TwilightEvent {
 	public static final field Companion Ldev/jamesyox/kastro/sol/SolarEvent$CivilDusk$Companion;
-	public fun <init> (Lkotlinx/datetime/Instant;)V
+	public fun <init> (Lkotlin/time/Instant;)V
 	public fun compareTo (Ldev/jamesyox/kastro/sol/SolarEvent;)I
 	public synthetic fun compareTo (Ljava/lang/Object;)I
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getTime ()Lkotlinx/datetime/Instant;
+	public fun getTime ()Lkotlin/time/Instant;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -504,11 +496,11 @@ public final class dev/jamesyox/kastro/sol/SolarEvent$CivilDusk$Companion : dev/
 
 public final class dev/jamesyox/kastro/sol/SolarEvent$Day : dev/jamesyox/kastro/sol/SolarEvent$TwilightEvent {
 	public static final field Companion Ldev/jamesyox/kastro/sol/SolarEvent$Day$Companion;
-	public fun <init> (Lkotlinx/datetime/Instant;)V
+	public fun <init> (Lkotlin/time/Instant;)V
 	public fun compareTo (Ldev/jamesyox/kastro/sol/SolarEvent;)I
 	public synthetic fun compareTo (Ljava/lang/Object;)I
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getTime ()Lkotlinx/datetime/Instant;
+	public fun getTime ()Lkotlin/time/Instant;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -523,11 +515,11 @@ public final class dev/jamesyox/kastro/sol/SolarEvent$DefaultImpls {
 
 public final class dev/jamesyox/kastro/sol/SolarEvent$GoldenHourDawn : dev/jamesyox/kastro/sol/SolarEvent$LightEvent {
 	public static final field Companion Ldev/jamesyox/kastro/sol/SolarEvent$GoldenHourDawn$Companion;
-	public fun <init> (Lkotlinx/datetime/Instant;)V
+	public fun <init> (Lkotlin/time/Instant;)V
 	public fun compareTo (Ldev/jamesyox/kastro/sol/SolarEvent;)I
 	public synthetic fun compareTo (Ljava/lang/Object;)I
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getTime ()Lkotlinx/datetime/Instant;
+	public fun getTime ()Lkotlin/time/Instant;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -538,11 +530,11 @@ public final class dev/jamesyox/kastro/sol/SolarEvent$GoldenHourDawn$Companion :
 
 public final class dev/jamesyox/kastro/sol/SolarEvent$GoldenHourDawnEnd : dev/jamesyox/kastro/sol/SolarEvent$LightEvent {
 	public static final field Companion Ldev/jamesyox/kastro/sol/SolarEvent$GoldenHourDawnEnd$Companion;
-	public fun <init> (Lkotlinx/datetime/Instant;)V
+	public fun <init> (Lkotlin/time/Instant;)V
 	public fun compareTo (Ldev/jamesyox/kastro/sol/SolarEvent;)I
 	public synthetic fun compareTo (Ljava/lang/Object;)I
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getTime ()Lkotlinx/datetime/Instant;
+	public fun getTime ()Lkotlin/time/Instant;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -553,11 +545,11 @@ public final class dev/jamesyox/kastro/sol/SolarEvent$GoldenHourDawnEnd$Companio
 
 public final class dev/jamesyox/kastro/sol/SolarEvent$GoldenHourDusk : dev/jamesyox/kastro/sol/SolarEvent$LightEvent {
 	public static final field Companion Ldev/jamesyox/kastro/sol/SolarEvent$GoldenHourDusk$Companion;
-	public fun <init> (Lkotlinx/datetime/Instant;)V
+	public fun <init> (Lkotlin/time/Instant;)V
 	public fun compareTo (Ldev/jamesyox/kastro/sol/SolarEvent;)I
 	public synthetic fun compareTo (Ljava/lang/Object;)I
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getTime ()Lkotlinx/datetime/Instant;
+	public fun getTime ()Lkotlin/time/Instant;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -568,11 +560,11 @@ public final class dev/jamesyox/kastro/sol/SolarEvent$GoldenHourDusk$Companion :
 
 public final class dev/jamesyox/kastro/sol/SolarEvent$GoldenHourDuskEnd : dev/jamesyox/kastro/sol/SolarEvent$LightEvent {
 	public static final field Companion Ldev/jamesyox/kastro/sol/SolarEvent$GoldenHourDuskEnd$Companion;
-	public fun <init> (Lkotlinx/datetime/Instant;)V
+	public fun <init> (Lkotlin/time/Instant;)V
 	public fun compareTo (Ldev/jamesyox/kastro/sol/SolarEvent;)I
 	public synthetic fun compareTo (Ljava/lang/Object;)I
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getTime ()Lkotlinx/datetime/Instant;
+	public fun getTime ()Lkotlin/time/Instant;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -604,11 +596,11 @@ public final class dev/jamesyox/kastro/sol/SolarEvent$LightEvent$DefaultImpls {
 
 public final class dev/jamesyox/kastro/sol/SolarEvent$Nadir : dev/jamesyox/kastro/sol/SolarEvent {
 	public static final field Companion Ldev/jamesyox/kastro/sol/SolarEvent$Nadir$Companion;
-	public fun <init> (Lkotlinx/datetime/Instant;)V
+	public fun <init> (Lkotlin/time/Instant;)V
 	public fun compareTo (Ldev/jamesyox/kastro/sol/SolarEvent;)I
 	public synthetic fun compareTo (Ljava/lang/Object;)I
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getTime ()Lkotlinx/datetime/Instant;
+	public fun getTime ()Lkotlin/time/Instant;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -618,11 +610,11 @@ public final class dev/jamesyox/kastro/sol/SolarEvent$Nadir$Companion : dev/jame
 
 public final class dev/jamesyox/kastro/sol/SolarEvent$NauticalDawn : dev/jamesyox/kastro/sol/SolarEvent$TwilightEvent {
 	public static final field Companion Ldev/jamesyox/kastro/sol/SolarEvent$NauticalDawn$Companion;
-	public fun <init> (Lkotlinx/datetime/Instant;)V
+	public fun <init> (Lkotlin/time/Instant;)V
 	public fun compareTo (Ldev/jamesyox/kastro/sol/SolarEvent;)I
 	public synthetic fun compareTo (Ljava/lang/Object;)I
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getTime ()Lkotlinx/datetime/Instant;
+	public fun getTime ()Lkotlin/time/Instant;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -633,11 +625,11 @@ public final class dev/jamesyox/kastro/sol/SolarEvent$NauticalDawn$Companion : d
 
 public final class dev/jamesyox/kastro/sol/SolarEvent$NauticalDusk : dev/jamesyox/kastro/sol/SolarEvent$TwilightEvent {
 	public static final field Companion Ldev/jamesyox/kastro/sol/SolarEvent$NauticalDusk$Companion;
-	public fun <init> (Lkotlinx/datetime/Instant;)V
+	public fun <init> (Lkotlin/time/Instant;)V
 	public fun compareTo (Ldev/jamesyox/kastro/sol/SolarEvent;)I
 	public synthetic fun compareTo (Ljava/lang/Object;)I
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getTime ()Lkotlinx/datetime/Instant;
+	public fun getTime ()Lkotlin/time/Instant;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -648,11 +640,11 @@ public final class dev/jamesyox/kastro/sol/SolarEvent$NauticalDusk$Companion : d
 
 public final class dev/jamesyox/kastro/sol/SolarEvent$Night : dev/jamesyox/kastro/sol/SolarEvent$TwilightEvent {
 	public static final field Companion Ldev/jamesyox/kastro/sol/SolarEvent$Night$Companion;
-	public fun <init> (Lkotlinx/datetime/Instant;)V
+	public fun <init> (Lkotlin/time/Instant;)V
 	public fun compareTo (Ldev/jamesyox/kastro/sol/SolarEvent;)I
 	public synthetic fun compareTo (Ljava/lang/Object;)I
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getTime ()Lkotlinx/datetime/Instant;
+	public fun getTime ()Lkotlin/time/Instant;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -663,11 +655,11 @@ public final class dev/jamesyox/kastro/sol/SolarEvent$Night$Companion : dev/jame
 
 public final class dev/jamesyox/kastro/sol/SolarEvent$Noon : dev/jamesyox/kastro/sol/SolarEvent {
 	public static final field Companion Ldev/jamesyox/kastro/sol/SolarEvent$Noon$Companion;
-	public fun <init> (Lkotlinx/datetime/Instant;)V
+	public fun <init> (Lkotlin/time/Instant;)V
 	public fun compareTo (Ldev/jamesyox/kastro/sol/SolarEvent;)I
 	public synthetic fun compareTo (Ljava/lang/Object;)I
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getTime ()Lkotlinx/datetime/Instant;
+	public fun getTime ()Lkotlin/time/Instant;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -677,11 +669,11 @@ public final class dev/jamesyox/kastro/sol/SolarEvent$Noon$Companion : dev/james
 
 public final class dev/jamesyox/kastro/sol/SolarEvent$Sunrise : dev/jamesyox/kastro/sol/SolarEvent$HorizonEvent$Simple {
 	public static final field Companion Ldev/jamesyox/kastro/sol/SolarEvent$Sunrise$Companion;
-	public fun <init> (Lkotlinx/datetime/Instant;)V
+	public fun <init> (Lkotlin/time/Instant;)V
 	public fun compareTo (Ldev/jamesyox/kastro/sol/SolarEvent;)I
 	public synthetic fun compareTo (Ljava/lang/Object;)I
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getTime ()Lkotlinx/datetime/Instant;
+	public fun getTime ()Lkotlin/time/Instant;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -693,11 +685,11 @@ public final class dev/jamesyox/kastro/sol/SolarEvent$Sunrise$Companion : dev/ja
 
 public final class dev/jamesyox/kastro/sol/SolarEvent$SunriseEnd : dev/jamesyox/kastro/sol/SolarEvent$HorizonEvent {
 	public static final field Companion Ldev/jamesyox/kastro/sol/SolarEvent$SunriseEnd$Companion;
-	public fun <init> (Lkotlinx/datetime/Instant;)V
+	public fun <init> (Lkotlin/time/Instant;)V
 	public fun compareTo (Ldev/jamesyox/kastro/sol/SolarEvent;)I
 	public synthetic fun compareTo (Ljava/lang/Object;)I
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getTime ()Lkotlinx/datetime/Instant;
+	public fun getTime ()Lkotlin/time/Instant;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -709,11 +701,11 @@ public final class dev/jamesyox/kastro/sol/SolarEvent$SunriseEnd$Companion : dev
 
 public final class dev/jamesyox/kastro/sol/SolarEvent$Sunset : dev/jamesyox/kastro/sol/SolarEvent$HorizonEvent$Simple {
 	public static final field Companion Ldev/jamesyox/kastro/sol/SolarEvent$Sunset$Companion;
-	public fun <init> (Lkotlinx/datetime/Instant;)V
+	public fun <init> (Lkotlin/time/Instant;)V
 	public fun compareTo (Ldev/jamesyox/kastro/sol/SolarEvent;)I
 	public synthetic fun compareTo (Ljava/lang/Object;)I
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getTime ()Lkotlinx/datetime/Instant;
+	public fun getTime ()Lkotlin/time/Instant;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -725,11 +717,11 @@ public final class dev/jamesyox/kastro/sol/SolarEvent$Sunset$Companion : dev/jam
 
 public final class dev/jamesyox/kastro/sol/SolarEvent$SunsetBegin : dev/jamesyox/kastro/sol/SolarEvent$HorizonEvent {
 	public static final field Companion Ldev/jamesyox/kastro/sol/SolarEvent$SunsetBegin$Companion;
-	public fun <init> (Lkotlinx/datetime/Instant;)V
+	public fun <init> (Lkotlin/time/Instant;)V
 	public fun compareTo (Ldev/jamesyox/kastro/sol/SolarEvent;)I
 	public synthetic fun compareTo (Ljava/lang/Object;)I
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getTime ()Lkotlinx/datetime/Instant;
+	public fun getTime ()Lkotlin/time/Instant;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -747,18 +739,10 @@ public final class dev/jamesyox/kastro/sol/SolarEvent$TwilightEvent$DefaultImpls
 }
 
 public final class dev/jamesyox/kastro/sol/SolarEventSequence : kotlin/sequences/Sequence {
-	public synthetic fun <init> (Lkotlinx/datetime/Instant;DDJLjava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlinx/datetime/Instant;DDJLjava/util/List;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlinx/datetime/Instant;DDJLjava/util/List;ZDILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlinx/datetime/Instant;DDJLjava/util/List;ZDLkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlinx/datetime/Instant;DDJLjava/util/List;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlinx/datetime/Instant;DDJLjava/util/List;ZLkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlinx/datetime/Instant;Lkotlin/Pair;JLjava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlinx/datetime/Instant;Lkotlin/Pair;JLjava/util/List;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlinx/datetime/Instant;Lkotlin/Pair;JLjava/util/List;ZDILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlinx/datetime/Instant;Lkotlin/Pair;JLjava/util/List;ZDLkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlinx/datetime/Instant;Lkotlin/Pair;JLjava/util/List;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public synthetic fun <init> (Lkotlinx/datetime/Instant;Lkotlin/Pair;JLjava/util/List;ZLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Lkotlin/time/Instant;DDJLjava/util/List;ZDILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Lkotlin/time/Instant;DDJLjava/util/List;ZDLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Lkotlin/time/Instant;Lkotlin/Pair;JLjava/util/List;ZDILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Lkotlin/time/Instant;Lkotlin/Pair;JLjava/util/List;ZDLkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public fun iterator ()Ljava/util/Iterator;
 }
 
