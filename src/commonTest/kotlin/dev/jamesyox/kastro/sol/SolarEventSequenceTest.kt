@@ -30,7 +30,6 @@ import dev.jamesyox.kastro.Locations.SYDNEY_TZ
 import dev.jamesyox.kastro.Locations.WELLINGTON
 import dev.jamesyox.kastro.Locations.WELLINGTON_TZ
 import dev.jamesyox.kastro.assertSimilar
-import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.Month
@@ -49,6 +48,7 @@ import kotlin.time.Duration.Companion.minutes
 import kotlin.time.Duration.Companion.seconds
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
+import kotlin.time.Instant
 
 class SolarEventSequenceTest {
     @Test
@@ -117,7 +117,7 @@ class SolarEventSequenceTest {
         ).sortedBy { it.time }
 
         val actual = SolarEventSequence(
-            start = LocalDate(year = 2017, month = Month.AUGUST, dayOfMonth = 10).atStartOfDayIn(UTC),
+            start = LocalDate(year = 2017, month = Month.AUGUST, day = 10).atStartOfDayIn(UTC),
             location = COLOGNE,
             requestedSolarEvents = SolarEventType.all
         ).filterNot { it is SolarEvent.Noon || it is SolarEvent.Nadir }
@@ -437,7 +437,7 @@ class SolarEventSequenceTest {
     fun testHeight() {
         // At the top of the Tokyo Skytree
         val skytreeActual = SolarEventSequence(
-            start = LocalDate(year = 2020, monthNumber = 6, dayOfMonth = 25)
+            start = LocalDate(year = 2020, month = Month.JUNE, day = 25)
                 .atStartOfDayIn(TimeZone.of("Asia/Tokyo")),
             latitude = 35.710046,
             longitude = 139.810718,
@@ -461,7 +461,7 @@ class SolarEventSequenceTest {
 
         // In an airplane at 38,000 feet
         val airplaneActual = SolarEventSequence(
-            start = LocalDate(year = 2020, monthNumber = 6, dayOfMonth = 25).atStartOfDayIn(UTC),
+            start = LocalDate(year = 2020, month = Month.JUNE, day = 25).atStartOfDayIn(UTC),
             latitude = 46.58,
             longitude = -6.3,
             height = 11582.4

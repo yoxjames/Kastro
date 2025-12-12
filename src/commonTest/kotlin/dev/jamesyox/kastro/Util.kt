@@ -14,11 +14,11 @@
 
 package dev.jamesyox.kastro
 
-import kotlinx.datetime.Instant
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.seconds
+import kotlin.time.Instant
 
 @Suppress("NOTHING_TO_INLINE")
 internal inline fun assertSimilar(

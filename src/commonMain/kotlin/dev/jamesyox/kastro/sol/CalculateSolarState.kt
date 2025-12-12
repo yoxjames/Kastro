@@ -23,7 +23,7 @@ import dev.jamesyox.kastro.util.degrees
 import dev.jamesyox.kastro.util.julianDate
 import dev.jamesyox.kastro.util.latitude
 import dev.jamesyox.kastro.util.longitude
-import kotlinx.datetime.Instant
+import kotlin.time.Instant
 
 /**
  * Calculates the [SolarState] for a given [Instant] in time

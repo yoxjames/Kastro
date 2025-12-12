@@ -15,7 +15,6 @@
 package dev.jamesyox.kastro.util
 
 import dev.jamesyox.kastro.assertSimilar
-import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.TimeZone.Companion.UTC
@@ -87,10 +86,5 @@ class JulianDateTest {
         assertEquals(expected = 0.0, actual = jd1.trueAnomaly, absoluteTolerance = 0.1)
         val jd2 = LocalDateTime(2017, 7, 4, 0, 0, 0).toInstant(UTC).julianDate
         assertEquals(expected = PI, actual = jd2.trueAnomaly, absoluteTolerance = 0.1)
-    }
-
-    @Test
-    fun fiddleWithJulian() {
-        println(Clock.System.now().julianDate.julianCentury)
     }
 }

@@ -27,11 +27,11 @@ import kotlin.test.Ignore
 import kotlin.test.Test
 import kotlin.time.Duration.Companion.days
 import kotlin.time.Duration.Companion.hours
-import kotlinx.datetime.Clock
 import kotlinx.datetime.DayOfWeek
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.atStartOfDayIn
 import kotlinx.datetime.toLocalDateTime
+import kotlin.time.Clock
 
 class ReadmeExamples {
 

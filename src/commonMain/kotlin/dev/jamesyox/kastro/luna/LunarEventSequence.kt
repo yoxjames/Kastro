@@ -16,9 +16,9 @@ package dev.jamesyox.kastro.luna
 
 import dev.jamesyox.kastro.sol.SolarEvent
 import dev.jamesyox.kastro.util.mergeWith
-import kotlinx.datetime.Instant
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.days
+import kotlin.time.Instant
 
 /**
  * [Sequence] representing all [LunarEvent]s supported by Kastro. The sequence will be ordered by [SolarEvent.time]
@@ -46,15 +46,6 @@ public class LunarEventSequence(
     private val reverse: Boolean = false
 ) : Sequence<LunarEvent> {
 
-    @Deprecated(message = "", level = DeprecationLevel.HIDDEN)
-    public constructor(
-        start: Instant,
-        latitude: Double,
-        longitude: Double,
-        limit: Duration = 365.days,
-        requestedLunarEvents: List<LunarEvent.LunarEventType> = LunarEvent.all,
-    ) : this(start, latitude, longitude, limit, requestedLunarEvents, false)
-
     /**
      * [Sequence] representing all [LunarEvent]s supported by Kastro. The sequence will be ordered by [SolarEvent.time]
      * either advancing forwards or backwards in time depending on the `reverse` parameter.
@@ -80,14 +71,6 @@ public class LunarEventSequence(
         requestedLunarEvents: List<LunarEvent.LunarEventType> = LunarEvent.all,
         reverse: Boolean = false,
     ) : this(start, location.first, location.second, limit, requestedLunarEvents, reverse)
-
-    @Deprecated(message = "", level = DeprecationLevel.HIDDEN)
-    public constructor(
-        start: Instant,
-        location: Pair<Double, Double>,
-        limit: Duration = 365.days,
-        requestedLunarEvents: List<LunarEvent.LunarEventType> = LunarEvent.all,
-    ) : this(start, location.first, location.second, limit, requestedLunarEvents, false)
 
     private val lunarPhaseSequence = LunarPhaseSequence(
         start = start,

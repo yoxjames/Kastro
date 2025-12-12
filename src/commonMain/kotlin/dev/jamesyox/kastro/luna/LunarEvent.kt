@@ -15,7 +15,7 @@
 package dev.jamesyox.kastro.luna
 
 import dev.drewhamilton.poko.Poko
-import kotlinx.datetime.Instant
+import kotlin.time.Instant
 
 /**
  * Times when particular lunar events of interest happen. Examples would be moon set and moon rise.

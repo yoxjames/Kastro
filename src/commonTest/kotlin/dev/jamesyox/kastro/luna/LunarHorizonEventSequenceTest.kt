@@ -43,14 +43,14 @@ class LunarHorizonEventSequenceTest {
     @Test
     fun testCologne() {
         LunarHorizonEventSequence(
-            start = LocalDate(year = 2017, month = Month.JULY, dayOfMonth = 12).atStartOfDayIn(UTC),
+            start = LocalDate(year = 2017, month = Month.JULY, day = 12).atStartOfDayIn(UTC),
             location = COLOGNE
         ).assertEvents {
             assertEvent<Moonset>(
-                LocalDateTime(year = 2017, month = Month.JULY, dayOfMonth = 12, hour = 6, minute = 53, second = 30)
+                LocalDateTime(year = 2017, month = Month.JULY, day = 12, hour = 6, minute = 53, second = 30)
             )
             assertEvent<Moonrise>(
-                LocalDateTime(year = 2017, month = Month.JULY, dayOfMonth = 12, hour = 21, minute = 25, second = 55)
+                LocalDateTime(year = 2017, month = Month.JULY, day = 12, hour = 21, minute = 25, second = 55)
             )
         }
     }
@@ -58,13 +58,13 @@ class LunarHorizonEventSequenceTest {
     @Test
     fun testAlert() {
         LunarHorizonEventSequence(
-            start = LocalDate(year = 2017, month = Month.JULY, dayOfMonth = 12).atStartOfDayIn(UTC),
+            start = LocalDate(year = 2017, month = Month.JULY, day = 12).atStartOfDayIn(UTC),
             location = ALERT,
             limit = 1.days
         ).assertEmpty()
 
         LunarHorizonEventSequence(
-            start = LocalDate(year = 2017, month = Month.JULY, dayOfMonth = 12).atStartOfDayIn(UTC),
+            start = LocalDate(year = 2017, month = Month.JULY, day = 12).atStartOfDayIn(UTC),
             location = ALERT
         ).assertEvents {
             assertEvent<Moonrise>(LocalDateTime(2017, 7, 14, 5, 45, 5))
@@ -72,7 +72,7 @@ class LunarHorizonEventSequenceTest {
         }
 
         LunarHorizonEventSequence(
-            start = LocalDate(year = 2017, month = Month.JULY, dayOfMonth = 14).atStartOfDayIn(UTC),
+            start = LocalDate(year = 2017, month = Month.JULY, day = 14).atStartOfDayIn(UTC),
             location = ALERT,
             limit = 1.days
         ).assertEvents {

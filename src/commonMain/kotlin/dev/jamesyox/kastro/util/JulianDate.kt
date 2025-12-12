@@ -16,12 +16,12 @@ package dev.jamesyox.kastro.util
 import dev.jamesyox.kastro.util.ExtendedMath.frac
 import dev.jamesyox.kastro.util.JulianDate.Companion.j1970
 import dev.jamesyox.kastro.util.JulianDate.Companion.j2000
-import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 import kotlin.math.PI
 import kotlin.math.floor
 import kotlin.math.roundToLong
+import kotlin.time.Instant
 
 internal const val daysInJulianCentury = 36525.0
 private const val secondsInDay = 86400.0

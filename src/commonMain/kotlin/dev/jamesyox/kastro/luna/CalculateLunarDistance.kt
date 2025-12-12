@@ -17,7 +17,7 @@ package dev.jamesyox.kastro.luna
 import dev.jamesyox.kastro.util.JulianDate
 import dev.jamesyox.kastro.util.Moon
 import dev.jamesyox.kastro.util.julianDate
-import kotlinx.datetime.Instant
+import kotlin.time.Instant
 
 /**
  * Calculates the distance of the moon for an instant in time.

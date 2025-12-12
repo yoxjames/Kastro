@@ -15,7 +15,7 @@
 package dev.jamesyox.kastro.sol
 
 import dev.drewhamilton.poko.Poko
-import kotlinx.datetime.Instant
+import kotlin.time.Instant
 
 /**
  * Times when particular solar events of interest happen. Examples would be things like

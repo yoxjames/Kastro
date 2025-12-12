@@ -37,13 +37,20 @@ class LunarPhaseSequenceTest {
     @Test
     fun testNewMoon() {
         val mp = LunarPhaseSequence(
-            start = LocalDate(year = 2017, month = Month.SEPTEMBER, dayOfMonth = 1).atStartOfDayIn(UTC),
+            start = LocalDate(year = 2017, month = Month.SEPTEMBER, day = 1).atStartOfDayIn(UTC),
             requestedLunarPhases = listOf(NewMoon)
         ).first()
 
         assertSimilar(
             actual = mp.time,
-            expected = LocalDateTime(year = 2017, month = Month.SEPTEMBER, dayOfMonth = 20, hour = 5, minute = 29, second = 30).toInstant(UTC),
+            expected = LocalDateTime(
+                year = 2017,
+                month = Month.SEPTEMBER,
+                day = 20,
+                hour = 5,
+                minute = 29,
+                second = 30
+            ).toInstant(UTC),
         )
         assertEquals(expected = 382740.0, actual = mp.time.calculateLunarDistance(), absoluteTolerance = ERROR)
     }
@@ -51,13 +58,20 @@ class LunarPhaseSequenceTest {
     @Test
     fun testFirstQuarterMoon() {
         val mp = LunarPhaseSequence(
-            start = LocalDate(year = 2017, month = Month.SEPTEMBER, dayOfMonth = 1).atStartOfDayIn(UTC),
+            start = LocalDate(year = 2017, month = Month.SEPTEMBER, day = 1).atStartOfDayIn(UTC),
             requestedLunarPhases = listOf(FirstQuarter)
         ).first()
 
         assertSimilar(
             actual = mp.time,
-            expected = LocalDateTime(year = 2017, Month.SEPTEMBER, dayOfMonth = 28, hour = 2, minute = 52, second = 40).toInstant(UTC),
+            expected = LocalDateTime(
+                year = 2017,
+                Month.SEPTEMBER,
+                day = 28,
+                hour = 2,
+                minute = 52,
+                second = 40
+            ).toInstant(UTC),
         )
         assertEquals(expected = 403894.0, actual = mp.time.calculateLunarDistance(), absoluteTolerance = ERROR)
     }
@@ -65,13 +79,20 @@ class LunarPhaseSequenceTest {
     @Test
     fun testFullMoon() {
         val mp = LunarPhaseSequence(
-            start = LocalDate(year = 2017, month = Month.SEPTEMBER, dayOfMonth = 1).atStartOfDayIn(UTC),
+            start = LocalDate(year = 2017, month = Month.SEPTEMBER, day = 1).atStartOfDayIn(UTC),
             requestedLunarPhases = listOf(FullMoon)
         ).first()
 
         assertSimilar(
             actual = mp.time,
-            expected = LocalDateTime(year = 2017, month = Month.SEPTEMBER, dayOfMonth = 6, hour = 7, minute = 7, second = 44).toInstant(UTC),
+            expected = LocalDateTime(
+                year = 2017,
+                month = Month.SEPTEMBER,
+                day = 6,
+                hour = 7,
+                minute = 7,
+                second = 44
+            ).toInstant(UTC),
         )
         assertEquals(expected = 384364.0, actual = mp.time.calculateLunarDistance(), absoluteTolerance = ERROR)
     }
@@ -79,13 +100,20 @@ class LunarPhaseSequenceTest {
     @Test
     fun testLastQuarterMoon() {
         val mp = LunarPhaseSequence(
-            start = LocalDate(year = 2017, month = Month.SEPTEMBER, dayOfMonth = 1).atStartOfDayIn(UTC),
+            start = LocalDate(year = 2017, month = Month.SEPTEMBER, day = 1).atStartOfDayIn(UTC),
             requestedLunarPhases = listOf(LastQuarter)
         ).first()
 
         assertSimilar(
             actual = mp.time,
-            expected = LocalDateTime(year = 2017, month = Month.SEPTEMBER, dayOfMonth = 13, hour = 6, minute = 28, second = 34).toInstant(UTC),
+            expected = LocalDateTime(
+                year = 2017,
+                month = Month.SEPTEMBER,
+                day = 13,
+                hour = 6,
+                minute = 28,
+                second = 34
+            ).toInstant(UTC),
         )
         assertEquals(actual = mp.time.calculateLunarDistance(), expected = 369899.0, absoluteTolerance = ERROR)
     }
@@ -93,7 +121,7 @@ class LunarPhaseSequenceTest {
     @Test
     fun testTwoFullCycles() {
         val iter = LunarPhaseSequence(
-            start = LocalDate(2023, month = Month.DECEMBER, dayOfMonth = 15).atStartOfDayIn(DENVER_TZ)
+            start = LocalDate(2023, month = Month.DECEMBER, day = 15).atStartOfDayIn(DENVER_TZ)
         ).iterator()
 
         iter.assertSimilar<FirstQuarter>(
@@ -184,7 +212,7 @@ class LunarPhaseSequenceTest {
     @Test
     fun testNoPhases() {
         val iter = LunarPhaseSequence(
-            start = LocalDate(2023, month = Month.DECEMBER, dayOfMonth = 15).atStartOfDayIn(DENVER_TZ),
+            start = LocalDate(2023, month = Month.DECEMBER, day = 15).atStartOfDayIn(DENVER_TZ),
             limit = 3.days
         ).iterator()
 
@@ -194,18 +222,18 @@ class LunarPhaseSequenceTest {
     @Test
     fun testLimit() {
         val iter = LunarPhaseSequence(
-            start = LocalDate(2024, month = Month.JANUARY, dayOfMonth = 11).atStartOfDayIn(DENVER_TZ),
+            start = LocalDate(2024, month = Month.JANUARY, day = 11).atStartOfDayIn(DENVER_TZ),
             limit = 7.days
         ).iterator()
 
         iter.assertSimilar<NewMoon>(
-            expected = LocalDateTime(2024, month = Month.JANUARY, dayOfMonth = 11, hour = 4, minute = 57),
+            expected = LocalDateTime(2024, month = Month.JANUARY, day = 11, hour = 4, minute = 57),
             timeZone = DENVER_TZ,
             tolerance = 5.minutes
         )
 
         iter.assertSimilar<FirstQuarter>(
-            expected = LocalDateTime(2024, month = Month.JANUARY, dayOfMonth = 17, hour = 20, 52),
+            expected = LocalDateTime(2024, month = Month.JANUARY, day = 17, hour = 20, 52),
             timeZone = DENVER_TZ,
             tolerance = 5.minutes
         )

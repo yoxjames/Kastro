@@ -14,7 +14,7 @@
 
 package dev.jamesyox.kastro.sol
 
-import kotlinx.datetime.Instant
+import kotlin.time.Instant
 
 /**
  * Types of [SolarEvent]s that can be requested in a [SolarEventSequence]

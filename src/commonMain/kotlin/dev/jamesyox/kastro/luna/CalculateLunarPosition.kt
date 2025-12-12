@@ -25,11 +25,11 @@ import dev.jamesyox.kastro.util.julianDate
 import dev.jamesyox.kastro.util.latitude
 import dev.jamesyox.kastro.util.longitude
 import dev.jamesyox.kastro.util.radians
-import kotlinx.datetime.Instant
 import kotlin.math.atan2
 import kotlin.math.cos
 import kotlin.math.sin
 import kotlin.math.tan
+import kotlin.time.Instant
 
 /**
  * Calculates the [LunarPosition] for a given instant in time.

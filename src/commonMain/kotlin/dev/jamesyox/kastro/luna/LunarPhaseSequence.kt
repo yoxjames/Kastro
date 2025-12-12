@@ -23,11 +23,11 @@ import dev.jamesyox.kastro.util.instant
 import dev.jamesyox.kastro.util.julianDate
 import dev.jamesyox.kastro.util.radians
 import dev.jamesyox.kastro.util.sortedByReversible
-import kotlinx.datetime.Instant
 import kotlin.math.PI
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.days
 import kotlin.time.Duration.Companion.seconds
+import kotlin.time.Instant
 
 /**
  * [Sequence] representing all [LunarEvent.PhaseEvent]s supported by Kastro. The sequence will be ordered by
@@ -51,13 +51,6 @@ public class LunarPhaseSequence(
     private val requestedLunarPhases: List<LunarPhase.Primary> = LunarPhase.Primary.all,
     private val reverse: Boolean = false,
 ) : Sequence<LunarEvent.PhaseEvent> {
-
-    @Deprecated(message = "", level = DeprecationLevel.HIDDEN)
-    public constructor(
-        start: Instant,
-        limit: Duration = 365.days,
-        requestedLunarPhases: List<LunarPhase.Primary> = LunarPhase.Primary.all,
-    ) : this(start, limit, requestedLunarPhases, false)
 
     private companion object {
         private const val SUN_LIGHT_TIME_TAU = 8.32 / (1440.0 * daysInJulianCentury)

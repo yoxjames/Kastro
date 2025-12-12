@@ -25,12 +25,12 @@ import dev.jamesyox.kastro.util.isOutsideLimit
 import dev.jamesyox.kastro.util.isWithinLimit
 import dev.jamesyox.kastro.util.julianDate
 import dev.jamesyox.kastro.util.sortedByReversible
-import kotlinx.datetime.Instant
 import kotlin.math.abs
 import kotlin.math.ceil
 import kotlin.math.floor
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.hours
+import kotlin.time.Instant
 
 internal class NoonAndNadirSequence(
     private val start: Instant,

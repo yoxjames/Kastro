@@ -19,13 +19,13 @@ import dev.jamesyox.kastro.util.Moon
 import dev.jamesyox.kastro.util.Sol
 import dev.jamesyox.kastro.util.degrees
 import dev.jamesyox.kastro.util.julianDate
-import kotlinx.datetime.Instant
 import kotlin.math.PI
 import kotlin.math.acos
 import kotlin.math.atan2
 import kotlin.math.cos
 import kotlin.math.sign
 import kotlin.math.sin
+import kotlin.time.Instant
 
 /**
  * Calculates the [LunarIllumination] for a given instant in time.

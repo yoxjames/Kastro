@@ -12,14 +12,13 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 
-@file:OptIn(ExperimentalWasmDsl::class, ExperimentalKotlinGradlePluginApi::class)
+@file:OptIn(ExperimentalKotlinGradlePluginApi::class)
 
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import kotlin.time.Duration.Companion.seconds
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -92,7 +91,7 @@ kotlin {
                 }
             }
         }
-        //nodejs { }
+        nodejs()
     }
 
     // Native: https://kotlinlang.org/docs/native-target-support.html
@@ -118,7 +117,7 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                api(libs.kotlinx.datetime)
+                implementation(libs.kotlinx.datetime)
             }
         }
         commonTest {

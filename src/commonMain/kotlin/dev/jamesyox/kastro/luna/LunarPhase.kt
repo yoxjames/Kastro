@@ -14,8 +14,8 @@
 
 package dev.jamesyox.kastro.luna
 
-import kotlinx.datetime.Instant
 import kotlin.math.absoluteValue
+import kotlin.time.Instant
 
 /**
  * A [LunarPhase] is a specific shape of the moon's sunlit portion. There are [Primary] moon phases which are described

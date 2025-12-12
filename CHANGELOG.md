@@ -1,3 +1,8 @@
+## Version: 0.5.0
+This release uses the now stabilized time API from the Kotlin stdlib. Therefore, it requires Kotlin 2.3.0. The 
+Instant/Clock types provided from kotlinx-datetime are no longer present in newer versions of kotlinx-datetime.
+
+
 ## Version: 0.4.0
 ### New Features
 * Added height for solar calculations.

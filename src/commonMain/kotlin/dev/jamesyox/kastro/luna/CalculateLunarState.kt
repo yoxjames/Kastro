@@ -14,7 +14,7 @@
 
 package dev.jamesyox.kastro.luna
 
-import kotlinx.datetime.Instant
+import kotlin.time.Instant
 
 /**
  * For a given time calculate the [LunarState] for a relative position. [LunarState] is a class containing the

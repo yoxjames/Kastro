@@ -16,9 +16,9 @@ package dev.jamesyox.kastro.sol
 import dev.jamesyox.kastro.util.latitude
 import dev.jamesyox.kastro.util.longitude
 import dev.jamesyox.kastro.util.mergeWith
-import kotlinx.datetime.Instant
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.days
+import kotlin.time.Instant
 
 /**
  * [Sequence] representing all [SolarEvent]s supported by Kastro. The sequence will be ordered by [SolarEvent.time]
@@ -49,26 +49,6 @@ public class SolarEventSequence(
     private val reverse: Boolean = false,
     private val height: Double = 0.0
 ) : Sequence<SolarEvent> {
-
-    @Deprecated(message = "", level = DeprecationLevel.HIDDEN)
-    public constructor(
-        start: Instant,
-        latitude: Double,
-        longitude: Double,
-        limit: Duration = 365.days,
-        requestedSolarEvents: List<SolarEventType> = SolarEventType.simple,
-    ) : this(start, latitude, longitude, limit, requestedSolarEvents, reverse = false, height = 0.0)
-
-    @Deprecated(message = "", level = DeprecationLevel.HIDDEN)
-    public constructor(
-        start: Instant,
-        latitude: Double,
-        longitude: Double,
-        limit: Duration = 365.days,
-        requestedSolarEvents: List<SolarEventType> = SolarEventType.simple,
-        reverse: Boolean = false,
-    ) : this(start, latitude, longitude, limit, requestedSolarEvents, reverse = false, height = 0.0)
-
     /**
      * Alternative constructor with location as a [Pair]. Provided as a convenience. See primary constructor for more
      * information
@@ -93,38 +73,6 @@ public class SolarEventSequence(
         reverse: Boolean = false,
         height: Double = 0.0
     ) : this(start, location.first, location.second, limit, requestedSolarEvents, reverse, height)
-
-    @Deprecated(message = "", level = DeprecationLevel.HIDDEN)
-    public constructor(
-        start: Instant,
-        location: Pair<Double, Double>,
-        limit: Duration = 365.days,
-        requestedSolarEvents: List<SolarEventType> = SolarEventType.simple,
-    ) : this(
-        start = start,
-        latitude = location.first,
-        longitude = location.second,
-        limit = limit,
-        requestedSolarEvents = requestedSolarEvents,
-        reverse = false,
-        height = 0.0
-    )
-
-    @Deprecated(message = "", level = DeprecationLevel.HIDDEN)
-    public constructor(
-        start: Instant,
-        location: Pair<Double, Double>,
-        limit: Duration = 365.days,
-        requestedSolarEvents: List<SolarEventType> = SolarEventType.simple,
-        reverse: Boolean = false
-    ) : this(
-        start = start,
-        latitude = location.first,
-        longitude = location.second,
-        limit = limit,
-        requestedSolarEvents = requestedSolarEvents,
-        reverse = false
-    )
 
     private val noonAndNadirSequence = NoonAndNadirSequence(
         start = start,

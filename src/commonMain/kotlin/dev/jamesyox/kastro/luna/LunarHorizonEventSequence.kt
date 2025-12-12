@@ -23,12 +23,12 @@ import dev.jamesyox.kastro.util.instant
 import dev.jamesyox.kastro.util.julianDate
 import dev.jamesyox.kastro.util.latitude
 import dev.jamesyox.kastro.util.longitude
-import kotlinx.datetime.Instant
 import kotlin.math.ceil
 import kotlin.math.floor
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.days
 import kotlin.time.Duration.Companion.hours
+import kotlin.time.Instant
 
 /**
  * [Sequence] representing all [LunarEvent.HorizonEvent]s supported by Kastro. The sequence will be ordered by
@@ -55,14 +55,6 @@ public class LunarHorizonEventSequence(
     private val requestedHorizonEvents: List<LunarEvent.HorizonEvent.HorizonEventType> = LunarEvent.HorizonEvent.all,
     private val reverse: Boolean = false,
 ) : Sequence<LunarEvent.HorizonEvent> {
-    @Deprecated(message = "", level = DeprecationLevel.HIDDEN)
-    public constructor(
-        start: Instant,
-        latitude: Double,
-        longitude: Double,
-        limit: Duration = 365.days,
-        requestedHorizonEvents: List<LunarEvent.HorizonEvent.HorizonEventType> = LunarEvent.HorizonEvent.all,
-    ) : this(start, latitude, longitude, limit, requestedHorizonEvents, false)
 
     /**
      * Alternative constructor with location as a [Pair]. Provided as a convenience. See primary constructor for more
@@ -84,14 +76,6 @@ public class LunarHorizonEventSequence(
         requestedHorizonEvents: List<LunarEvent.HorizonEvent.HorizonEventType> = LunarEvent.HorizonEvent.all,
         reverse: Boolean = false,
     ) : this(start, location.first, location.second, limit, requestedHorizonEvents, reverse)
-
-    @Deprecated(message = "", level = DeprecationLevel.HIDDEN)
-    public constructor(
-        start: Instant,
-        location: Pair<Double, Double>,
-        limit: Duration = 365.days,
-        requestedHorizonEvents: List<LunarEvent.HorizonEvent.HorizonEventType> = LunarEvent.HorizonEvent.all,
-    ) : this(start, location.first, location.second, limit, requestedHorizonEvents, false)
 
     private val refraction = apparentRefraction(0.0) // TODO [ALPHA]
     private val lat = latitude.latitude
