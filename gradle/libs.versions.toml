@@ -1,7 +1,7 @@
 [versions]
 current = "0.5.0"
 benmanes-versions = "0.53.0"
-kotlin = "2.3.0-RC3"
+kotlin = "2.3.0"
 jvm = "17"
 detekt = "1.23.8"
 dokka = "2.1.0"
