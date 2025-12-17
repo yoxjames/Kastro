@@ -1,7 +1,7 @@
 # Kastro
 ![Maven Central Version](https://img.shields.io/maven-central/v/dev.jamesyox/kastro)
 [![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0)
-[![Kotlin](https://img.shields.io/badge/kotlin-2.0.10-blue.svg?logo=kotlin)](http://kotlinlang.org)
+[![Kotlin](https://img.shields.io/badge/kotlin-2.3.0-blue.svg?logo=kotlin)](http://kotlinlang.org)
 
 Kastro is a Kotlin multiplatform library for calculating astronomical events for the Moon and Sun (Luna and Sol). This includes events like Sunset, Sunrise, Noon, Nadir, and so many more. What makes Kastro special is the lazily evaluated `Sequence`-based implementation, which allows you to use the data in powerful ways. Kastro builds on the work of Richard Körber (shred) in his library commons-suncalc. Much of the math in Kastro comes from commons-suncalc but was ported to common Kotlin. 
 
@@ -24,12 +24,12 @@ groupId: `dev.jamesyox`
 
 artifactId: `kastro`
 
-version: `0.4.0`
+version: `0.5.0`
 
 ## Gradle
 If you use Gradle you should be able to add the following to your dependencies to use Kastro:
 ```kotlin
-implementation("dev.jamesyox:kastro:0.4.0")
+implementation("dev.jamesyox:kastro:0.5.0")
 ```
 
 ## Solar Phases

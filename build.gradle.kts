@@ -148,6 +148,16 @@ tasks.register("allDetekt") {
     }
 }
 
+dokka {
+    dokkaSourceSets.commonMain {
+        sourceLink {
+            localDirectory.set(file("src/commonMain/kotlin"))
+            remoteUrl("https://github.com/yoxjames/Kastro/blob/main/src/commonMain/kotlin")
+            remoteLineSuffix.set("#L")
+        }
+    }
+}
+
 mavenPublishing {
     publishToMavenCentral()
     signAllPublications()
