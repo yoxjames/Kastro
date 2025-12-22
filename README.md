@@ -126,7 +126,7 @@ val goldenHour = SolarEventSequence(
     start = clock.now(),
     latitude = 39.7348,
     longitude = -104.9653,
-    requestedSolarEvents = listOf(SolarEvent.GoldenHourDusk, SolarEvent.GoldenHourDusk)
+    requestedSolarEvents = listOf(SolarEvent.GoldenHourDawn, SolarEvent.GoldenHourDusk)
 ).firstOrNull()
 ```
 
