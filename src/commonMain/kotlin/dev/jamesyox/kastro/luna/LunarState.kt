@@ -14,10 +14,10 @@
 
 package dev.jamesyox.kastro.luna
 
-import dev.drewhamilton.poko.Poko
 import dev.jamesyox.kastro.common.HorizonMovementState
 import dev.jamesyox.kastro.common.HorizonState
 import dev.jamesyox.kastro.common.fromAzimuth
+import dev.jamesyox.kastro.util.Poko
 
 /**
  * Single class containing all the information Kastro can calculate about Luna for a given instant of time. Contains

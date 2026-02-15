@@ -12,12 +12,11 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 
-@file:OptIn(ExperimentalKotlinGradlePluginApi::class)
+@file:OptIn(ExperimentalWasmDsl::class)
 
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
-import kotlin.time.Duration.Companion.seconds
+import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -75,7 +74,7 @@ kotlin {
         nodejs {
             testTask {
                 useMocha {
-                    timeout = 30.seconds.inWholeMilliseconds.toString()
+                    timeout = 30000.toString()
                 }
             }
         }
@@ -158,6 +157,10 @@ dokka {
     }
 }
 
+poko {
+    pokoAnnotation.set("dev/jamesyox/kastro/util/Poko")
+}
+
 mavenPublishing {
     publishToMavenCentral()
     signAllPublications()
@@ -190,7 +193,6 @@ mavenPublishing {
             url = "https://github.com/yoxjames/Kastro"
         }
     }
-
 }
 
 fun String.isNonStable(): Boolean {

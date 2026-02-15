@@ -14,11 +14,11 @@
 
 package dev.jamesyox.kastro.sol
 
-import dev.drewhamilton.poko.Poko
 import dev.jamesyox.kastro.common.HorizonMovementState
 import dev.jamesyox.kastro.common.HorizonState
 import dev.jamesyox.kastro.common.fromAzimuth
 import dev.jamesyox.kastro.util.Moon.angularRadius
+import dev.jamesyox.kastro.util.Poko
 import dev.jamesyox.kastro.util.degrees
 
 /**

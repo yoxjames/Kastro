@@ -1,3 +1,9 @@
+## Version: 0.6.0 (Upcoming)
+### Other
+* Removed runtime dependency on Poko annotations (see https://github.com/drewhamilton/Poko/issues/328) for an explanation
+on why this is happening in the first place.
+* Using the latest Gradle/Kotlin version. Should have no impact.
+
 ## Version: 0.5.0 (WARNING: Binary Incompatible Change)
 ### Other
 This release uses the now stabilized time API from the Kotlin stdlib. Therefore, it requires Kotlin 2.3.0. The 

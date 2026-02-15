@@ -1,16 +1,16 @@
 [versions]
 current = "0.5.0"
 benmanes-versions = "0.53.0"
-kotlin = "2.3.0"
+kotlin = "2.3.10"
 jvm = "17"
 detekt = "1.23.8"
 dokka = "2.1.0"
 kotlin-datetime = "0.7.1"
 npm-joda-time = "2.20.0"
-kover = "0.9.4"
+kover = "0.9.7"
 binary-compatibility-validator = "0.18.1"
-poko = "0.20.2"
-maven-publish = "0.35.0"
+poko = "0.21.1"
+maven-publish = "0.36.0"
 
 [libraries]
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlin-datetime" }

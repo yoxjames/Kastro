@@ -15,7 +15,6 @@
 
 package dev.jamesyox.kastro.util
 
-import dev.drewhamilton.poko.Poko
 import kotlin.math.cos
 import kotlin.math.sin
 

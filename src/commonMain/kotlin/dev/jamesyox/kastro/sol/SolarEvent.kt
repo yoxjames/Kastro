@@ -14,7 +14,7 @@
 
 package dev.jamesyox.kastro.sol
 
-import dev.drewhamilton.poko.Poko
+import dev.jamesyox.kastro.util.Poko
 import kotlin.time.Instant
 
 /**

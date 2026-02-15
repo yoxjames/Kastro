@@ -14,7 +14,7 @@
 
 package dev.jamesyox.kastro.luna
 
-import dev.drewhamilton.poko.Poko
+import dev.jamesyox.kastro.util.Poko
 
 /**
  * Calculates the illumination of the moon.
