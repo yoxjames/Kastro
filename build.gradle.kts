@@ -58,7 +58,7 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_1_8)
         }
     }
-    js(IR) {
+    js {
         compilerOptions {
             target.set("es2015")
         }
@@ -96,31 +96,25 @@ kotlin {
     // Native: https://kotlinlang.org/docs/native-target-support.html
     // Tier 1
     linuxX64()
-    macosX64()
     macosArm64()
     iosSimulatorArm64()
     iosX64()
     // Tier 2
     linuxArm64()
     watchosSimulatorArm64()
-    watchosX64()
     watchosArm32()
     watchosArm64()
     tvosSimulatorArm64()
-    tvosX64()
     tvosArm64()
     iosArm64()
     // Tier 3
     mingwX64()
 
     sourceSets {
-        commonMain {
-            dependencies {
-                implementation(libs.kotlinx.datetime)
-            }
-        }
+        commonMain
         commonTest {
             dependencies {
+                implementation(libs.kotlinx.datetime)
                 implementation(kotlin("test"))
             }
         }
@@ -142,6 +136,7 @@ repositories {
 }
 
 tasks.register("allDetekt") {
+    description = "Run detekt across all source sets"
     allprojects {
         this@register.dependsOn(tasks.withType<Detekt>())
     }

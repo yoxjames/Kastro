@@ -16,8 +16,6 @@ package dev.jamesyox.kastro.util
 import dev.jamesyox.kastro.util.ExtendedMath.frac
 import dev.jamesyox.kastro.util.JulianDate.Companion.j1970
 import dev.jamesyox.kastro.util.JulianDate.Companion.j2000
-import kotlinx.datetime.TimeZone
-import kotlinx.datetime.toLocalDateTime
 import kotlin.math.PI
 import kotlin.math.floor
 import kotlin.math.roundToLong
@@ -85,8 +83,18 @@ internal val JulianDate.greenwichMeanSiderealTime: Double get() {
  * A simple approximation is used here.
  *
  * @return True anomaly, in radians
+ * see
  */
 internal val JulianDate.trueAnomaly: Double get() {
-    val dayOfYear = instant.toLocalDateTime(TimeZone.UTC).dayOfYear
-    return (PI * 2.0) * frac((dayOfYear - 5.0) / 365.256363)
+    return (PI * 2.0) * frac((instant.dayOfYear.toDouble() - 5.0) / 365.256363)
+}
+
+// This is an extremely simplified function that is "good enough" for our purposes. Certainly not a viable
+// dayOfYear function.
+// I had a pretty fun time going down this rabbit hole though:
+// https://howardhinnant.github.io/date_algorithms.html#civil_from_days
+internal val Instant.dayOfYear: Int get() {
+    val epochDays = epochSeconds / 86400.0
+    val daysLeftThisYear = epochDays % 365.242189
+    return daysLeftThisYear.toInt()
 }

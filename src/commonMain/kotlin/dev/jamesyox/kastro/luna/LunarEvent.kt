@@ -2,7 +2,7 @@
  * Copyright (C) 2023 James Yox
  *   http://www.jamesyox.dev
  * Copyright (C) 2017 Richard "Shred" Körber
- *    http://commons.shredzone.org
+ *   http://commons.shredzone.org
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

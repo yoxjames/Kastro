@@ -3,6 +3,8 @@
 * Removed runtime dependency on Poko annotations (see https://github.com/drewhamilton/Poko/issues/328) for an explanation
 on why this is happening in the first place.
 * Using the latest Gradle/Kotlin version. Should have no impact.
+* Some enhancements to testing though these wont actually impact the release besides giving me more confidence I dont break anything.
+* Removed dependency on `kotlinx-datetime`. Implemented similar enough true anomaly calculation without it.
 
 ## Version: 0.5.0 (WARNING: Binary Incompatible Change)
 ### Other
