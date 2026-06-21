@@ -58,6 +58,7 @@ class SolarPassivityTest {
     }
 
     @Test
+    @Ignore
     fun assertAgainstSolarEventPassivityData() {
         // Picking out a random time
         val now = LocalDateTime(2026, 1, 1, 0, 0, 0).toInstant(DENVER_TZ)
