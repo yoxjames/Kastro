@@ -1,5 +1,5 @@
 [versions]
-current = "1.0.0-SNAPSHOT"
+current = "0.6.0-SNAPSHOT"
 benmanes-versions = "0.53.0"
 kotlin = "2.4.0"
 jvm = "17"

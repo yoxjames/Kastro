@@ -321,7 +321,6 @@ class SolarEventSequenceTest {
             location = WELLINGTON,
             reverse = true
         ).take(4).toList()
-        println(actual)
         val expected = listOf(
             SolarEvent.Sunset(
                 LocalDateTime(2017, 8, 9, 5, 33, 36).toInstant(UTC)
@@ -672,7 +671,6 @@ class SolarEventSequenceTest {
             reverse = true
         )
 
-        println(seq.toList())
         val iter = seq.iterator()
 
         iter.assertSimilar<SolarEvent.Sunset>(
@@ -761,8 +759,6 @@ class SolarEventSequenceTest {
             location = Pair(-83.0, -105.0),
             requestedSolarEvents = SolarEventType.all
         )
-
-        println(seq.map { Pair(it, it.time.toLocalDateTime(DENVER_TZ)) }.take(10).toList())
 
         val iter = seq.iterator()
 

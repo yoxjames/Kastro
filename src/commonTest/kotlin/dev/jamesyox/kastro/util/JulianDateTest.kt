@@ -83,7 +83,6 @@ class JulianDateTest {
     @Test
     fun testTrueAnomaly() {
         val jd1 = LocalDateTime(2017, 1, 4, 0, 0, 0).toInstant(UTC).julianDate
-        println(jd1.instant.dayOfYear)
         assertEquals(expected = 0.0, actual = jd1.trueAnomaly, absoluteTolerance = 0.1)
         val jd2 = LocalDateTime(2017, 7, 4, 0, 0, 0).toInstant(UTC).julianDate
         assertEquals(expected = PI, actual = jd2.trueAnomaly, absoluteTolerance = 0.1)

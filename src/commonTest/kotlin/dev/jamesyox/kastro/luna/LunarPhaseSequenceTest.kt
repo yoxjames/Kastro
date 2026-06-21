@@ -166,7 +166,7 @@ class LunarPhaseSequenceTest {
         LunarPhaseSequence(
             start = LocalDate(2024, 2, 4).atStartOfDayIn(DENVER_TZ),
             reverse = true
-        ).take(10).toList().apply { println(this) }
+        ).take(10).toList()
 
         val iter = LunarPhaseSequence(
             start = LocalDate(2024, 2, 4).atStartOfDayIn(DENVER_TZ),

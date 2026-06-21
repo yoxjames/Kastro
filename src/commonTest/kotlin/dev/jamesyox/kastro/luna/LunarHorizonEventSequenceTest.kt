@@ -241,7 +241,7 @@ class LunarHorizonEventSequenceTest {
         LunarHorizonEventSequence(
             start = LocalDate(2023, 1, 4).atStartOfDayIn(warsawTz),
             location = location
-        ).take(50).toList().also { println(it) }
+        ).take(50).toList()
 
         LunarHorizonEventSequence(
             start = LocalDate(2023, 1, 4).atStartOfDayIn(warsawTz),
