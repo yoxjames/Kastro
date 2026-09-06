@@ -1,5 +1,5 @@
 [versions]
-current = "0.6.0-SNAPSHOT"
+current = "0.6.0"
 benmanes-versions = "0.61.0"
 kotlin = "2.4.10"
 jvm = "17"
@@ -22,7 +22,7 @@ kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref 
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
-benmanes-versions = { id = "com.github.ben-manes.versions", version.ref = "benmanes-versions" }
+benmanes-versions = { id = "io.github.ben-manes.versions", version.ref = "benmanes-versions" }
 binarycompatibility = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "binary-compatibility-validator"}
 poko = { id = "dev.drewhamilton.poko", version.ref = "poko" }
 mavenpublish = { id = "com.vanniktech.maven.publish", version.ref = "maven-publish" }
