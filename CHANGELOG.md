@@ -1,10 +1,11 @@
-## Version: 0.6.0 (Upcoming)
+## Version: 0.6.0 
 ### Other
 * Removed runtime dependency on Poko annotations (see https://github.com/drewhamilton/Poko/issues/328) for an explanation
 on why this is happening in the first place.
-* Using the latest Gradle/Kotlin version. Should have no impact.
-* Some enhancements to testing though these wont actually impact the release besides giving me more confidence I dont break anything.
+* Using the latest Gradle/Kotlin version. Should have no impact. 
+* Some enhancements to testing though these won't actually impact the release besides giving me more confidence I don't break anything.
 * Removed dependency on `kotlinx-datetime`. Implemented similar enough true anomaly calculation without it.
+  * This library is now a zero dependency library (besides the Kotlin Standard Library of course)
 
 ## Version: 0.5.0 (WARNING: Binary Incompatible Change)
 ### Other

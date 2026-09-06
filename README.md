@@ -3,7 +3,7 @@
 [![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0)
 [![Kotlin](https://img.shields.io/badge/kotlin-2.3.0-blue.svg?logo=kotlin)](http://kotlinlang.org)
 
-Kastro is a Kotlin multiplatform library for calculating astronomical events for the Moon and Sun (Luna and Sol). This includes events like Sunset, Sunrise, Noon, Nadir, and so many more. What makes Kastro special is the lazily evaluated `Sequence`-based implementation, which allows you to use the data in powerful ways. Kastro builds on the work of Richard Körber (shred) in his library commons-suncalc. Much of the math in Kastro comes from commons-suncalc but was ported to common Kotlin. 
+Kastro is a Kotlin Multiplatform zero dependency library for calculating astronomical events for the Moon and Sun (Luna and Sol). This includes events like Sunset, Sunrise, Noon, Nadir, and so many more. What makes Kastro special is the lazily evaluated `Sequence`-based implementation, which allows you to use the data in powerful ways. Kastro builds on the work of Richard Körber (shred) in his library commons-suncalc. Much of the math in Kastro comes from commons-suncalc but was ported to common Kotlin. 
 
 > [!NOTE] 
 > For a pure Java API be sure to check out [Richard Körber's project](https://github.com/shred/commons-suncalc)!.
@@ -24,12 +24,12 @@ groupId: `dev.jamesyox`
 
 artifactId: `kastro`
 
-version: `0.5.0`
+version: `0.6.0`
 
 ## Gradle
 If you use Gradle you should be able to add the following to your dependencies to use Kastro:
 ```kotlin
-implementation("dev.jamesyox:kastro:0.5.0")
+implementation("dev.jamesyox:kastro:0.6.0")
 ```
 
 ## Solar Phases
@@ -266,9 +266,9 @@ Enhancements to the overall shape of the API are welcome though as this has not 
 I am curious to potentially make the library usable for other languages like Javascript or Swift. This library is a Kotlin Multiplatform project, but it would be cool to also have it be on npm for use in Javascript/Typescript projects or even be a Swift package (SPM) for use on iOS/Apple targets. There are some challenges to doing that (such as how the exposed API could be adapted to better fit those languages) but I plan to actively look into this as it's something I am generally curious about. 
 
 # References
-* “Blue Hour – Magic Hour.” Timeanddate.com, 2019, www.timeanddate.com/astronomy/blue-hour.html.
-* “Golden Hour – When Sunlight Turns Magical.” Www.timeanddate.com, www.timeanddate.com/astronomy/golden-hour.html.
-* Körber, Richard. “Shred/Commons-Suncalc.” GitHub, 16 Jan. 2024, github.com/shred/commons-suncalc.
+* “Blue Hour – Magic Hour.” www.timeanddate.com, 2019, www.timeanddate.com/astronomy/blue-hour.html.
+* “Golden Hour – When Sunlight Turns Magical.” www.timeanddate.com, www.timeanddate.com/astronomy/golden-hour.html.
+* Körber, Richard. “Shred/Commons-Suncalc.” GitHub, 16 Jan. 2024, https://github.com/shred/commons-suncalc.
 * Meeus, Jean. Astronomical Algorithms. Richmond, Va., Willmann-Bell, 1998.‌
 * Montenbruck, Oliver, and Thomas Pfleger. Astronomy on the Personal Computer. Springer, 14 Mar. 2013.
 * NASA. “Moon Phases | Phases, Eclipses & Supermoons.” Moon: NASA Science, https://moon.nasa.gov/moon-in-motion/phases-eclipses-supermoons/moon-phases/
